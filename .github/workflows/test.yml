@@ -21,3 +21,5 @@ jobs:
         run: python tools/run_evidence.py --check
       - name: Cross-implementation evidence check
         run: python tools/run_cross_verification.py --check
+      - name: Monolith refinement evidence check
+        run: python tools/run_monolith_refinement.py --check
