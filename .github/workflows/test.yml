@@ -55,3 +55,9 @@ jobs:
           path: .verification/axm-discovery-buddy
       - name: Discovery Buddy cross-repository compatibility check
         run: python tools/check_discovery_buddy_consumer.py --check --buddy-root .verification/axm-discovery-buddy
+      - name: Install pinned formal comparison dependency
+        run: python -m pip install -r requirements-formal.txt
+      - name: Z3 INV-01 formal comparison tests
+        run: python -m unittest formal_tests.test_z3_inv01 -v
+      - name: Z3 INV-01 formal comparison evidence check
+        run: python tools/run_z3_inv01_comparison.py --check
