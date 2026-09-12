@@ -1,0 +1,70 @@
+{
+  "schema": "axm.invariant-lab.reference-state-closure-projection/v0.1",
+  "source": {
+    "repository": "mike-axiom-mir/axm-state-research",
+    "commit": "cf891d3614d472b1426fbdc4304e4e9fe290fb24",
+    "readme_path": "experiments/reference-state-closure-v1/README.md",
+    "readme_git_blob_sha": "9e54750a23808ae291d08c4047df91698d41d882",
+    "experiment_path": "experiments/reference-state-closure-v1/experiment.py",
+    "experiment_git_blob_sha": "537a695258927b6f9f7acf924c44900dc306632b",
+    "fixture_path": "experiments/reference-state-closure-v1/fixture.json",
+    "fixture_git_blob_sha": "adee7a66f724d4a83b063ec9cb1da4698455480d",
+    "test_path": "experiments/reference-state-closure-v1/test_experiment.py",
+    "test_git_blob_sha": "8e6acbd97d7a772b842a8f180f02b2b9dc8c26bf",
+    "portable_path": "experiments/reference-state-closure-v1/portable.py",
+    "portable_git_blob_sha": "382c60a8aefea603d3329033e0ce5f3b59c1575e",
+    "portable_test_path": "experiments/reference-state-closure-v1/test_portable.py",
+    "portable_test_git_blob_sha": "e8f4cd20e41f3d4e4c7ce2ceb1cce537ed54c2d2"
+  },
+  "projection": {
+    "method": "Mechanical projection of exact pinned donor source/fixture/test semantics plus independently reproduced deterministic result fields. The dense oracle, sparse closure engine, same-wake-set negative control, and injected dropped-summary fault stay distinct.",
+    "excluded_claims": [
+      "arbitrary sparse scheduler correctness",
+      "neural or hardware performance",
+      "producer authentication or signatures",
+      "real-environment behavior",
+      "execution, merge, or CANON authority"
+    ]
+  },
+  "baseline": {
+    "status": "PASS",
+    "fixture_sha256": "7f65abe33661b1deef2bac40052efff68088cb2d461e14d6a738f1556fb5d6a5",
+    "canonical_output_equality_A_B": true,
+    "normalization_equality_A_B": true,
+    "replay_digest_A": "31882bcce06d84826ce3112a6538913c3cdcfc9b35f4c149e672a86c85fdf9a0",
+    "replay_digest_B": "31882bcce06d84826ce3112a6538913c3cdcfc9b35f4c149e672a86c85fdf9a0",
+    "aggressive_control_divergences_A_C": 11,
+    "missed_reference_contributions_C": 11,
+    "nodes": 8,
+    "transitions": 12,
+    "dense_body_executions_A": 104,
+    "sparse_body_executions_B": 18,
+    "executions_avoided_B": 86,
+    "sleeping_reference_event_wakes": [],
+    "max_dense_reference_bytes_A": 119,
+    "max_derived_reference_bytes_B": 23,
+    "max_dense_default_bytes_A": 293,
+    "max_sparse_default_bytes_B": 35,
+    "implicit_default_bytes_avoided_B": 258
+  },
+  "dropped_summary_fault": {
+    "status": "HOLD",
+    "canonical_output_equality_A_B": false,
+    "normalization_equality_A_B": false,
+    "replay_digest_A": "31882bcce06d84826ce3112a6538913c3cdcfc9b35f4c149e672a86c85fdf9a0",
+    "replay_digest_B": "7cdefd2a393b2123549e339526b60f75465972f1a4813a540f327a6dee94c157",
+    "dense_body_executions_A": 104,
+    "sparse_body_executions_B": 18,
+    "executions_avoided_B": 86
+  },
+  "semantics": {
+    "control_uses_same_wake_set_as_sparse": true,
+    "reference_only_change_wakes_no_body": true,
+    "derived_reference_update_preserves_dense_equivalence": true,
+    "dropping_sleeping_reference_contribution_diverges": true,
+    "dropping_reference_summary_update_breaks_equivalence": true,
+    "derived_reference_summary_is_rebuildable": true,
+    "standalone_portable_verify_is_not_producer_authentication": true,
+    "packaging_grants_no_automatic_authority": true
+  }
+}
