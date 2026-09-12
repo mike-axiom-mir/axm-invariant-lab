@@ -79,5 +79,13 @@ class ReferenceStateClosureTests(unittest.TestCase):
         fixture['semantics']['packaging_grants_no_automatic_authority'] = False
         self.assertEqual(adapter.inspect(fixture).status, 'FAIL')
 
+    def test_reference_state_closure_is_machine_discoverable(self):
+        module = json.loads((ROOT / 'AXM_MODULE.json').read_text(encoding='utf-8'))
+        capability_ids = {item['id'] for item in module['capabilities']}
+        self.assertIn('invariant.refinement.state-research-reference-state-closure', capability_ids)
+        paths = {item['path'] for item in module['entrypoints']}
+        self.assertIn('adapters/state_research_reference_state_closure.py', paths)
+        self.assertIn('tools/run_state_research_reference_state_closure_refinement.py', paths)
+
 if __name__ == '__main__':
     unittest.main()
