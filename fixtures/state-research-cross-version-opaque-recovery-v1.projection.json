@@ -1,0 +1,102 @@
+{
+  "schema": "axm.invariant-lab.cross-version-opaque-recovery-projection/v0.1",
+  "source": {
+    "repository": "mike-axiom-mir/axm-state-research",
+    "commit": "cf891d3614d472b1426fbdc4304e4e9fe290fb24",
+    "benchmark_path": "experiments/07-cross-version-opaque-recovery-challenge/results/raw/benchmark_results.json",
+    "benchmark_git_blob_sha": "748f8d4c232cbe1952800c904ba69f9b3158acb9",
+    "provenance_receipts_path": "experiments/07-cross-version-opaque-recovery-challenge/results/raw/provenance_receipts.jsonl",
+    "provenance_receipts_git_blob_sha": "b5a771bbc6682e4042608442e9b13653e499face",
+    "final_report_path": "experiments/07-cross-version-opaque-recovery-challenge/FINAL_REPORT.md",
+    "final_report_git_blob_sha": "d263438ed7e021fb2cd228b462486bf561e78bbb",
+    "architecture_path": "experiments/07-cross-version-opaque-recovery-challenge/ARCHITECTURE.md",
+    "architecture_git_blob_sha": "2768bd92f74e6285fed68bd14e9ba4bd06c26b9a"
+  },
+  "projection": {
+    "method": "Mechanical projection of frozen manifest identity, policy outcome/work summaries, per-version source/checkpoint/resolution outcomes, and VERSION_AWARE_BOUNDED checkpoint/escalation receipts. No donor evaluator, router, oracle, or hidden dependency is executed or copied.",
+    "excluded_donor_fields": [
+      "scoring_oracle answers",
+      "opaque evaluator source/code",
+      "inferred hidden dependency path",
+      "host timing measurements"
+    ],
+    "source_paths": [
+      "benchmark_results.json $.candidate_policy, $.gate, $.gate_contract, $.manifest_hashes.held_out.json",
+      "benchmark_results.json $.policies.{BROKEN_SPARSE,OBSERVED_ONLY,STRUCTURAL_ONLY,ABSTAIN_ALL}",
+      "benchmark_results.json $.policies.VERSION_AWARE_BOUNDED",
+      "FINAL_REPORT.md WORKED/FAILED/MEASURED frozen summary",
+      "provenance_receipts.jsonl VERSION_AWARE_BOUNDED checkpoint-validation receipts",
+      "provenance_receipts.jsonl VERSION_AWARE_BOUNDED v3 escalation receipts",
+      "ARCHITECTURE.md controlled-version and checkpoint/oracle boundary"
+    ]
+  },
+  "challenge": {
+    "held_out_manifest_hash": "976e4bd3153ff2cc9201417f19e5d33e8f2eeff00f778f203e7b34e49e25d188",
+    "held_out_project_count": 2,
+    "held_out_transition_count": 12,
+    "registered_nodes_per_project": 12,
+    "minimum_resolved_coverage_percentage": 85.0
+  },
+  "failure_controls": {
+    "BROKEN_SPARSE": {"wrong_resolved_outputs": 6, "untrusted_checkpoint_replays": 1},
+    "OBSERVED_ONLY": {"wrong_resolved_outputs": 4, "untrusted_checkpoint_replays": 0},
+    "STRUCTURAL_ONLY": {"wrong_resolved_outputs": 4, "untrusted_checkpoint_replays": 0},
+    "ABSTAIN_ALL": {"wrong_resolved_outputs": 0, "false_abstentions": 154, "resolved_coverage_percentage": 0.0}
+  },
+  "candidate": {
+    "policy": "VERSION_AWARE_BOUNDED",
+    "gate_passed": true,
+    "wrong_resolved_outputs": 0,
+    "false_abstentions": 0,
+    "untrusted_checkpoint_replays": 0,
+    "resolved_coverage_percentage": 91.6667,
+    "unresolved_decisions": 14,
+    "total_policy_work": 41,
+    "full_oracle_reference_work": 168,
+    "checkpoint_validations": 2,
+    "checkpoint_quarantines": 2,
+    "changed_source_guard_executions": 5,
+    "escalation_events": 7,
+    "repeat_replay_equal": true,
+    "registration_order_invariant": true,
+    "projects": {
+      "opaque-workcell-v2": {
+        "source_available": true,
+        "source_changed_since_training": true,
+        "checkpoint_case": "training_checkpoint_bound_to_v1",
+        "resolved_coverage_percentage": 100.0,
+        "wrong_resolved_outputs": 0,
+        "final_unresolved_ids": [],
+        "total_policy_work": 25
+      },
+      "opaque-workcell-v3-unavailable": {
+        "source_available": false,
+        "source_changed_since_training": true,
+        "checkpoint_case": "absent_source_unavailable",
+        "resolved_coverage_percentage": 83.3333,
+        "wrong_resolved_outputs": 0,
+        "final_unresolved_ids": ["opaque-guard", "safety-summary"],
+        "total_policy_work": 16
+      }
+    }
+  },
+  "provenance": {
+    "v2_checkpoint": {
+      "status": "QUARANTINED_UNTRUSTED",
+      "reasons": ["evaluator_source_hash_mismatch"],
+      "untrusted_replay_permitted": false
+    },
+    "v3_checkpoint": {
+      "status": "QUARANTINED_UNTRUSTED",
+      "reasons": ["checkpoint_absent"],
+      "untrusted_replay_permitted": false
+    },
+    "v3_escalation": {
+      "action": "retain_unresolved_and_escalate",
+      "receipt_count": 7,
+      "unresolved_node_ids": ["opaque-guard", "safety-summary"],
+      "untrusted_replay": false,
+      "triggering_events": ["initial", "v3-width", "v3-hidden-off", "v3-name", "v3-load", "v3-hidden-on", "v3-budget"]
+    }
+  }
+}
