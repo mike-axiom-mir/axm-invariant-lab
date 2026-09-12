@@ -7,7 +7,7 @@ FORMAL_AUDIT_DEPTH = 6
 LIMITATIONS = [
     "digests are symbolic labels rather than bytes",
     "does not model filesystem atomicity or concurrent writers",
-    "fault transitions are synthetic",
+    "fault transition is synthetic",
 ]
 
 
