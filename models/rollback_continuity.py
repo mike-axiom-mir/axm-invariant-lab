@@ -1,12 +1,13 @@
-"""Tiny rollback continuity model with a synthetic wrong-target fault."""
+"""Tiny rollback continuity model with bounded receipt-lifecycle faults."""
 
 from src.bounded_explorer import Invariant, Transition
 
 MAX_DEPTH = 4
+FORMAL_AUDIT_DEPTH = 6
 LIMITATIONS = [
     "digests are symbolic labels rather than bytes",
     "does not model filesystem atomicity or concurrent writers",
-    "fault transition is synthetic",
+    "fault transitions are synthetic",
 ]
 
 
@@ -32,6 +33,9 @@ def checkpoint_s1(state):
 
 
 def mutate_s2(state):
+    # `rollback` is the current rollback assertion, not a durable historical log.
+    # Once normal forward mutation resumes, that assertion is no longer current.
+    state["rollback"] = None
     state["current"] = "S2"
     state["history"] = state["history"] + ["S2"]
     return state
@@ -46,6 +50,13 @@ def rollback_s1(state):
 def buggy_rollback_unknown(state):
     state["current"] = "S9"
     state["rollback"] = {"target": "S1", "status": "restored"}
+    return state
+
+
+def buggy_forward_keeps_stale_rollback(state):
+    """Synthetic pre-repair behavior: move forward but keep a stale rollback assertion."""
+    state["current"] = "S2"
+    state["history"] = state["history"] + ["S2"]
     return state
 
 
@@ -90,5 +101,13 @@ FAULT_TRANSITIONS = SAFE_TRANSITIONS + [
         "FAULT-rollback-reports-S1-but-restores-S9",
         lambda s: s["current"] == "S2" and "S1" in s["knownGood"],
         buggy_rollback_unknown,
+    )
+]
+
+STALE_RECEIPT_FAULT_TRANSITIONS = SAFE_TRANSITIONS + [
+    Transition(
+        "FAULT-forward-mutation-keeps-stale-rollback-receipt",
+        lambda s: s["current"] == "S1" and s["rollback"] is not None,
+        buggy_forward_keeps_stale_rollback,
     )
 ]
