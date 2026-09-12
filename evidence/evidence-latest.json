@@ -1,0 +1,110 @@
+{
+  "authority": {
+    "canon": false,
+    "execution": false,
+    "merge": false,
+    "promotion": false
+  },
+  "evidenceLevel": {
+    "label": "ADVERSARIAL",
+    "notReached": [
+      "independent second implementation",
+      "live donor repo consumption",
+      "real-environment verification"
+    ],
+    "reached": 4,
+    "reason": "Authored safe/fault models are fixture-tested and the TruthGrid adapter is exercised against a contradictory rollbackRef mutation."
+  },
+  "modelReceipts": [
+    {
+      "faultInjectedStatus": "FAIL",
+      "faultInvariant": "INV-01-no-silent-authority-escalation",
+      "faultTraceLength": 2,
+      "faultTraceTransitions": [
+        "propose-write-candidate",
+        "FAULT-inherit-candidate-authority"
+      ],
+      "limitations": [
+        "abstract single actor",
+        "authority is a small string set, not a real permission system",
+        "fault transition is synthetic and is not a claim about a donor repository"
+      ],
+      "model": "no_silent_authority",
+      "safeExploredStates": 4,
+      "safeExploredTransitions": 4,
+      "safeStatus": "PASS"
+    },
+    {
+      "faultInjectedStatus": "FAIL",
+      "faultInvariant": "INV-02-no-auto-canon",
+      "faultTraceLength": 2,
+      "faultTraceTransitions": [
+        "test-candidate",
+        "FAULT-transport-promotes-canon"
+      ],
+      "limitations": [
+        "CANON is modeled as one boolean outcome",
+        "the constitutional root judgment behind an explicit decision is outside this model",
+        "fault transition is synthetic"
+      ],
+      "model": "no_auto_canon",
+      "safeExploredStates": 5,
+      "safeExploredTransitions": 6,
+      "safeStatus": "PASS"
+    },
+    {
+      "faultInjectedStatus": "FAIL",
+      "faultInvariant": "INV-03-rollback-known-good-lineage",
+      "faultTraceLength": 4,
+      "faultTraceTransitions": [
+        "mutate-S0-to-S1",
+        "checkpoint-S1",
+        "mutate-S1-to-S2",
+        "FAULT-rollback-reports-S1-but-restores-S9"
+      ],
+      "limitations": [
+        "digests are symbolic labels rather than bytes",
+        "does not model filesystem atomicity or concurrent writers",
+        "fault transition is synthetic"
+      ],
+      "model": "rollback_continuity",
+      "safeExploredStates": 6,
+      "safeExploredTransitions": 5,
+      "safeStatus": "PASS"
+    },
+    {
+      "faultInjectedStatus": "FAIL",
+      "faultInvariant": "INV-04-selective-inheritance-excludes-authority",
+      "faultTraceLength": 1,
+      "faultTraceTransitions": [
+        "FAULT-copy-donor-with-authority"
+      ],
+      "limitations": [
+        "small fixed field vocabulary",
+        "no package manager or executable loading",
+        "fault transition is synthetic"
+      ],
+      "model": "selective_inheritance",
+      "safeExploredStates": 3,
+      "safeExploredTransitions": 2,
+      "safeStatus": "PASS"
+    }
+  ],
+  "question": "Can a tiny bounded explorer distinguish safe transition systems from transition-order authority/continuity faults without treating unknown evidence as safe?",
+  "schema": "axm.invariant-lab.evidence/v0.1",
+  "truthgridRefinement": {
+    "adversarialRollbackRefMutationFailures": [
+      "tick 3 rollbackRef does not bind baseRevision"
+    ],
+    "adversarialRollbackRefMutationStatus": "FAIL",
+    "baselineFailures": [],
+    "baselineStatus": "PASS",
+    "baselineUnknowns": [],
+    "source": {
+      "blobSha": "8e9ae86a4b17aa5616c809436e7693064f843a7c",
+      "note": "Bounded field extraction from the current donor evidence receipt; timing and unrelated fields omitted.",
+      "path": "evidence/benchmark-latest.json",
+      "repo": "mike-axiom-mir/axm-TruthGrid"
+    }
+  }
+}
