@@ -1,0 +1,15 @@
+{
+  "schema": "axm.invariant-lab.external-consumers/v0.1",
+  "consumers": [
+    {
+      "consumerRepo": "mike-axiom-mir/axm-monolith",
+      "consumerCommit": "1c0ab8dc787086add3d8c60feeb494db7a33b935",
+      "capability": "evidence.invariant-lab-consumer",
+      "packetPath": "evidence/first_counterexample_receipt.json",
+      "packetBlob": "02eeddfd12351ff6b7647bc412db3695ee45e5b3",
+      "schemaPath": "COUNTEREXAMPLE_PACKET.schema.json",
+      "schemaBlob": "cc9f1fde4855a56557ad6338c7595a99fc71cb21",
+      "status": "active_pinned_consumer"
+    }
+  ]
+}

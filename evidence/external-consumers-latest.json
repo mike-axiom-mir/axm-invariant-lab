@@ -1,0 +1,24 @@
+{
+  "allPinnedProducerContractsIntact": true,
+  "authority": {
+    "canon": false,
+    "execution": false,
+    "merge": false,
+    "promotion": false
+  },
+  "consumerCount": 1,
+  "consumers": [
+    {
+      "capability": "evidence.invariant-lab-consumer",
+      "compatible": true,
+      "consumerCommit": "1c0ab8dc787086add3d8c60feeb494db7a33b935",
+      "consumerRepo": "mike-axiom-mir/axm-monolith",
+      "packetBlobActual": "02eeddfd12351ff6b7647bc412db3695ee45e5b3",
+      "packetBlobExpected": "02eeddfd12351ff6b7647bc412db3695ee45e5b3",
+      "schemaBlobActual": "cc9f1fde4855a56557ad6338c7595a99fc71cb21",
+      "schemaBlobExpected": "cc9f1fde4855a56557ad6338c7595a99fc71cb21"
+    }
+  ],
+  "schema": "axm.invariant-lab.external-consumer-check/v0.1",
+  "truthBoundary": "Checks only that local producer bytes still match contracts pinned by registered consumers. It does not re-run or attest the external consumer runtime."
+}
