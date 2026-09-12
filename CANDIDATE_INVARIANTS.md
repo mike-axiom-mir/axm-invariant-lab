@@ -12,7 +12,7 @@ These are research candidates, not CANON rules created by this repository.
 | INV-06 | TruthGrid client directions do not themselves declare authoritative consequences. | ADAPTER NEXT |
 | INV-07 | TruthGrid merge receipt `rollbackRef` names the exact base revision it claims to roll back to. | ADAPTER NOW |
 | INV-08 | Deterministic duplicate execution should agree on the declared state identity. | ADAPTER NOW |
-| INV-09 | Detached checkpoint reconstruction must bind to the checkpoint/source identity it claims to reconstruct. | ADAPTER LATER |
+| INV-09 | Detached checkpoint reconstruction must bind to the checkpoint/source identity it claims to reconstruct. | FRESH-PROCESS CHECKPOINT ADAPTER NOW |
 | INV-10 | Donor adaptation preserves source identity and makes held/ambiguous fields explicit. | MODEL/ADAPTER LATER |
 | INV-11 | Technical execution credentials do not outrank the four constitutional roots. | HUMAN/JUDGMENT BOUNDARY |
 | INV-12 | A tested/transported candidate may move between repos without gaining merge/CANON authority from transport itself. | CROSS-REPO MODEL NOW |
