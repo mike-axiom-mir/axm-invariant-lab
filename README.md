@@ -1,6 +1,6 @@
 # AXM Invariant Lab
 
-**Status:** working experimental capability / cross-implementation exploration evidence / two donor refinement fixtures / measured tractability boundary / counterexample packet CROSS-REPO evidence / not CANON / no merge or execution authority.
+**Status:** working experimental capability / cross-implementation exploration evidence / pinned donor contract refinements plus one donor execution-results refinement / measured tractability boundary / counterexample packet CROSS-REPO evidence / not CANON / no merge or execution authority.
 
 The original `RESEARCH_SEED_v0.1.md` is preserved as provenance. It was the kickstart document, not a permanent requirement that this repository remain research-only. Fresh evidence decides the repo's current status.
 
@@ -25,6 +25,7 @@ The current implementation contains:
 - cross-implementation agreement receipts with an explicit path-node tractability budget;
 - a deterministic tractability probe showing where all-path enumeration reaches that budget while visited-state exploration remains small;
 - a read-only AXM Monolith Pipeline Fabric v0.1 refinement adapter pinned to an exact donor contract, preserving candidate-only status and explicit no-automatic-authority fields;
+- a read-only AXM State Research Workfloor Sentinel refinement over one pinned execution-results artifact, mechanically checking necessary-vs-awakened wakeups across the known dependency bug and repaired run without reimplementing donor checks;
 - two real external consumers of `axm.invariant-lab.counterexample/v0.1`: AXM Monolith and AXM Profession Mesh;
 - an external-consumer registry and producer-side blob-identity guard so later packet/schema drift cannot silently claim compatibility with pinned consumers;
 - a distinct-consumer guard so the same repository cannot be counted twice by accident;
@@ -46,7 +47,9 @@ The bounded **exploration semantics** remain at the seed's **rung 5 / CROSS-IMPL
 
 The rung-5 exploration claim remains intentionally narrow. Both exploration verifiers consume the **same authored transition and invariant functions**. Agreement cross-checks the search/exploration implementation; it does not independently prove that the model faithfully represents donor code.
 
-A second real donor boundary is mapped through the Monolith Pipeline Fabric v0.1 refinement fixture. The adapter checks explicit `automatic_execution/install/merge/canon = false` fields and candidate-only pipeline statuses; contradictory values FAIL and missing evidence HOLDs.
+A second donor boundary is mapped through the Monolith Pipeline Fabric v0.1 refinement fixture. The adapter checks explicit `automatic_execution/install/merge/canon = false` fields and candidate-only pipeline statuses; contradictory values FAIL and missing evidence HOLDs.
+
+A further, narrower execution-evidence boundary is now mapped from AXM State Research Workfloor Sentinel. The pinned donor artifact records a dependency-bug run and repaired run over the same designed mutation. Invariant Lab mechanically projects explicit `necessary_check_ids`, `awakened_check_ids`, reported misses/mismatches, equivalence flags, and final hashes. New candidate invariant **INV-13** independently derives `necessary - awakened`: the known bug run FAILs with `cross--report-matches-raw-results` missed, while the repaired run PASSes and converges to the same final oracle hash. This is stronger than a prose/contract-only fixture because the source is a donor-generated execution-results artifact, but it still does not independently derive which checks should be necessary from donor source code and therefore does **not** promote general model fidelity above rung 5. See `STATE_RESEARCH_SENTINEL_REFINEMENT.md`.
 
 The retained tractability probe adds a separate operational boundary without promoting the exploration evidence rung. On an authored reconverging two-branch model with a 100,000 path-node budget, the reference verifier completes depth 15 at **65,535 path nodes**, then reaches the budget and returns **HOLD at depth 16**, while the visited-state explorer still completes with only **17 unique states**. These are deterministic work counts, not wall-clock performance claims. See `TRACTABILITY_BOUNDARY.md`.
 
@@ -77,6 +80,7 @@ python tools/run_cross_verification.py --check
 python tools/run_monolith_refinement.py --check
 python tools/run_tractability.py --check
 python tools/check_external_consumers.py --check
+python tools/run_state_research_sentinel_refinement.py --check
 ```
 
 Regenerate retained receipts only when deliberately reviewing a semantic change:
@@ -86,6 +90,7 @@ python tools/run_cross_verification.py
 python tools/run_monolith_refinement.py
 python tools/run_tractability.py
 python tools/check_external_consumers.py
+python tools/run_state_research_sentinel_refinement.py
 ```
 
 ## Important truth boundary
@@ -94,7 +99,9 @@ A primary PASS means only: **no counterexample was found within the exact model,
 
 A cross-verification `AGREE` means the independent path enumerator matched the primary bounded result on the compared observables. It does not mean the model itself is correct.
 
-A donor-refinement PASS means only that the exact explicit donor fields represented by the pinned fixture satisfy the adapter contract. It does not prove a full donor runtime or an unobserved field.
+A contract-fixture donor-refinement PASS means only that the exact explicit donor fields represented by the pinned fixture satisfy the adapter contract. It does not prove a full donor runtime or an unobserved field.
+
+A State Research execution-refinement PASS means only that the mechanically selected fields from the pinned Workfloor Sentinel results artifact are internally consistent with INV-13 and distinguish the donor's known dependency-bug run from its repaired run. The donor oracle still defines necessity; Invariant Lab does not independently reconstruct that semantics or prove unseen mutations.
 
 A tractability HOLD means the declared comparison budget was exhausted. It is evidence that the independent comparison is incomplete, not evidence against the primary result and not a reason to force a larger budget.
 
@@ -110,6 +117,6 @@ Synthetic fault traces and tractability fixtures validate the explorers against 
 
 ## Authority boundary
 
-This repository may describe, explore, falsify, cross-check, measure bounded tractability, emit evidence, and track consumer compatibility. It does not grant execution, device, network, merge, promotion, installation, or CANON authority. The four AXM roots — Truth, Agency/non-domination, Continuity, and Wisdom before speed — remain the merge gate.
+This repository may describe, explore, falsify, cross-check, measure bounded tractability, emit evidence, refine pinned donor evidence, and track consumer compatibility. It does not grant execution, device, network, merge, promotion, installation, or CANON authority. The four AXM roots — Truth, Agency/non-domination, Continuity, and Wisdom before speed — remain the merge gate.
 
-Read `INVARIANT_CONTRACT.md`, `REFINEMENT_BOUNDARY.md`, `MONOLITH_PIPELINE_REFINEMENT.md`, `TRACTABILITY_BOUNDARY.md`, `EXTERNAL_CONSUMERS.md`, `DONOR_SCAN_2026-09-12.md`, and the latest `ACTION_REPORT_v0.*.md` before extending the lab.
+Read `INVARIANT_CONTRACT.md`, `REFINEMENT_BOUNDARY.md`, `MONOLITH_PIPELINE_REFINEMENT.md`, `STATE_RESEARCH_SENTINEL_REFINEMENT.md`, `TRACTABILITY_BOUNDARY.md`, `EXTERNAL_CONSUMERS.md`, `DONOR_SCAN_2026-09-12.md`, and the latest `ACTION_REPORT_v0.*.md` before extending the lab.
