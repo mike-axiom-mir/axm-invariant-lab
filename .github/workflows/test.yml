@@ -25,3 +25,5 @@ jobs:
         run: python tools/run_monolith_refinement.py --check
       - name: Tractability evidence check
         run: python tools/run_tractability.py --check
+      - name: External consumer compatibility check
+        run: python tools/check_external_consumers.py --check
