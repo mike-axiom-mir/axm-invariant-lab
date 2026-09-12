@@ -35,3 +35,5 @@ jobs:
         run: python tools/run_state_research_real_project_closure_refinement.py --check
       - name: State Research unlabeled multi-project closure refinement check
         run: python tools/run_state_research_unlabeled_multiproject_closure_refinement.py --check
+      - name: State Research cross-version opaque recovery refinement check
+        run: python tools/run_state_research_opaque_recovery_refinement.py --check
