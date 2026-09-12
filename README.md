@@ -1,6 +1,6 @@
 # AXM Invariant Lab
 
-**Status:** working experimental capability / cross-implementation evidence / two donor refinement fixtures / measured tractability boundary / first real external consumer / not CANON / no merge or execution authority.
+**Status:** working experimental capability / cross-implementation exploration evidence / two donor refinement fixtures / measured tractability boundary / counterexample packet CROSS-REPO evidence / not CANON / no merge or execution authority.
 
 The original `RESEARCH_SEED_v0.1.md` is preserved as provenance. It was the kickstart document, not a permanent requirement that this repository remain research-only. Fresh evidence decides the repo's current status.
 
@@ -25,13 +25,16 @@ The current implementation contains:
 - cross-implementation agreement receipts with an explicit path-node tractability budget;
 - a deterministic tractability probe showing where all-path enumeration reaches that budget while visited-state exploration remains small;
 - a read-only AXM Monolith Pipeline Fabric v0.1 refinement adapter pinned to an exact donor contract, preserving candidate-only status and explicit no-automatic-authority fields;
-- a first real external consumer: AXM Monolith imports the exact counterexample v0.1 packet as evidence-only without changing pipeline status;
-- an external-consumer registry and producer-side blob-identity guard so later packet/schema drift cannot silently claim compatibility with a pinned consumer;
+- two real external consumers of `axm.invariant-lab.counterexample/v0.1`: AXM Monolith and AXM Profession Mesh;
+- an external-consumer registry and producer-side blob-identity guard so later packet/schema drift cannot silently claim compatibility with pinned consumers;
+- a distinct-consumer guard so the same repository cannot be counted twice by accident;
 - deterministic tests and evidence generation.
 
 The primary callable surface is `src.bounded_explorer.explore(...)`. The independent bounded cross-check is `src.reference_verifier.verify_paths(...)`, composed through `src.cross_verifier.cross_verify(...)`. The tractability probe is `src.tractability_probe.run_probe(...)`. Donor refinement surfaces live under `adapters/`. Consumer continuity is checked by `tools/check_external_consumers.py`. Machine discovery is declared in `AXM_MODULE.json`.
 
-## Evidence level
+## Evidence levels
+
+### Bounded exploration semantics — rung 5 / CROSS-IMPLEMENTATION
 
 The bounded **exploration semantics** remain at the seed's **rung 5 / CROSS-IMPLEMENTATION** boundary:
 
@@ -41,23 +44,27 @@ The bounded **exploration semantics** remain at the seed's **rung 5 / CROSS-IMPL
 - budget exhaustion forbids an unearned PASS and produces HOLD unless a concrete modeled failure has already been observed;
 - the earlier adversarial evidence remains: safe models PASS, injected faults FAIL, missing donor evidence HOLDs, and the TruthGrid refinement fixture detects an adversarial `rollbackRef` mutation.
 
+The rung-5 exploration claim remains intentionally narrow. Both exploration verifiers consume the **same authored transition and invariant functions**. Agreement cross-checks the search/exploration implementation; it does not independently prove that the model faithfully represents donor code.
+
 A second real donor boundary is mapped through the Monolith Pipeline Fabric v0.1 refinement fixture. The adapter checks explicit `automatic_execution/install/merge/canon = false` fields and candidate-only pipeline statuses; contradictory values FAIL and missing evidence HOLDs.
 
-The retained tractability probe adds a separate operational boundary without promoting the evidence rung. On an authored reconverging two-branch model with a 100,000 path-node budget, the reference verifier completes depth 15 at **65,535 path nodes**, then reaches the budget and returns **HOLD at depth 16**, while the visited-state explorer still completes with only **17 unique states**. These are deterministic work counts, not wall-clock performance claims. See `TRACTABILITY_BOUNDARY.md`.
+The retained tractability probe adds a separate operational boundary without promoting the exploration evidence rung. On an authored reconverging two-branch model with a 100,000 path-node budget, the reference verifier completes depth 15 at **65,535 path nodes**, then reaches the budget and returns **HOLD at depth 16**, while the visited-state explorer still completes with only **17 unique states**. These are deterministic work counts, not wall-clock performance claims. See `TRACTABILITY_BOUNDARY.md`.
 
-### First external consumer
+### Counterexample packet external use — rung 6 / CROSS-REPO
 
-AXM Monolith is now a real consumer of `axm.invariant-lab.counterexample/v0.1`.
+The existing `axm.invariant-lab.counterexample/v0.1` result contract has now reached the seed's **rung 6 / CROSS-REPO** boundary through two materially different real AXM consumers:
 
-Its merged consumer preserves FAIL/HOLD, rejects unsupported PASS/future fields, requires all authority fields to remain false, hashes the exact packet bytes, and emits an evidence-only summary. It does not mutate Monolith pipeline status. The exact final Monolith PR candidate passed the full **56-test** suite before merge.
+1. **AXM Monolith** consumes the exact FAIL/HOLD packet as evidence-only, preserves the status, rejects unsupported PASS/future fields, requires all authority fields false, hashes the source bytes, and does not mutate pipeline status. Its final consumer candidate passed the full **56-test** Monolith suite before merge.
 
-Invariant Lab now keeps `EXTERNAL_CONSUMERS.json` and checks that the local packet/schema Git blob identities still match the consumer's exact pins. Producer-byte drift fails closed until compatibility is deliberately reviewed.
+2. **AXM Profession Mesh** consumes content-addressed packet bytes as a transport/admission evidence input. It preserves FAIL/HOLD verbatim, maps FAIL -> local `quarantine` and HOLD -> local `hold`, can never return candidate acceptance from invariant evidence, and rejects authority escalation, unsupported PASS/fields, or digest mismatch. Its exact PR candidate passed hosted Node 22 `npm test`, including the existing Mesh authority-boundary test and the new consumer test, before merge.
 
-This is meaningful cross-repository use, but it is **not seed rung 6 yet**. The seed requires at least **two materially different real AXM systems** to use the result without semantic rewriting. One consumer does not silently grant the next rung.
+Those systems are materially different in role: one is a whole-stack assembly/analysis surface; the other is a package transport/discovery/admission layer. Neither changes the producer FAIL/HOLD meaning or grants authority from the packet.
 
-The rung-5 exploration claim also remains intentionally narrow. Both exploration verifiers consume the **same authored transition and invariant functions**. Agreement cross-checks the search/exploration implementation; it does not independently prove that the model faithfully represents donor code.
+This rung-6 promotion applies **only to external consumption of the counterexample packet/result contract**. It does not promote model fidelity, donor-runtime proof, solver proof, or real-environment validation.
 
-There is still no second external consumer, solver-backed proof, or real-environment validation.
+Invariant Lab keeps `EXTERNAL_CONSUMERS.json` and checks that the local packet/schema Git blob identities still match both consumers' exact pins. Producer-byte drift fails closed until compatibility is deliberately reviewed. Duplicate consumer repositories are rejected.
+
+There is still no solver-backed proof or real-environment validation.
 
 ## Run
 
@@ -91,7 +98,9 @@ A donor-refinement PASS means only that the exact explicit donor fields represen
 
 A tractability HOLD means the declared comparison budget was exhausted. It is evidence that the independent comparison is incomplete, not evidence against the primary result and not a reason to force a larger budget.
 
-An external-consumer compatibility PASS means only that local producer packet/schema bytes still equal the blobs the registered consumer pinned. It does not remotely execute or attest that consumer.
+An external-consumer compatibility PASS means only that local producer packet/schema bytes still equal the blobs the registered consumers pinned. It does not remotely execute or attest those consumers.
+
+Rung 6 means only that at least two materially different AXM systems now use the emitted packet/result contract without semantic rewriting. It does not turn the packet into authority and does not strengthen the underlying modeled claim beyond its own evidence.
 
 A FAIL is a counterexample to the modeled/declared claim. It is not automatically proof of a bug in a donor repository.
 
