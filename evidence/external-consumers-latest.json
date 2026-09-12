@@ -6,13 +6,23 @@
     "merge": false,
     "promotion": false
   },
-  "consumerCount": 1,
+  "consumerCount": 2,
   "consumers": [
     {
       "capability": "evidence.invariant-lab-consumer",
       "compatible": true,
       "consumerCommit": "1c0ab8dc787086add3d8c60feeb494db7a33b935",
       "consumerRepo": "mike-axiom-mir/axm-monolith",
+      "packetBlobActual": "02eeddfd12351ff6b7647bc412db3695ee45e5b3",
+      "packetBlobExpected": "02eeddfd12351ff6b7647bc412db3695ee45e5b3",
+      "schemaBlobActual": "cc9f1fde4855a56557ad6338c7595a99fc71cb21",
+      "schemaBlobExpected": "cc9f1fde4855a56557ad6338c7595a99fc71cb21"
+    },
+    {
+      "capability": "mesh.invariant-evidence-admission",
+      "compatible": true,
+      "consumerCommit": "8a9a471fd2fda1d2b548c738de96b5249ae17429",
+      "consumerRepo": "mike-axiom-mir/axm-profession-mesh",
       "packetBlobActual": "02eeddfd12351ff6b7647bc412db3695ee45e5b3",
       "packetBlobExpected": "02eeddfd12351ff6b7647bc412db3695ee45e5b3",
       "schemaBlobActual": "cc9f1fde4855a56557ad6338c7595a99fc71cb21",
