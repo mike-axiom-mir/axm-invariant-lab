@@ -1,0 +1,57 @@
+{
+  "candidates": {
+    "candidate_count": 3,
+    "max_hops": 4,
+    "pipelines": [
+      {
+        "id": "declared-example",
+        "status": "declared_contract_path_not_tested"
+      },
+      {
+        "id": "structural-example",
+        "status": "structurally_possible_path_not_tested"
+      },
+      {
+        "id": "inferred-example",
+        "status": "inferred_candidate_path_not_tested"
+      }
+    ],
+    "schema": "axm.monolith.pipeline-candidates/v0.1",
+    "schema_version": "0.1",
+    "truth_boundary": "Candidate pipelines are not executed, verified, safe, or authoritative by discovery alone."
+  },
+  "descriptor": {
+    "authority": {
+      "automatic_canon": false,
+      "automatic_execution": false,
+      "automatic_install": false,
+      "automatic_merge": false
+    },
+    "capabilities": [
+      "capability-level graph export",
+      "bounded multi-capability pipeline discovery",
+      "goal-token pipeline query",
+      "missing-provider and unused-output analysis",
+      "lexical adapter-gap leads"
+    ],
+    "outputs": {
+      "candidates": "PIPELINE_CANDIDATES.json",
+      "gaps": "PIPELINE_GAPS.json",
+      "graph": "PIPELINE_GRAPH.json"
+    },
+    "schema": "axm.monolith.pipeline-fabric/v0.1",
+    "schema_version": "0.1",
+    "source": "STACK_ANALYSIS.json",
+    "truth_boundary": "This fabric makes the stack's possibility space legible. It does not turn possibility into verified interoperability."
+  },
+  "donor": {
+    "capture_note": "Fixture is a minimal contract-shaped export authored from the exact pinned donor v0.1 schema/source. It is not claimed to be a full-stack Monolith snapshot.",
+    "commit": "acb751a40913f0d094dc809cde7a0b43b34ae30d",
+    "contract_files": {
+      "AXM_MODULE.json": "a8a8688b867853f0d141b011f8092da4654ad3cf",
+      "schemas/PIPELINE_FABRIC.schema.json": "37f048944bc6ec1f2c6c8b372b830139d1a43395",
+      "tools/pipeline_fabric.py": "f3ce407fdab30faf09c08ffa6cdb1b9f989fb659"
+    },
+    "repository": "mike-axiom-mir/axm-monolith"
+  }
+}
