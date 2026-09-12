@@ -1,0 +1,84 @@
+{
+  "authority": {
+    "canon": false,
+    "execution": false,
+    "merge": false,
+    "promotion": false
+  },
+  "cases": [
+    {
+      "case": "safe-post-rollback-forward-progress",
+      "primary": {
+        "status": "PASS",
+        "trace": [],
+        "witnessDepth": null
+      },
+      "solver": {
+        "status": "PASS",
+        "trace": [],
+        "witnessDepth": null
+      }
+    },
+    {
+      "case": "wrong-target-fault",
+      "primary": {
+        "status": "FAIL",
+        "trace": [
+          "mutate-S0-to-S1",
+          "checkpoint-S1",
+          "mutate-S1-to-S2",
+          "FAULT-rollback-reports-S1-but-restores-S9"
+        ],
+        "witnessDepth": 4
+      },
+      "solver": {
+        "status": "FAIL",
+        "trace": [
+          "mutate-S0-to-S1",
+          "checkpoint-S1",
+          "mutate-S1-to-S2",
+          "FAULT-rollback-reports-S1-but-restores-S9"
+        ],
+        "witnessDepth": 4
+      }
+    },
+    {
+      "case": "stale-receipt-lifecycle-fault",
+      "primary": {
+        "status": "FAIL",
+        "trace": [
+          "mutate-S0-to-S1",
+          "checkpoint-S1",
+          "mutate-S1-to-S2",
+          "rollback-to-S1",
+          "FAULT-forward-mutation-keeps-stale-rollback-receipt"
+        ],
+        "witnessDepth": 5
+      },
+      "solver": {
+        "status": "FAIL",
+        "trace": [
+          "mutate-S0-to-S1",
+          "checkpoint-S1",
+          "mutate-S1-to-S2",
+          "rollback-to-S1",
+          "FAULT-forward-mutation-keeps-stale-rollback-receipt"
+        ],
+        "witnessDepth": 5
+      }
+    }
+  ],
+  "invariant": "INV-03-rollback-known-good-lineage",
+  "issues": [],
+  "maxDepth": 6,
+  "model": "models/rollback_continuity.py",
+  "repairBoundary": "The model's rollback slot is a current rollback assertion. A later normal forward mutation clears it; a synthetic stale-receipt transition preserves the pre-repair behavior so the depth-5 boundary bug remains falsifiable.",
+  "schema": "axm.invariant-lab.z3-comparison/v0.2",
+  "solver": {
+    "engine": "Z3 SMT",
+    "packagePin": "z3-solver==5.1.0.0",
+    "relation": "independently authored rollback/checkpoint/receipt lifecycle transition relation"
+  },
+  "status": "PASS",
+  "truthBoundary": "This compares the primary breadth-first explorer with an independently authored Z3 encoding of only the tiny INV-03 rollback model through depth 6. It specifically checks wrong-target rollback and stale current-receipt lifecycle faults. Agreement does not prove durable storage, crash safety, concurrent writers, donor fidelity, arbitrary rollback systems, or real-world behavior."
+}
