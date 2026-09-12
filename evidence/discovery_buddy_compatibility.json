@@ -1,0 +1,21 @@
+{
+  "authority": {
+    "canon": false,
+    "execution": false,
+    "merge": false,
+    "promotion": false
+  },
+  "capabilityCount": 14,
+  "capabilitySetSha256": "b09a25982ccf516c0b0071a55ab6746473b5b39bcca8959e25003323595aba35",
+  "capabilityStatusMapSha256": "1d8476dc4e2a4f1f935f1b175b80a540df44b833dd1c9f441c3ffa9d25cb6185",
+  "consumerCommit": "a1e28aba31c453023298e01ce4e54107c3f74583",
+  "consumerNormalizedCapabilitySchema": "axm.discovery-capability/v0.1",
+  "consumerRepo": "mike-axiom-mir/axm-discovery-buddy",
+  "consumerScannerBlobSha1": "6d69c9eb85cc518dfcd6e43e8c9426ef168d392f",
+  "issues": [],
+  "publicMarkerSha256": "5bb86622f8f246780a781488cd6a85df532c1f18923c205d7f13124968230c2f",
+  "registrySha256": "2504092d92b6a27019adc12b72441b8728ce2ac35696801609f114d7813f7154",
+  "schema": "axm.invariant-lab.discovery-buddy-compatibility/v0.1",
+  "status": "PASS",
+  "truthBoundary": "Executes the exact pinned AXM Discovery Buddy scanner against Invariant Lab's public marker and capability registry and checks one-to-one capability id/evidence-status preservation. This is cross-repository discovery compatibility evidence only; it does not execute discovered capabilities, prove semantics or deployment, or grant authority."
+}
