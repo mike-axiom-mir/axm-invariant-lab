@@ -1,0 +1,108 @@
+{
+  "schema": "axm.invariant-lab.donor-projection/v0.1",
+  "source": {
+    "repository": "mike-axiom-mir/axm-state-research",
+    "commit": "cf891d3614d472b1426fbdc4304e4e9fe290fb24",
+    "path": "experiments/02-workfloor-sentinel/results/sentinel_results.json",
+    "git_blob_sha": "c5cb479a4955940b170c735bd5ee9d58bcb9c888",
+    "donor_schema": "axm.workfloor-sentinel-results/v1"
+  },
+  "projection": {
+    "method": "mechanical field selection from the pinned donor artifact; values are copied without semantic normalization",
+    "field_paths": [
+      "dependency_bug_run.repaired_dependencies",
+      "dependency_bug_run.final_oracle_check_results_hash",
+      "dependency_bug_run.final_sparse_check_results_hash",
+      "dependency_bug_run.steps[2].sequence",
+      "dependency_bug_run.steps[2].change_id",
+      "dependency_bug_run.steps[2].awakened_check_ids",
+      "dependency_bug_run.steps[2].missed_check_ids",
+      "dependency_bug_run.steps[2].necessary_check_ids",
+      "dependency_bug_run.steps[2].sparse_output_equivalent_to_oracle",
+      "dependency_bug_run.steps[2].sparse_output_mismatch_ids",
+      "dependency_bug_run.totals.missed_wakeups",
+      "dependency_bug_run.totals.final_sparse_output_equivalent_to_oracle",
+      "repaired_run.repaired_dependencies",
+      "repaired_run.final_oracle_check_results_hash",
+      "repaired_run.final_sparse_check_results_hash",
+      "repaired_run.steps[2].sequence",
+      "repaired_run.steps[2].change_id",
+      "repaired_run.steps[2].awakened_check_ids",
+      "repaired_run.steps[2].missed_check_ids",
+      "repaired_run.steps[2].necessary_check_ids",
+      "repaired_run.steps[2].sparse_output_equivalent_to_oracle",
+      "repaired_run.steps[2].sparse_output_mismatch_ids",
+      "repaired_run.totals.missed_wakeups",
+      "repaired_run.totals.final_sparse_output_equivalent_to_oracle"
+    ]
+  },
+  "dependency_bug_run": {
+    "repaired_dependencies": false,
+    "final_oracle_check_results_hash": "ce6b78506418fe8ad3794f2b291d3414ae90355764474a2bfe6e653cf5ce2a9a",
+    "final_sparse_check_results_hash": "1df545142128e8544df4bdd3735a99c5785542be88e2ee39e999f380c32d2d0e",
+    "step": {
+      "sequence": 2,
+      "change_id": "break-output-equivalence-claim",
+      "awakened_check_ids": [
+        "aggregate--all-json-parse",
+        "digest--results__benchmark_results__json",
+        "json-schema--results__benchmark_results__json",
+        "json-timings--results__benchmark_results__json",
+        "json-valid--results__benchmark_results__json",
+        "line-bound--results__benchmark_results__json",
+        "nonempty--results__benchmark_results__json",
+        "present--results__benchmark_results__json",
+        "tabs--results__benchmark_results__json"
+      ],
+      "missed_check_ids": [
+        "cross--report-matches-raw-results"
+      ],
+      "necessary_check_ids": [
+        "cross--report-matches-raw-results",
+        "digest--results__benchmark_results__json",
+        "nonempty--results__benchmark_results__json"
+      ],
+      "sparse_output_equivalent_to_oracle": false,
+      "sparse_output_mismatch_ids": [
+        "cross--report-matches-raw-results"
+      ]
+    },
+    "totals": {
+      "missed_wakeups": 1,
+      "final_sparse_output_equivalent_to_oracle": false
+    }
+  },
+  "repaired_run": {
+    "repaired_dependencies": true,
+    "final_oracle_check_results_hash": "ce6b78506418fe8ad3794f2b291d3414ae90355764474a2bfe6e653cf5ce2a9a",
+    "final_sparse_check_results_hash": "ce6b78506418fe8ad3794f2b291d3414ae90355764474a2bfe6e653cf5ce2a9a",
+    "step": {
+      "sequence": 2,
+      "change_id": "break-output-equivalence-claim",
+      "awakened_check_ids": [
+        "aggregate--all-json-parse",
+        "cross--report-matches-raw-results",
+        "digest--results__benchmark_results__json",
+        "json-schema--results__benchmark_results__json",
+        "json-timings--results__benchmark_results__json",
+        "json-valid--results__benchmark_results__json",
+        "line-bound--results__benchmark_results__json",
+        "nonempty--results__benchmark_results__json",
+        "present--results__benchmark_results__json",
+        "tabs--results__benchmark_results__json"
+      ],
+      "missed_check_ids": [],
+      "necessary_check_ids": [
+        "cross--report-matches-raw-results",
+        "digest--results__benchmark_results__json",
+        "nonempty--results__benchmark_results__json"
+      ],
+      "sparse_output_equivalent_to_oracle": true,
+      "sparse_output_mismatch_ids": []
+    },
+    "totals": {
+      "missed_wakeups": 0,
+      "final_sparse_output_equivalent_to_oracle": true
+    }
+  }
+}
