@@ -61,3 +61,7 @@ jobs:
         run: python -m unittest formal_tests.test_z3_inv01 -v
       - name: Z3 INV-01 formal comparison evidence check
         run: python tools/run_z3_inv01_comparison.py --check
+      - name: Z3 INV-03 formal comparison tests
+        run: python -m unittest formal_tests.test_z3_inv03 -v
+      - name: Z3 INV-03 formal comparison evidence check
+        run: python tools/run_z3_inv03_comparison.py --check
