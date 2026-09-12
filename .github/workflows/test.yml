@@ -39,3 +39,5 @@ jobs:
         run: python tools/run_state_research_opaque_recovery_refinement.py --check
       - name: State Research Stateborn fresh-process checkpoint refinement check
         run: python tools/run_state_research_stateborn_checkpoint_refinement.py --check
+      - name: State Research Stateborn hostile-transport refinement check
+        run: python tools/run_state_research_stateborn_transport_refinement.py --check
