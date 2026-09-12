@@ -1,8 +1,8 @@
 {
-  "schema_version": "0.2",
+  "schema_version": "0.3",
   "module": {
     "name": "axm-invariant-lab",
-    "purpose": "Bounded state-space exploration, cross-implementation checking, and counterexample evidence for explicitly modeled AXM invariants."
+    "purpose": "Bounded state-space exploration, cross-implementation checking, and read-only donor refinement evidence for explicitly modeled AXM invariants."
   },
   "capabilities": [
     {
@@ -56,6 +56,31 @@
       }
     },
     {
+      "id": "invariant.refinement.monolith-pipeline",
+      "description": "Read-only refinement of AXM Monolith Pipeline Fabric v0.1 candidate-only and explicit no-automatic-authority fields against a pinned donor contract fixture.",
+      "provides": [
+        "evidence.refinement-result",
+        "evidence.authority-boundary"
+      ],
+      "accepts": [
+        "pipeline.candidate",
+        "capability.graph"
+      ],
+      "tags": [
+        "invariant",
+        "refinement",
+        "monolith",
+        "pipeline",
+        "authority",
+        "evidence"
+      ],
+      "evidence": {
+        "status": "pinned_donor_fixture_tested",
+        "ceiling": "below-seed-evidence-rung-6",
+        "boundary": "separately authored adapter over an exact pinned donor contract fixture; no two-repo consumption of invariant-lab output and no full-stack Monolith runtime export are claimed"
+      }
+    },
+    {
       "id": "invariant.counterexample-packet",
       "description": "Emit bounded machine-readable FAIL/HOLD evidence without granting donor, execution, merge, promotion, or CANON authority.",
       "provides": [
@@ -88,6 +113,11 @@
       "symbol": "cross_verify"
     },
     {
+      "kind": "python-library",
+      "path": "adapters/monolith_pipeline_fabric.py",
+      "symbol": "inspect"
+    },
+    {
       "kind": "python-cli",
       "path": "tools/run_evidence.py",
       "command": "python tools/run_evidence.py --check"
@@ -96,6 +126,11 @@
       "kind": "python-cli",
       "path": "tools/run_cross_verification.py",
       "command": "python tools/run_cross_verification.py --check"
+    },
+    {
+      "kind": "python-cli",
+      "path": "tools/run_monolith_refinement.py",
+      "command": "python tools/run_monolith_refinement.py --check"
     }
   ],
   "tests": [
@@ -104,5 +139,5 @@
       "evidence": "repository-suite"
     }
   ],
-  "truth_boundary": "A PASS means no counterexample was found only inside the exact declared model, predicates, transitions, and bound. Cross-implementation agreement checks exploration semantics over shared authored model functions; it does not independently prove model fidelity, donor code, cross-repo adoption, or the real world. This module grants no execution, merge, promotion, device, network, or CANON authority."
+  "truth_boundary": "A PASS means no counterexample was found only inside the exact declared model, predicates, transitions, bound, or explicit donor fields actually inspected. Cross-implementation agreement checks exploration semantics over shared authored model functions; pinned donor refinement does not prove a full donor runtime or seed rung-6 cross-repo adoption. This module grants no execution, merge, promotion, installation, device, network, or CANON authority."
 }
