@@ -1,0 +1,83 @@
+{
+  "claim": "The invariant-lab read-only adapter preserves AXM Monolith Pipeline Fabric v0.1 candidate-only status and explicit no-automatic-authority fields for the pinned donor contract fixture.",
+  "donor": {
+    "capture_note": "Fixture is a minimal contract-shaped export authored from the exact pinned donor v0.1 schema/source. It is not claimed to be a full-stack Monolith snapshot.",
+    "commit": "acb751a40913f0d094dc809cde7a0b43b34ae30d",
+    "contract_files": {
+      "AXM_MODULE.json": "a8a8688b867853f0d141b011f8092da4654ad3cf",
+      "schemas/PIPELINE_FABRIC.schema.json": "37f048944bc6ec1f2c6c8b372b830139d1a43395",
+      "tools/pipeline_fabric.py": "f3ce407fdab30faf09c08ffa6cdb1b9f989fb659"
+    },
+    "repository": "mike-axiom-mir/axm-monolith"
+  },
+  "evidenceClass": "CROSS-REPO-REFINEMENT-FIXTURE",
+  "result": {
+    "checks": [
+      {
+        "check": "descriptor-schema",
+        "ok": true
+      },
+      {
+        "check": "descriptor-source",
+        "ok": true
+      },
+      {
+        "check": "output-graph",
+        "ok": true
+      },
+      {
+        "check": "output-candidates",
+        "ok": true
+      },
+      {
+        "check": "output-gaps",
+        "ok": true
+      },
+      {
+        "check": "authority-automatic_execution-false",
+        "ok": true
+      },
+      {
+        "check": "authority-automatic_install-false",
+        "ok": true
+      },
+      {
+        "check": "authority-automatic_merge-false",
+        "ok": true
+      },
+      {
+        "check": "authority-automatic_canon-false",
+        "ok": true
+      },
+      {
+        "check": "descriptor-truth-boundary-present",
+        "ok": true
+      },
+      {
+        "check": "candidates-schema",
+        "ok": true
+      },
+      {
+        "check": "pipeline-0-candidate-status",
+        "ok": true
+      },
+      {
+        "check": "pipeline-1-candidate-status",
+        "ok": true
+      },
+      {
+        "check": "pipeline-2-candidate-status",
+        "ok": true
+      },
+      {
+        "check": "candidates-truth-boundary-present",
+        "ok": true
+      }
+    ],
+    "failures": [],
+    "status": "PASS",
+    "unknowns": []
+  },
+  "schemaVersion": "0.1",
+  "truthBoundary": "This is a separately authored refinement check against an exact pinned Monolith v0.1 source/schema contract, not evidence that two external AXM repositories consume invariant-lab output. It does not earn seed rung 6 CROSS-REPO adoption and is not a full-stack Monolith runtime snapshot."
+}
