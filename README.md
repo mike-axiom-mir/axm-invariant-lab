@@ -1,20 +1,18 @@
 # AXM Invariant Lab
 
-**Status:** research implementation / not CANON / no merge authority.
+**Status:** working experimental capability / adversarial-fixture evidence / not CANON / no merge or execution authority.
 
-AXM Invariant Lab is a small dependency-free research lane for asking a different
-question than ordinary example tests:
+The original `RESEARCH_SEED_v0.1.md` is preserved as provenance. It was the kickstart document, not a permanent requirement that this repository remain research-only. Fresh evidence decides the repo's current status.
 
-> Across the bounded state space we explicitly modeled, can any reachable legal
-> transition sequence violate a declared invariant?
+AXM Invariant Lab is a small dependency-free capability for asking a different question than ordinary example tests:
 
-The repository is deliberately narrow. It does not replace unit, integration,
-fuzz, replay, checkpoint, or real-environment testing. It does not prove
-unmodeled code or the real world.
+> Across the bounded state space we explicitly modeled, can any reachable legal transition sequence violate a declared invariant?
 
-## v0.1 experiment
+The repository is deliberately narrow. It does not replace unit, integration, fuzz, replay, checkpoint, or real-environment testing. It does not prove unmodeled code or the real world.
 
-The first implementation contains:
+## v0.1 capability
+
+The first grounded implementation contains:
 
 - a dependency-free breadth-first bounded state explorer;
 - tri-state invariant results: PASS / FAIL / HOLD (unknown is never treated as safe);
@@ -22,8 +20,23 @@ The first implementation contains:
 - shortest counterexample traces for state invariants;
 - a reusable counterexample packet schema;
 - a bounded TruthGrid evidence refinement adapter;
-- synthetic fault-injection fixtures that prove the explorer can catch transition-order failures;
+- synthetic fault-injection fixtures that demonstrate transition-order failure detection;
 - deterministic tests and evidence generation.
+
+The callable Python surface is `src.bounded_explorer.explore(...)` with `Transition` and `Invariant` contracts. Machine discovery is declared in `AXM_MODULE.json`. Counterexample interchange is bounded by `COUNTEREXAMPLE_PACKET.schema.json`.
+
+## Evidence level
+
+v0.1 has reached the seed's **rung 4 / ADVERSARIAL** boundary:
+
+- 11/11 repository tests pass on the retained v0.1 evidence set;
+- all four safe authored models PASS;
+- all four fault-injected variants FAIL;
+- unknown/missing required donor evidence HOLDs rather than silently PASSing;
+- the TruthGrid refinement fixture detects an adversarial `rollbackRef` mutation;
+- GitHub Actions passed on the exact proposed v0.1 head on Python 3.11 and 3.13.
+
+This is enough to treat the bounded explorer and packet contract as a **working experimental capability**. It is not enough to claim cross-implementation, cross-repo adoption, real-environment validation, or formal proof of AXM as a whole.
 
 ## Run
 
@@ -37,14 +50,16 @@ python tools/run_evidence.py --check
 
 ## Important truth boundary
 
-A PASS means only: **no counterexample was found within the exact model,
-transition set, invariant predicates, and exploration bound that were run.**
+A PASS means only: **no counterexample was found within the exact model, transition set, invariant predicates, and exploration bound that were run.**
 
-A FAIL is a counterexample to the modeled claim. It is not automatically proof
-of a bug in a donor repository.
+A FAIL is a counterexample to the modeled claim. It is not automatically proof of a bug in a donor repository.
 
-A HOLD means at least one relevant state could not be decided from the modeled
-or observed evidence. HOLD never silently becomes PASS.
+A HOLD means at least one relevant state could not be decided from the modeled or observed evidence. HOLD never silently becomes PASS.
 
-Read `INVARIANT_CONTRACT.md`, `REFINEMENT_BOUNDARY.md`, and
-`DONOR_SCAN_2026-09-12.md` before extending the lab.
+Synthetic fault traces validate the explorer against authored faults; they do not assert those faults exist in donor systems.
+
+## Authority boundary
+
+This repository may describe, explore, falsify, and emit evidence. It does not grant execution, device, network, merge, promotion, or CANON authority. The four AXM roots — Truth, Agency/non-domination, Continuity, and Wisdom before speed — remain the merge gate.
+
+Read `INVARIANT_CONTRACT.md`, `REFINEMENT_BOUNDARY.md`, `DONOR_SCAN_2026-09-12.md`, and `ACTION_REPORT_v0.1.md` before extending the lab.
