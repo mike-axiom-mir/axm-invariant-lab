@@ -4,9 +4,9 @@ These are research candidates, not CANON rules created by this repository.
 
 | ID | Candidate invariant | Formal status |
 |---|---|---|
-| INV-01 | A candidate/test/transport step cannot silently grant new execution authority. | MODEL NOW |
+| INV-01 | A candidate/test/transport step cannot silently grant new execution authority. | MODEL + Z3 BOUNDED CROSS-CHECK NOW |
 | INV-02 | Candidate transport/testing cannot silently make content CANON. | MODEL NOW |
-| INV-03 | A rollback result labeled successful must resolve to a declared known-good snapshot and preserve its lineage identity. | MODEL NOW |
+| INV-03 | A rollback result labeled successful must resolve to a declared known-good snapshot and preserve its lineage identity. | MODEL + DEPTH-6 RECEIPT-LIFECYCLE REGRESSION + Z3 BOUNDED CROSS-CHECK NOW |
 | INV-04 | Selective inheritance copies only explicitly allowlisted fields; authority fields are excluded unless separately granted. | MODEL NOW |
 | INV-05 | Unknown or unobserved required fields never default to a safe value. | ENGINE NOW |
 | INV-06 | TruthGrid client directions do not themselves declare authoritative consequences. | ADAPTER NEXT |
