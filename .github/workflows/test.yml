@@ -45,3 +45,13 @@ jobs:
         run: python tools/run_state_research_reference_state_closure_refinement.py --check
       - name: Machine discovery integrity check
         run: python tools/check_discovery_contract.py --check
+      - name: Public discovery projection check
+        run: python tools/check_public_discovery.py --check
+      - name: Checkout pinned Discovery Buddy consumer
+        uses: actions/checkout@v4
+        with:
+          repository: mike-axiom-mir/axm-discovery-buddy
+          ref: a1e28aba31c453023298e01ce4e54107c3f74583
+          path: .verification/axm-discovery-buddy
+      - name: Discovery Buddy cross-repository compatibility check
+        run: python tools/check_discovery_buddy_consumer.py --check --buddy-root .verification/axm-discovery-buddy
