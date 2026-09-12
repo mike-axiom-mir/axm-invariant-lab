@@ -1,8 +1,8 @@
 {
-  "schema_version": "0.9",
+  "schema_version": "1.0",
   "module": {
     "name": "axm-invariant-lab",
-    "purpose": "Bounded state-space exploration, cross-implementation checking, tractability measurement, read-only donor refinement including runtime-observation and held-out closure falsification evidence, and cross-repository counterexample packet consumption with explicit external-consumer continuity."
+    "purpose": "Bounded state-space exploration, cross-implementation checking, tractability measurement, read-only donor refinement including runtime-observation, held-out closure, and unlabeled multi-project trace-closure evidence, and cross-repository counterexample packet consumption with explicit external-consumer continuity."
   },
   "capabilities": [
     {
@@ -86,6 +86,18 @@
       }
     },
     {
+      "id": "invariant.refinement.state-research-unlabeled-multiproject-closure",
+      "description": "Read-only refinement of a pinned unlabeled two-project State Research closure challenge that rejects final equality as sufficient when transient silent-stale outputs occurred and requires fail-closed provenance-preserving recovery for absent or corrupt checkpoints.",
+      "provides": ["evidence.cross-project-trace-closure", "evidence.final-equality-insufficiency", "evidence.checkpoint-trust-boundary"],
+      "accepts": ["evidence.held-out-project-trace", "evidence.checkpoint-recovery", "state.dependency-routing"],
+      "tags": ["invariant", "refinement", "state-research", "held-out", "cross-project", "checkpoint", "trace-closure", "evidence"],
+      "evidence": {
+        "status": "pinned_unlabeled_two_project_execution_refinement",
+        "ceiling": "does-not-promote-general-model-fidelity-beyond-seed-rung-5",
+        "boundary": "the donor offline oracle still scores hidden staleness/equality; Invariant Lab checks exact pinned outcome and checkpoint receipts only, does not execute donor projects, and does not claim the selected combined policy generally sufficient"
+      }
+    },
+    {
       "id": "invariant.counterexample-packet",
       "description": "Emit bounded machine-readable FAIL/HOLD evidence without granting donor, execution, merge, promotion, or CANON authority.",
       "provides": ["packet.counterexample", "evidence.trace"],
@@ -118,6 +130,7 @@
     {"kind": "python-library", "path": "adapters/state_research_workfloor_sentinel.py", "symbol": "inspect"},
     {"kind": "python-library", "path": "adapters/state_research_wakeup_fuzzer.py", "symbol": "inspect"},
     {"kind": "python-library", "path": "adapters/state_research_real_project_closure.py", "symbol": "inspect"},
+    {"kind": "python-library", "path": "adapters/state_research_unlabeled_multiproject_closure.py", "symbol": "inspect"},
     {"kind": "python-cli", "path": "tools/run_evidence.py", "command": "python tools/run_evidence.py --check"},
     {"kind": "python-cli", "path": "tools/run_cross_verification.py", "command": "python tools/run_cross_verification.py --check"},
     {"kind": "python-cli", "path": "tools/run_monolith_refinement.py", "command": "python tools/run_monolith_refinement.py --check"},
@@ -125,10 +138,11 @@
     {"kind": "python-cli", "path": "tools/check_external_consumers.py", "command": "python tools/check_external_consumers.py --check"},
     {"kind": "python-cli", "path": "tools/run_state_research_sentinel_refinement.py", "command": "python tools/run_state_research_sentinel_refinement.py --check"},
     {"kind": "python-cli", "path": "tools/run_state_research_wakeup_fuzzer_refinement.py", "command": "python tools/run_state_research_wakeup_fuzzer_refinement.py --check"},
-    {"kind": "python-cli", "path": "tools/run_state_research_real_project_closure_refinement.py", "command": "python tools/run_state_research_real_project_closure_refinement.py --check"}
+    {"kind": "python-cli", "path": "tools/run_state_research_real_project_closure_refinement.py", "command": "python tools/run_state_research_real_project_closure_refinement.py --check"},
+    {"kind": "python-cli", "path": "tools/run_state_research_unlabeled_multiproject_closure_refinement.py", "command": "python tools/run_state_research_unlabeled_multiproject_closure_refinement.py --check"}
   ],
   "tests": [
     {"command": "python -m unittest discover -s tests -v", "evidence": "repository-suite"}
   ],
-  "truth_boundary": "A PASS means no counterexample was found only inside the exact declared model, predicates, transitions, bound, or explicit donor fields actually inspected. Cross-implementation agreement checks exploration semantics over shared authored model functions; tractability evidence is a deterministic synthetic work-count boundary, not a general performance claim. Monolith refinement is contract-fixture evidence. Workfloor Sentinel refinement accepts donor oracle necessity fields; Wakeup Fuzzer refinement derives one omitted wake without those fields from donor runtime-observed activation, change, and mismatch records. The held-out closure refinement then records a direct ceiling on that evidence: observed-only runtime-read closure has a pinned one-mutation counterexample on a training-unexposed conditional dependency, while a declared-risk audit control detects/repairs staleness on the same held-out manifest. The donor offline oracle still supplies hidden-staleness/equality scoring, so none of these State Research refinements promotes general model fidelity beyond seed rung 5. Two materially different real AXM consumers use the exact FAIL/HOLD counterexample packet contract without semantic promotion, earning seed rung 6 only for packet/result consumption. External-consumer continuity checks producer byte identity and distinct registered repositories, not remote runtime deployment. This module grants no execution, merge, promotion, installation, device, network, or CANON authority."
+  "truth_boundary": "A PASS means no counterexample was found only inside the exact declared model, predicates, transitions, bound, or explicit donor fields actually inspected. Cross-implementation agreement checks exploration semantics over shared authored model functions; tractability evidence is a deterministic synthetic work-count boundary, not a general performance claim. Monolith refinement is contract-fixture evidence. Workfloor Sentinel refinement accepts donor oracle necessity fields; Wakeup Fuzzer refinement derives one omitted wake without those fields from donor runtime-observed activation, change, and mismatch records. The held-out closure refinement records a direct ceiling on that evidence: observed-only runtime-read closure has a pinned one-mutation counterexample on a training-unexposed conditional dependency. The unlabeled multi-project refinement adds a distinct boundary: observed-only routing can end oracle-equal on two held-out projects while retaining eight transient silent-stale outputs, so end-state equality alone is insufficient; the pinned combined candidate reaches zero silent stale outputs with fail-closed checkpoint recovery on the same challenge. The donor offline oracle still supplies hidden-staleness/equality scoring, so none of these State Research refinements promotes general model fidelity beyond seed rung 5. Two materially different real AXM consumers use the exact FAIL/HOLD counterexample packet contract without semantic promotion, earning seed rung 6 only for packet/result consumption. External-consumer continuity checks producer byte identity and distinct registered repositories, not remote runtime deployment. This module grants no execution, merge, promotion, installation, device, network, or CANON authority."
 }
