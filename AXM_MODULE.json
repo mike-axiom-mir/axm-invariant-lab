@@ -1,8 +1,8 @@
 {
-  "schema_version": "0.8",
+  "schema_version": "0.9",
   "module": {
     "name": "axm-invariant-lab",
-    "purpose": "Bounded state-space exploration, cross-implementation checking, tractability measurement, read-only donor refinement including runtime-observation wakeup evidence, and cross-repository counterexample packet consumption with explicit external-consumer continuity."
+    "purpose": "Bounded state-space exploration, cross-implementation checking, tractability measurement, read-only donor refinement including runtime-observation and held-out closure falsification evidence, and cross-repository counterexample packet consumption with explicit external-consumer continuity."
   },
   "capabilities": [
     {
@@ -74,6 +74,18 @@
       }
     },
     {
+      "id": "invariant.refinement.state-research-held-out-closure",
+      "description": "Read-only refinement of a pinned real-project held-out closure trial that falsifies closure-completeness for observed-only runtime-read evidence using a one-mutation minimized conditional-read counterexample, with declared-risk audit as a separate detection control on the same frozen manifest.",
+      "provides": ["evidence.held-out-closure-falsification", "evidence.runtime-observation-ceiling"],
+      "accepts": ["evidence.runtime-observation", "evidence.held-out-counterexample", "state.dependency-routing"],
+      "tags": ["invariant", "refinement", "state-research", "held-out", "counterexample", "runtime-observation", "evidence"],
+      "evidence": {
+        "status": "pinned_held_out_single_mutation_counterexample",
+        "ceiling": "does-not-promote-general-model-fidelity-beyond-seed-rung-5",
+        "boundary": "donor offline oracle scores hidden staleness/final equality; Invariant Lab does not execute Sentinel, independently derive the oracle, or claim declared-risk auditing universally sufficient"
+      }
+    },
+    {
       "id": "invariant.counterexample-packet",
       "description": "Emit bounded machine-readable FAIL/HOLD evidence without granting donor, execution, merge, promotion, or CANON authority.",
       "provides": ["packet.counterexample", "evidence.trace"],
@@ -105,16 +117,18 @@
     {"kind": "python-library", "path": "adapters/monolith_pipeline_fabric.py", "symbol": "inspect"},
     {"kind": "python-library", "path": "adapters/state_research_workfloor_sentinel.py", "symbol": "inspect"},
     {"kind": "python-library", "path": "adapters/state_research_wakeup_fuzzer.py", "symbol": "inspect"},
+    {"kind": "python-library", "path": "adapters/state_research_real_project_closure.py", "symbol": "inspect"},
     {"kind": "python-cli", "path": "tools/run_evidence.py", "command": "python tools/run_evidence.py --check"},
     {"kind": "python-cli", "path": "tools/run_cross_verification.py", "command": "python tools/run_cross_verification.py --check"},
     {"kind": "python-cli", "path": "tools/run_monolith_refinement.py", "command": "python tools/run_monolith_refinement.py --check"},
     {"kind": "python-cli", "path": "tools/run_tractability.py", "command": "python tools/run_tractability.py --check"},
     {"kind": "python-cli", "path": "tools/check_external_consumers.py", "command": "python tools/check_external_consumers.py --check"},
     {"kind": "python-cli", "path": "tools/run_state_research_sentinel_refinement.py", "command": "python tools/run_state_research_sentinel_refinement.py --check"},
-    {"kind": "python-cli", "path": "tools/run_state_research_wakeup_fuzzer_refinement.py", "command": "python tools/run_state_research_wakeup_fuzzer_refinement.py --check"}
+    {"kind": "python-cli", "path": "tools/run_state_research_wakeup_fuzzer_refinement.py", "command": "python tools/run_state_research_wakeup_fuzzer_refinement.py --check"},
+    {"kind": "python-cli", "path": "tools/run_state_research_real_project_closure_refinement.py", "command": "python tools/run_state_research_real_project_closure_refinement.py --check"}
   ],
   "tests": [
     {"command": "python -m unittest discover -s tests -v", "evidence": "repository-suite"}
   ],
-  "truth_boundary": "A PASS means no counterexample was found only inside the exact declared model, predicates, transitions, bound, or explicit donor fields actually inspected. Cross-implementation agreement checks exploration semantics over shared authored model functions; tractability evidence is a deterministic synthetic work-count boundary, not a general performance claim. Monolith refinement is contract-fixture evidence. Workfloor Sentinel refinement accepts donor oracle necessity fields; Wakeup Fuzzer refinement derives one omitted wake without those fields from donor runtime-observed activation, change, and mismatch records, but observed-read instrumentation itself is not claimed complete for unseen branches/dynamic reads/concurrency. Neither State Research refinement promotes general model fidelity beyond seed rung 5. Two materially different real AXM consumers use the exact FAIL/HOLD counterexample packet contract without semantic promotion, earning seed rung 6 only for packet/result consumption. External-consumer continuity checks producer byte identity and distinct registered repositories, not remote runtime deployment. This module grants no execution, merge, promotion, installation, device, network, or CANON authority."
+  "truth_boundary": "A PASS means no counterexample was found only inside the exact declared model, predicates, transitions, bound, or explicit donor fields actually inspected. Cross-implementation agreement checks exploration semantics over shared authored model functions; tractability evidence is a deterministic synthetic work-count boundary, not a general performance claim. Monolith refinement is contract-fixture evidence. Workfloor Sentinel refinement accepts donor oracle necessity fields; Wakeup Fuzzer refinement derives one omitted wake without those fields from donor runtime-observed activation, change, and mismatch records. The held-out closure refinement then records a direct ceiling on that evidence: observed-only runtime-read closure has a pinned one-mutation counterexample on a training-unexposed conditional dependency, while a declared-risk audit control detects/repairs staleness on the same held-out manifest. The donor offline oracle still supplies hidden-staleness/equality scoring, so none of these State Research refinements promotes general model fidelity beyond seed rung 5. Two materially different real AXM consumers use the exact FAIL/HOLD counterexample packet contract without semantic promotion, earning seed rung 6 only for packet/result consumption. External-consumer continuity checks producer byte identity and distinct registered repositories, not remote runtime deployment. This module grants no execution, merge, promotion, installation, device, network, or CANON authority."
 }
