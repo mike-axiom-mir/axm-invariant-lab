@@ -1,0 +1,57 @@
+{
+  "schema": "axm.truthgrid-evidence/v0.01",
+  "source": {
+    "repo": "mike-axiom-mir/axm-TruthGrid",
+    "path": "evidence/benchmark-latest.json",
+    "blobSha": "8e9ae86a4b17aa5616c809436e7693064f843a7c",
+    "note": "Bounded field extraction from the current donor evidence receipt; timing and unrelated fields omitted."
+  },
+  "finalHash": "27dd304c37165c18",
+  "twoInstance": {
+    "equal": true,
+    "hashA": "27dd304c37165c18",
+    "hashB": "27dd304c37165c18"
+  },
+  "ticks": [
+    {
+      "tick": 1,
+      "hash": "4513c70d40b779e6",
+      "merge": {
+        "baseRevision": 0,
+        "resultingRevision": 1,
+        "resultingHash": "4513c70d40b779e6",
+        "rollbackRef": "revision:0"
+      }
+    },
+    {
+      "tick": 2,
+      "hash": "40ee17305ff9279d",
+      "merge": {
+        "baseRevision": 1,
+        "resultingRevision": 2,
+        "resultingHash": "40ee17305ff9279d",
+        "rollbackRef": "revision:1"
+      }
+    },
+    {
+      "tick": 3,
+      "hash": "5ff8bc801a7d09fd",
+      "merge": {
+        "baseRevision": 2,
+        "resultingRevision": 3,
+        "resultingHash": "5ff8bc801a7d09fd",
+        "rollbackRef": "revision:2"
+      }
+    },
+    {
+      "tick": 4,
+      "hash": "27dd304c37165c18",
+      "merge": {
+        "baseRevision": 3,
+        "resultingRevision": 4,
+        "resultingHash": "27dd304c37165c18",
+        "rollbackRef": "revision:3"
+      }
+    }
+  ]
+}

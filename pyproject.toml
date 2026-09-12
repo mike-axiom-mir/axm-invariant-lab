@@ -1,0 +1,9 @@
+[project]
+name = "axm-invariant-lab"
+version = "0.1.0"
+description = "Dependency-free bounded invariant research for AXM"
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.setuptools]
+py-modules = []

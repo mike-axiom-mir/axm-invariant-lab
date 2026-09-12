@@ -1,0 +1,73 @@
+{
+  "schema_version": "0.1",
+  "module": {
+    "name": "axm-invariant-lab",
+    "purpose": "Bounded state-space exploration and counterexample evidence for explicitly modeled AXM invariants."
+  },
+  "capabilities": [
+    {
+      "id": "invariant.bounded-exploration",
+      "description": "Explore a finite, explicitly declared transition model breadth-first to find shortest invariant counterexamples or preserve unknown observations as HOLD.",
+      "provides": [
+        "evidence.invariant-result",
+        "evidence.counterexample-trace",
+        "invariant.exploration"
+      ],
+      "accepts": [
+        "state.model",
+        "state.transition",
+        "invariant.predicate"
+      ],
+      "tags": [
+        "invariant",
+        "state",
+        "verification",
+        "counterexample",
+        "evidence"
+      ],
+      "evidence": {
+        "status": "adversarial_fixture_tested",
+        "ceiling": "seed-evidence-rung-4"
+      }
+    },
+    {
+      "id": "invariant.counterexample-packet",
+      "description": "Emit bounded machine-readable FAIL/HOLD evidence without granting donor, execution, merge, promotion, or CANON authority.",
+      "provides": [
+        "packet.counterexample",
+        "evidence.trace"
+      ],
+      "accepts": [
+        "evidence.invariant-result"
+      ],
+      "tags": [
+        "packet",
+        "evidence",
+        "provenance"
+      ],
+      "evidence": {
+        "status": "fixture_tested",
+        "ceiling": "seed-evidence-rung-4"
+      }
+    }
+  ],
+  "entrypoints": [
+    {
+      "kind": "python-library",
+      "path": "src/bounded_explorer.py",
+      "symbol": "explore"
+    },
+    {
+      "kind": "python-cli",
+      "path": "tools/run_evidence.py",
+      "command": "python tools/run_evidence.py --check"
+    }
+  ],
+  "tests": [
+    {
+      "command": "python -m unittest discover -s tests -v",
+      "evidence": "repository-suite"
+    }
+  ],
+  "truth_boundary": "A PASS means no counterexample was found only inside the exact declared model, predicates, transitions, and bound. This module does not prove unmodeled code or grant execution, merge, promotion, device, network, or CANON authority."
+}
