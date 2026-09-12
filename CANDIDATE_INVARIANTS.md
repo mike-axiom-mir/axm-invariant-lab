@@ -17,6 +17,7 @@ These are research candidates, not CANON rules created by this repository.
 | INV-11 | Technical execution credentials do not outrank the four constitutional roots. | HUMAN/JUDGMENT BOUNDARY |
 | INV-12 | A tested/transported candidate may move between repos without gaining merge/CANON authority from transport itself. | CROSS-REPO MODEL NOW |
 | INV-13 | Every oracle-required check for a sparse transition must be awakened; a missed required check forbids an oracle-equivalence claim for that step. | EXECUTION-RECEIPT ADAPTER NOW |
+| INV-14 | When runtime-observed activation identifies a check omitted by declared sparse routing, and that check produces an output change present in the sparse mismatch set, sparse oracle-equivalence must be rejected for that transition. | RUNTIME-OBSERVATION ADAPTER NOW |
 
 The purpose of the lab is to discover which of these survive precise modeling.
 If a candidate requires vague interpretation to make the predicate return true,
