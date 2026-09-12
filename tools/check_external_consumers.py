@@ -27,6 +27,7 @@ def check_registry(root: Path, registry: dict[str, Any]) -> dict[str, Any]:
         raise ValueError("consumers must be a non-empty list")
 
     results = []
+    seen_repos: set[str] = set()
     for item in consumers:
         if not isinstance(item, dict):
             raise ValueError("consumer entry must be object")
@@ -44,6 +45,9 @@ def check_registry(root: Path, registry: dict[str, Any]) -> dict[str, Any]:
                 raise ValueError(f"consumer missing {key}")
         if item["status"] != "active_pinned_consumer":
             raise ValueError("unknown consumer status")
+        if item["consumerRepo"] in seen_repos:
+            raise ValueError("duplicate consumer repository")
+        seen_repos.add(item["consumerRepo"])
 
         packet_path = root / item["packetPath"]
         schema_path = root / item["schemaPath"]
