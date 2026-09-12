@@ -19,3 +19,5 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Deterministic evidence check
         run: python tools/run_evidence.py --check
+      - name: Cross-implementation evidence check
+        run: python tools/run_cross_verification.py --check

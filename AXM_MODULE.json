@@ -1,8 +1,8 @@
 {
-  "schema_version": "0.1",
+  "schema_version": "0.2",
   "module": {
     "name": "axm-invariant-lab",
-    "purpose": "Bounded state-space exploration and counterexample evidence for explicitly modeled AXM invariants."
+    "purpose": "Bounded state-space exploration, cross-implementation checking, and counterexample evidence for explicitly modeled AXM invariants."
   },
   "capabilities": [
     {
@@ -26,8 +26,33 @@
         "evidence"
       ],
       "evidence": {
-        "status": "adversarial_fixture_tested",
-        "ceiling": "seed-evidence-rung-4"
+        "status": "cross_implementation_checked",
+        "ceiling": "seed-evidence-rung-5",
+        "boundary": "second implementation shares the authored model transition and invariant functions; model fidelity is not independently proven"
+      }
+    },
+    {
+      "id": "invariant.cross-verification",
+      "description": "Cross-check the primary visited-state explorer with an independent bounded path enumerator and fail closed when the reference enumeration budget is incomplete.",
+      "provides": [
+        "evidence.cross-implementation-agreement",
+        "evidence.exploration-divergence"
+      ],
+      "accepts": [
+        "state.model",
+        "state.transition",
+        "invariant.predicate",
+        "invariant.exploration"
+      ],
+      "tags": [
+        "invariant",
+        "verification",
+        "cross-implementation",
+        "evidence"
+      ],
+      "evidence": {
+        "status": "cross_implementation_checked",
+        "ceiling": "seed-evidence-rung-5"
       }
     },
     {
@@ -58,9 +83,19 @@
       "symbol": "explore"
     },
     {
+      "kind": "python-library",
+      "path": "src/cross_verifier.py",
+      "symbol": "cross_verify"
+    },
+    {
       "kind": "python-cli",
       "path": "tools/run_evidence.py",
       "command": "python tools/run_evidence.py --check"
+    },
+    {
+      "kind": "python-cli",
+      "path": "tools/run_cross_verification.py",
+      "command": "python tools/run_cross_verification.py --check"
     }
   ],
   "tests": [
@@ -69,5 +104,5 @@
       "evidence": "repository-suite"
     }
   ],
-  "truth_boundary": "A PASS means no counterexample was found only inside the exact declared model, predicates, transitions, and bound. This module does not prove unmodeled code or grant execution, merge, promotion, device, network, or CANON authority."
+  "truth_boundary": "A PASS means no counterexample was found only inside the exact declared model, predicates, transitions, and bound. Cross-implementation agreement checks exploration semantics over shared authored model functions; it does not independently prove model fidelity, donor code, cross-repo adoption, or the real world. This module grants no execution, merge, promotion, device, network, or CANON authority."
 }

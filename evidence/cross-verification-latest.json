@@ -1,0 +1,133 @@
+{
+  "allAgree": true,
+  "allReferenceRunsComplete": true,
+  "caseCount": 8,
+  "cases": [
+    {
+      "agreement": "AGREE",
+      "failingInvariants": [],
+      "model": "no_silent_authority",
+      "primaryStatus": "PASS",
+      "primaryUniqueStates": 4,
+      "referenceComplete": true,
+      "referencePathNodes": 5,
+      "referenceStateDigest": "ec8f077d91a74825e76b09264496c71f1d27a060a5e8b2c3bb101d1501d88339",
+      "referenceStatus": "PASS",
+      "referenceUniqueStates": 4,
+      "unknownInvariants": [],
+      "variant": "safe"
+    },
+    {
+      "agreement": "AGREE",
+      "failingInvariants": [
+        "INV-01-no-silent-authority-escalation"
+      ],
+      "model": "no_silent_authority",
+      "primaryStatus": "FAIL",
+      "primaryUniqueStates": 5,
+      "referenceComplete": true,
+      "referencePathNodes": 7,
+      "referenceStateDigest": "dc76116d6bd07975ca8412588051ed86459af9edd2f5eea75d2ef61ffffdabd7",
+      "referenceStatus": "FAIL",
+      "referenceUniqueStates": 5,
+      "unknownInvariants": [],
+      "variant": "fault"
+    },
+    {
+      "agreement": "AGREE",
+      "failingInvariants": [],
+      "model": "no_auto_canon",
+      "primaryStatus": "PASS",
+      "primaryUniqueStates": 5,
+      "referenceComplete": true,
+      "referencePathNodes": 8,
+      "referenceStateDigest": "626ca3a24321164a9842b318a96875a49d257a755e2076e621480d0e6b70ef41",
+      "referenceStatus": "PASS",
+      "referenceUniqueStates": 5,
+      "unknownInvariants": [],
+      "variant": "safe"
+    },
+    {
+      "agreement": "AGREE",
+      "failingInvariants": [
+        "INV-02-no-auto-canon"
+      ],
+      "model": "no_auto_canon",
+      "primaryStatus": "FAIL",
+      "primaryUniqueStates": 6,
+      "referenceComplete": true,
+      "referencePathNodes": 9,
+      "referenceStateDigest": "7ec3bc9f5039944c5c74aa26808fa147f3c5b389514934184e91a83e2f2c6254",
+      "referenceStatus": "FAIL",
+      "referenceUniqueStates": 6,
+      "unknownInvariants": [],
+      "variant": "fault"
+    },
+    {
+      "agreement": "AGREE",
+      "failingInvariants": [],
+      "model": "rollback_continuity",
+      "primaryStatus": "PASS",
+      "primaryUniqueStates": 6,
+      "referenceComplete": true,
+      "referencePathNodes": 6,
+      "referenceStateDigest": "99656aec99c55d03f7125ff086c0ec3ca280bfd905b3f3e26f93458ba4c4a24e",
+      "referenceStatus": "PASS",
+      "referenceUniqueStates": 6,
+      "unknownInvariants": [],
+      "variant": "safe"
+    },
+    {
+      "agreement": "AGREE",
+      "failingInvariants": [
+        "INV-03-rollback-known-good-lineage"
+      ],
+      "model": "rollback_continuity",
+      "primaryStatus": "FAIL",
+      "primaryUniqueStates": 7,
+      "referenceComplete": true,
+      "referencePathNodes": 7,
+      "referenceStateDigest": "fa8121b4e7cb4122cf5413fe40efb30594cfab1a8453319b67a8bbe3727fc6d3",
+      "referenceStatus": "FAIL",
+      "referenceUniqueStates": 7,
+      "unknownInvariants": [],
+      "variant": "fault"
+    },
+    {
+      "agreement": "AGREE",
+      "failingInvariants": [],
+      "model": "selective_inheritance",
+      "primaryStatus": "PASS",
+      "primaryUniqueStates": 3,
+      "referenceComplete": true,
+      "referencePathNodes": 3,
+      "referenceStateDigest": "030702fef5431fb6f9a5b3ad44cabe7f867f3fb786b917516658fa62eb4ee5b4",
+      "referenceStatus": "PASS",
+      "referenceUniqueStates": 3,
+      "unknownInvariants": [],
+      "variant": "safe"
+    },
+    {
+      "agreement": "AGREE",
+      "failingInvariants": [
+        "INV-04-selective-inheritance-excludes-authority"
+      ],
+      "model": "selective_inheritance",
+      "primaryStatus": "FAIL",
+      "primaryUniqueStates": 5,
+      "referenceComplete": true,
+      "referencePathNodes": 5,
+      "referenceStateDigest": "0ce2f6affc030162a94a6f23a40f3e2b8d641432e42e083665a64e0b27f1b854",
+      "referenceStatus": "FAIL",
+      "referenceUniqueStates": 5,
+      "unknownInvariants": [],
+      "variant": "fault"
+    }
+  ],
+  "claim": "A second dependency-free path enumerator agrees with the primary visited-state explorer on bounded status, reachable unique-state count, failing invariant names, and unknown invariant names for all retained safe/fault tiny-model cases.",
+  "evidenceClass": "CROSS-IMPLEMENTATION",
+  "evidenceRung": 5,
+  "pathNodeBudgetPerCase": 100000,
+  "schemaVersion": "0.1",
+  "truthBoundary": "Both implementations consume the same authored model transition and invariant functions. Agreement cross-checks exploration semantics only; it does not independently prove model fidelity, donor implementation behavior, cross-repo adoption, or real-world safety."
+}
