@@ -1,8 +1,8 @@
 {
-  "schema_version": "0.5",
+  "schema_version": "0.6",
   "module": {
     "name": "axm-invariant-lab",
-    "purpose": "Bounded state-space exploration, cross-implementation checking, tractability measurement, read-only donor refinement evidence, and explicit external-consumer contract continuity for modeled AXM invariants."
+    "purpose": "Bounded state-space exploration, cross-implementation checking, tractability measurement, read-only donor refinement evidence, and cross-repository counterexample packet consumption with explicit external-consumer continuity."
   },
   "capabilities": [
     {
@@ -45,7 +45,7 @@
       "tags": ["invariant", "refinement", "monolith", "pipeline", "authority", "evidence"],
       "evidence": {
         "status": "pinned_donor_fixture_tested",
-        "ceiling": "below-seed-evidence-rung-6",
+        "ceiling": "below-seed-evidence-rung-6-for-model-fidelity",
         "boundary": "separately authored adapter over an exact pinned donor contract fixture; no full-stack Monolith runtime export is claimed"
       }
     },
@@ -54,23 +54,23 @@
       "description": "Emit bounded machine-readable FAIL/HOLD evidence without granting donor, execution, merge, promotion, or CANON authority.",
       "provides": ["packet.counterexample", "evidence.trace"],
       "accepts": ["evidence.invariant-result"],
-      "tags": ["packet", "evidence", "provenance"],
+      "tags": ["packet", "evidence", "provenance", "cross-repo"],
       "evidence": {
-        "status": "one_external_consumer_demonstrated",
-        "ceiling": "below-seed-evidence-rung-6",
-        "boundary": "AXM Monolith consumes the exact v0.1 packet as evidence-only; a second materially different external AXM consumer is still required for seed rung 6"
+        "status": "cross_repo_two_external_consumers",
+        "ceiling": "seed-evidence-rung-6-for-packet-consumption",
+        "boundary": "AXM Monolith and AXM Profession Mesh both consume the exact v0.1 FAIL/HOLD result contract without replacing its status meaning; this does not promote model fidelity or real-environment evidence"
       }
     },
     {
       "id": "invariant.external-consumer-continuity",
-      "description": "Track exact producer packet/schema blobs pinned by external AXM consumers and fail closed when local producer bytes drift until compatibility is deliberately reviewed.",
+      "description": "Track exact producer packet/schema blobs pinned by distinct external AXM consumers and fail closed when local producer bytes drift until compatibility is deliberately reviewed.",
       "provides": ["evidence.consumer-contract-integrity", "evidence.cross-repo-use"],
       "accepts": ["packet.counterexample", "consumer.contract-pin"],
-      "tags": ["invariant", "consumer", "compatibility", "continuity", "evidence"],
+      "tags": ["invariant", "consumer", "compatibility", "continuity", "evidence", "cross-repo"],
       "evidence": {
-        "status": "first_external_consumer_pinned_and_tested",
-        "ceiling": "below-seed-evidence-rung-6",
-        "boundary": "local compatibility guard attests producer byte identity only; it does not remotely execute or attest the external consumer runtime"
+        "status": "two_distinct_external_consumers_pinned_and_tested",
+        "ceiling": "seed-evidence-rung-6-for-packet-consumption",
+        "boundary": "local compatibility guard attests producer byte identity and distinct registered repositories only; it does not remotely execute consumers or prove they are deployed"
       }
     }
   ],
@@ -88,5 +88,5 @@
   "tests": [
     {"command": "python -m unittest discover -s tests -v", "evidence": "repository-suite"}
   ],
-  "truth_boundary": "A PASS means no counterexample was found only inside the exact declared model, predicates, transitions, bound, or explicit donor fields actually inspected. Cross-implementation agreement checks exploration semantics over shared authored model functions; tractability evidence is a deterministic synthetic work-count boundary, not a general performance claim; pinned donor refinement does not prove a full donor runtime. One real external Monolith consumer now uses the counterexample packet without semantic promotion, but seed rung 6 remains unearned until a second materially different external AXM consumer exists. External-consumer continuity checks only producer byte identity. This module grants no execution, merge, promotion, installation, device, network, or CANON authority."
+  "truth_boundary": "A PASS means no counterexample was found only inside the exact declared model, predicates, transitions, bound, or explicit donor fields actually inspected. Cross-implementation agreement checks exploration semantics over shared authored model functions; tractability evidence is a deterministic synthetic work-count boundary, not a general performance claim; pinned donor refinement does not prove a full donor runtime. Two materially different real AXM consumers now use the exact FAIL/HOLD counterexample packet contract without semantic promotion, earning seed rung 6 only for packet/result consumption. Bounded exploration/model fidelity remains rung 5. External-consumer continuity checks producer byte identity and distinct registered repositories, not remote runtime deployment. This module grants no execution, merge, promotion, installation, device, network, or CANON authority."
 }
