@@ -1,0 +1,81 @@
+{
+  "invariant": {
+    "id": "INV-09",
+    "statement": "Detached checkpoint reconstruction must bind to the checkpoint/source identity it claims to reconstruct; an outer seal alone cannot make altered inner receipt history trusted."
+  },
+  "observed_boundary": {
+    "automatic_resume_authority": false,
+    "canon_authority": false,
+    "fixture_id": "held-disconnect-recover",
+    "fresh_receipt_equal_local": true,
+    "hosted_node_versions": [
+      20,
+      22
+    ],
+    "positive_checkpoint_digest_equal": true,
+    "positive_engine_receipt_ids_equal": true,
+    "positive_engine_state_digest_equal": true,
+    "tamper_outer_checkpoint_resealed": true,
+    "tamper_reason_code": "CHECKPOINT_REPLAY",
+    "tamper_result": "HOLD"
+  },
+  "projection": {
+    "excluded_donor_fields": [
+      "live Stateborn engine object",
+      "complete transport session state",
+      "producer authentication or authorship",
+      "real network semantics",
+      "CANON authority"
+    ],
+    "method": "Mechanical projection of the pinned fresh-process regression assertions, detached verifier authority/replay boundary, bounded process adapter, lane receipt, and independently queried hosted run identity. No Stateborn runtime object or transport session is executed or copied into Invariant Lab.",
+    "source_paths": [
+      "state-transport-process-restart.test.mjs positive fresh-process regression",
+      "state-transport-process-restart.test.mjs resealed-inner-tamper regression",
+      "state-transport-checkpoint.js digest/schema/receipt/replay/state verification",
+      "state-transport-checkpoint.js explicit no-authority receipt fields",
+      "verify-state-transport-checkpoint.mjs 1 MiB bounded stdin and exit behavior",
+      "lane receipt hosted Node 20/22 evidence and truth boundary",
+      "GitHub Actions run 34586268082 exact head/conclusion/jobs"
+    ]
+  },
+  "result": {
+    "check_count": 36,
+    "derived": {
+      "claim_ceiling": "on the exact pinned Stateborn checkpoint-v2 verifier and fresh-process regression, serialized checkpoint-owned state-language evidence reconstructs identically in a detached process, while an inner receipt change remains rejected even after recomputing the outer checkpoint digest",
+      "hosted_node_versions": [
+        20,
+        22
+      ],
+      "inv_09_fresh_process_checkpoint_binding_status": "PASS",
+      "outer_digest_only_integrity_status": "FAIL",
+      "resealed_inner_tamper_status": "HOLD",
+      "verification_authority_status": "NO_AUTHORITY"
+    },
+    "failed_checks": [],
+    "failures": [],
+    "status": "PASS",
+    "unknowns": []
+  },
+  "schema": "axm.invariant-lab.state-research-stateborn-checkpoint-refinement/v0.1",
+  "source": {
+    "donor_head": "0cef53c3900c48a4d7cece62bcbfd6fa34f40fab",
+    "hosted_node_versions": [
+      20,
+      22
+    ],
+    "hosted_run_conclusion": "success",
+    "hosted_run_head": "0cef53c3900c48a4d7cece62bcbfd6fa34f40fab",
+    "hosted_run_id": 34586268082,
+    "integration_commit": "cf891d3614d472b1426fbdc4304e4e9fe290fb24",
+    "lane_git_blob_sha": "9bc0feaa335b9822662252349b55b81a859a31ce",
+    "lane_path": "lanes/2026-09-11-stateborn-checkpoint-process-verifier.md",
+    "process_adapter_git_blob_sha": "c30f6a46abcd21478642e023c37fff187a634352",
+    "process_adapter_path": "experiments/07-stateborn-rpg-lab/tools/verify-state-transport-checkpoint.mjs",
+    "repository": "mike-axiom-mir/axm-state-research",
+    "test_git_blob_sha": "7383822c140522cc71684371bdade3d187271d67",
+    "test_path": "experiments/07-stateborn-rpg-lab/tests/state-transport-process-restart.test.mjs",
+    "verifier_git_blob_sha": "79ebc5422ea80ca122677f0e2df69eca8a3908d2",
+    "verifier_path": "experiments/07-stateborn-rpg-lab/dist/state-transport-checkpoint.js"
+  },
+  "truth_boundary": "PASS means the exact pinned Stateborn checkpoint-v2 regression supports INV-09 on one narrow boundary: serialized checkpoint-owned state-language evidence verifies identically in a fresh Node process, and changing an inner receipt remains HOLD/CHECKPOINT_REPLAY even after recomputing the outer checkpoint digest. The evidence does not prove complete transport-session resume, durable persistence/crash atomicity, producer authentication/authorship, hostile-peer security, or CANON authority, and it does not promote general model fidelity beyond seed rung 5."
+}
