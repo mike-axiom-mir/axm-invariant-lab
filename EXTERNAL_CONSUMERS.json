@@ -10,6 +10,16 @@
       "schemaPath": "COUNTEREXAMPLE_PACKET.schema.json",
       "schemaBlob": "cc9f1fde4855a56557ad6338c7595a99fc71cb21",
       "status": "active_pinned_consumer"
+    },
+    {
+      "consumerRepo": "mike-axiom-mir/axm-profession-mesh",
+      "consumerCommit": "8a9a471fd2fda1d2b548c738de96b5249ae17429",
+      "capability": "mesh.invariant-evidence-admission",
+      "packetPath": "evidence/first_counterexample_receipt.json",
+      "packetBlob": "02eeddfd12351ff6b7647bc412db3695ee45e5b3",
+      "schemaPath": "COUNTEREXAMPLE_PACKET.schema.json",
+      "schemaBlob": "cc9f1fde4855a56557ad6338c7595a99fc71cb21",
+      "status": "active_pinned_consumer"
     }
   ]
 }
