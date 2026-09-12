@@ -1,0 +1,86 @@
+{
+  "invariant": {
+    "id": "INV-13",
+    "statement": "Every oracle-required check for a sparse transition must be awakened; a missed required check forbids an oracle-equivalence claim for that step."
+  },
+  "observed_boundary": {
+    "bug_run": "FAIL",
+    "claim": "one pinned Workfloor Sentinel execution artifact only",
+    "repaired_run": "PASS"
+  },
+  "projection": {
+    "field_paths": [
+      "dependency_bug_run.repaired_dependencies",
+      "dependency_bug_run.final_oracle_check_results_hash",
+      "dependency_bug_run.final_sparse_check_results_hash",
+      "dependency_bug_run.steps[2].sequence",
+      "dependency_bug_run.steps[2].change_id",
+      "dependency_bug_run.steps[2].awakened_check_ids",
+      "dependency_bug_run.steps[2].missed_check_ids",
+      "dependency_bug_run.steps[2].necessary_check_ids",
+      "dependency_bug_run.steps[2].sparse_output_equivalent_to_oracle",
+      "dependency_bug_run.steps[2].sparse_output_mismatch_ids",
+      "dependency_bug_run.totals.missed_wakeups",
+      "dependency_bug_run.totals.final_sparse_output_equivalent_to_oracle",
+      "repaired_run.repaired_dependencies",
+      "repaired_run.final_oracle_check_results_hash",
+      "repaired_run.final_sparse_check_results_hash",
+      "repaired_run.steps[2].sequence",
+      "repaired_run.steps[2].change_id",
+      "repaired_run.steps[2].awakened_check_ids",
+      "repaired_run.steps[2].missed_check_ids",
+      "repaired_run.steps[2].necessary_check_ids",
+      "repaired_run.steps[2].sparse_output_equivalent_to_oracle",
+      "repaired_run.steps[2].sparse_output_mismatch_ids",
+      "repaired_run.totals.missed_wakeups",
+      "repaired_run.totals.final_sparse_output_equivalent_to_oracle"
+    ],
+    "method": "mechanical field selection from the pinned donor artifact; values are copied without semantic normalization"
+  },
+  "result": {
+    "checks": [
+      {"check": "projection-schema", "ok": true},
+      {"check": "source-repository", "ok": true},
+      {"check": "source-commit", "ok": true},
+      {"check": "source-path", "ok": true},
+      {"check": "source-git_blob_sha", "ok": true},
+      {"check": "source-donor_schema", "ok": true},
+      {"check": "projection-method-present", "ok": true},
+      {"check": "projection-field-paths-explicit", "ok": true},
+      {"check": "dependency_bug_run-reported-miss-set", "ok": true},
+      {"check": "dependency_bug_run-equivalence-mismatch-consistency", "ok": true},
+      {"check": "dependency_bug_run-misses-visible-in-mismatch", "ok": true},
+      {"check": "dependency_bug_run-total-misses-cover-step", "ok": true},
+      {"check": "repaired_run-reported-miss-set", "ok": true},
+      {"check": "repaired_run-equivalence-mismatch-consistency", "ok": true},
+      {"check": "repaired_run-misses-visible-in-mismatch", "ok": true},
+      {"check": "repaired_run-total-misses-cover-step", "ok": true},
+      {"check": "repair-flag-transition", "ok": true},
+      {"check": "same-trace-sequence", "ok": true},
+      {"check": "same-trace-change_id", "ok": true},
+      {"check": "same-trace-necessary_check_ids", "ok": true},
+      {"check": "same-final-oracle-target", "ok": true},
+      {"check": "bug-final-sparse-diverges", "ok": true},
+      {"check": "repaired-final-sparse-converges", "ok": true},
+      {"check": "inv-13-falsified-then-repaired", "ok": true}
+    ],
+    "derived": {
+      "dependency_bug_run.derived_missed_check_ids": ["cross--report-matches-raw-results"],
+      "dependency_bug_run.invariant_status": "FAIL",
+      "repaired_run.derived_missed_check_ids": [],
+      "repaired_run.invariant_status": "PASS"
+    },
+    "failures": [],
+    "status": "PASS",
+    "unknowns": []
+  },
+  "schema": "axm.invariant-lab.state-research-sentinel-refinement/v0.1",
+  "source": {
+    "commit": "cf891d3614d472b1426fbdc4304e4e9fe290fb24",
+    "donor_schema": "axm.workfloor-sentinel-results/v1",
+    "git_blob_sha": "c5cb479a4955940b170c735bd5ee9d58bcb9c888",
+    "path": "experiments/02-workfloor-sentinel/results/sentinel_results.json",
+    "repository": "mike-axiom-mir/axm-state-research"
+  },
+  "truth_boundary": "PASS means the mechanically selected explicit donor fields are internally consistent with INV-13 and distinguish the known dependency bug from its repaired run. It does not execute State Research, prove unseen dependency completeness, or promote general model fidelity beyond the existing rung-5 boundary."
+}

@@ -1,8 +1,8 @@
 {
-  "schema_version": "0.6",
+  "schema_version": "0.7",
   "module": {
     "name": "axm-invariant-lab",
-    "purpose": "Bounded state-space exploration, cross-implementation checking, tractability measurement, read-only donor refinement evidence, and cross-repository counterexample packet consumption with explicit external-consumer continuity."
+    "purpose": "Bounded state-space exploration, cross-implementation checking, tractability measurement, read-only donor refinement evidence including pinned execution-result refinement, and cross-repository counterexample packet consumption with explicit external-consumer continuity."
   },
   "capabilities": [
     {
@@ -50,6 +50,18 @@
       }
     },
     {
+      "id": "invariant.refinement.state-research-workfloor",
+      "description": "Read-only refinement of a pinned AXM State Research Workfloor Sentinel execution-results artifact, deriving necessary-minus-awakened misses and comparing the known dependency-bug step with the repaired step without reimplementing donor checks.",
+      "provides": ["evidence.execution-refinement", "evidence.dependency-wakeup-counterexample"],
+      "accepts": ["evidence.transition-receipt", "state.dependency-routing"],
+      "tags": ["invariant", "refinement", "state-research", "execution-evidence", "dependency", "evidence"],
+      "evidence": {
+        "status": "single_pinned_donor_execution_artifact_refined",
+        "ceiling": "does-not-promote-general-model-fidelity-beyond-seed-rung-5",
+        "boundary": "mechanical projection of explicit donor-emitted fields from one Workfloor Sentinel results artifact; donor oracle defines necessity and Invariant Lab does not execute or independently reconstruct Sentinel semantics"
+      }
+    },
+    {
       "id": "invariant.counterexample-packet",
       "description": "Emit bounded machine-readable FAIL/HOLD evidence without granting donor, execution, merge, promotion, or CANON authority.",
       "provides": ["packet.counterexample", "evidence.trace"],
@@ -79,14 +91,16 @@
     {"kind": "python-library", "path": "src/cross_verifier.py", "symbol": "cross_verify"},
     {"kind": "python-library", "path": "src/tractability_probe.py", "symbol": "run_probe"},
     {"kind": "python-library", "path": "adapters/monolith_pipeline_fabric.py", "symbol": "inspect"},
+    {"kind": "python-library", "path": "adapters/state_research_workfloor_sentinel.py", "symbol": "inspect"},
     {"kind": "python-cli", "path": "tools/run_evidence.py", "command": "python tools/run_evidence.py --check"},
     {"kind": "python-cli", "path": "tools/run_cross_verification.py", "command": "python tools/run_cross_verification.py --check"},
     {"kind": "python-cli", "path": "tools/run_monolith_refinement.py", "command": "python tools/run_monolith_refinement.py --check"},
     {"kind": "python-cli", "path": "tools/run_tractability.py", "command": "python tools/run_tractability.py --check"},
-    {"kind": "python-cli", "path": "tools/check_external_consumers.py", "command": "python tools/check_external_consumers.py --check"}
+    {"kind": "python-cli", "path": "tools/check_external_consumers.py", "command": "python tools/check_external_consumers.py --check"},
+    {"kind": "python-cli", "path": "tools/run_state_research_sentinel_refinement.py", "command": "python tools/run_state_research_sentinel_refinement.py --check"}
   ],
   "tests": [
     {"command": "python -m unittest discover -s tests -v", "evidence": "repository-suite"}
   ],
-  "truth_boundary": "A PASS means no counterexample was found only inside the exact declared model, predicates, transitions, bound, or explicit donor fields actually inspected. Cross-implementation agreement checks exploration semantics over shared authored model functions; tractability evidence is a deterministic synthetic work-count boundary, not a general performance claim; pinned donor refinement does not prove a full donor runtime. Two materially different real AXM consumers now use the exact FAIL/HOLD counterexample packet contract without semantic promotion, earning seed rung 6 only for packet/result consumption. Bounded exploration/model fidelity remains rung 5. External-consumer continuity checks producer byte identity and distinct registered repositories, not remote runtime deployment. This module grants no execution, merge, promotion, installation, device, network, or CANON authority."
+  "truth_boundary": "A PASS means no counterexample was found only inside the exact declared model, predicates, transitions, bound, or explicit donor fields actually inspected. Cross-implementation agreement checks exploration semantics over shared authored model functions; tractability evidence is a deterministic synthetic work-count boundary, not a general performance claim. Monolith refinement is contract-fixture evidence; State Research Workfloor refinement is a mechanical projection from one pinned donor execution-results artifact and does not independently derive donor necessity semantics or prove unseen dependency completeness. Two materially different real AXM consumers use the exact FAIL/HOLD counterexample packet contract without semantic promotion, earning seed rung 6 only for packet/result consumption. Bounded exploration/general model fidelity remains rung 5. External-consumer continuity checks producer byte identity and distinct registered repositories, not remote runtime deployment. This module grants no execution, merge, promotion, installation, device, network, or CANON authority."
 }

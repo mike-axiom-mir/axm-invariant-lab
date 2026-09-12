@@ -27,3 +27,5 @@ jobs:
         run: python tools/run_tractability.py --check
       - name: External consumer compatibility check
         run: python tools/check_external_consumers.py --check
+      - name: State Research Sentinel execution refinement check
+        run: python tools/run_state_research_sentinel_refinement.py --check
