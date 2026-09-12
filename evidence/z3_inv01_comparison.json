@@ -1,0 +1,54 @@
+{
+  "authority": {
+    "canon": false,
+    "execution": false,
+    "merge": false,
+    "promotion": false
+  },
+  "cases": [
+    {
+      "case": "safe",
+      "primary": {
+        "status": "PASS",
+        "trace": [],
+        "witnessDepth": null
+      },
+      "solver": {
+        "status": "PASS",
+        "trace": [],
+        "witnessDepth": null
+      }
+    },
+    {
+      "case": "fault",
+      "primary": {
+        "status": "FAIL",
+        "trace": [
+          "propose-write-candidate",
+          "FAULT-inherit-candidate-authority"
+        ],
+        "witnessDepth": 2
+      },
+      "solver": {
+        "status": "FAIL",
+        "trace": [
+          "propose-write-candidate",
+          "FAULT-inherit-candidate-authority"
+        ],
+        "witnessDepth": 2
+      }
+    }
+  ],
+  "invariant": "INV-01-no-silent-authority-escalation",
+  "issues": [],
+  "maxDepth": 3,
+  "model": "models/no_silent_authority.py",
+  "schema": "axm.invariant-lab.z3-comparison/v0.1",
+  "solver": {
+    "engine": "Z3 SMT",
+    "packagePin": "z3-solver==5.1.0.0",
+    "relation": "independently authored three-boolean symbolic transition relation"
+  },
+  "status": "PASS",
+  "truthBoundary": "This compares the primary breadth-first explorer with an independently authored Z3 encoding of only the tiny INV-01 authority model through depth 3. Agreement strengthens the modeled search claim but does not prove donor fidelity, unmodeled software, arbitrary AXM authority semantics, or real-world behavior."
+}
