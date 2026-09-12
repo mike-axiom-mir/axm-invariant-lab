@@ -1,0 +1,76 @@
+{
+  "schema": "axm.invariant-lab.stateborn-checkpoint-continuity-projection/v0.1",
+  "source": {
+    "repository": "mike-axiom-mir/axm-state-research",
+    "integration_commit": "cf891d3614d472b1426fbdc4304e4e9fe290fb24",
+    "donor_head": "0cef53c3900c48a4d7cece62bcbfd6fa34f40fab",
+    "test_path": "experiments/07-stateborn-rpg-lab/tests/state-transport-process-restart.test.mjs",
+    "test_git_blob_sha": "7383822c140522cc71684371bdade3d187271d67",
+    "verifier_path": "experiments/07-stateborn-rpg-lab/dist/state-transport-checkpoint.js",
+    "verifier_git_blob_sha": "79ebc5422ea80ca122677f0e2df69eca8a3908d2",
+    "process_adapter_path": "experiments/07-stateborn-rpg-lab/tools/verify-state-transport-checkpoint.mjs",
+    "process_adapter_git_blob_sha": "c30f6a46abcd21478642e023c37fff187a634352",
+    "lane_path": "lanes/2026-09-11-stateborn-checkpoint-process-verifier.md",
+    "lane_git_blob_sha": "9bc0feaa335b9822662252349b55b81a859a31ce",
+    "hosted_run_id": 34586268082,
+    "hosted_run_head": "0cef53c3900c48a4d7cece62bcbfd6fa34f40fab",
+    "hosted_run_conclusion": "success",
+    "hosted_node_versions": [20, 22]
+  },
+  "projection": {
+    "method": "Mechanical projection of the pinned fresh-process regression assertions, detached verifier authority/replay boundary, bounded process adapter, lane receipt, and independently queried hosted run identity. No Stateborn runtime object or transport session is executed or copied into Invariant Lab.",
+    "excluded_donor_fields": [
+      "live Stateborn engine object",
+      "complete transport session state",
+      "producer authentication or authorship",
+      "real network semantics",
+      "CANON authority"
+    ],
+    "source_paths": [
+      "state-transport-process-restart.test.mjs positive fresh-process regression",
+      "state-transport-process-restart.test.mjs resealed-inner-tamper regression",
+      "state-transport-checkpoint.js digest/schema/receipt/replay/state verification",
+      "state-transport-checkpoint.js explicit no-authority receipt fields",
+      "verify-state-transport-checkpoint.mjs 1 MiB bounded stdin and exit behavior",
+      "lane receipt hosted Node 20/22 evidence and truth boundary",
+      "GitHub Actions run 34586268082 exact head/conclusion/jobs"
+    ]
+  },
+  "positive": {
+    "fixture_id": "held-disconnect-recover",
+    "local_status": "PASS",
+    "fresh_process_exit": 0,
+    "fresh_status": "PASS",
+    "fresh_receipt_equal_local": true,
+    "checkpoint_digest_equal": true,
+    "engine_receipt_ids_equal": true,
+    "engine_state_digest_equal": true,
+    "authority": {
+      "automaticResume": false,
+      "transportMutation": false,
+      "canonicalStateMutation": false,
+      "merge": false,
+      "canon": false
+    }
+  },
+  "tamper_control": {
+    "mutation": "change inner engine receipt packet payload, then recompute only the outer checkpoint digest",
+    "outer_checkpoint_resealed": true,
+    "fresh_process_exit": 2,
+    "fresh_status": "HOLD",
+    "reason_code": "CHECKPOINT_REPLAY",
+    "authority": {
+      "automaticResume": false,
+      "transportMutation": false,
+      "canonicalStateMutation": false,
+      "merge": false,
+      "canon": false
+    }
+  },
+  "admission": {
+    "max_input_bytes": 1048576,
+    "fatal_utf8_decode": true,
+    "non_pass_exit_code": 2,
+    "input_error_exit_code": 1
+  }
+}
