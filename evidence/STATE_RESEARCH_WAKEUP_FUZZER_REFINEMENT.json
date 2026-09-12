@@ -1,0 +1,84 @@
+{
+  "invariant": {
+    "id": "INV-14",
+    "statement": "When runtime-observed activation identifies a check omitted by declared sparse routing, and that check produces an output change that appears in the sparse mismatch set, sparse oracle-equivalence must be rejected for that transition."
+  },
+  "observed_boundary": {
+    "claim": "one minimized broken donor trace plus four pinned repaired donor transitions",
+    "counterexample_trace_count": 1,
+    "oracle_fields_used_for_derivation": false,
+    "repaired_equivalent_trace_count": 4,
+    "repaired_trace_count": 4
+  },
+  "projection": {
+    "counterexample_field_paths": [
+      "declared_sparse.transitions[0].awakened",
+      "declared_sparse.transitions[0].changed",
+      "declared_sparse.transitions[0].mismatched_outputs",
+      "declared_sparse.transitions[0].mutation",
+      "declared_sparse.output_equivalence",
+      "observed.transitions[0].awakened",
+      "observed.transitions[0].changed",
+      "observed.transitions[0].mismatched_outputs",
+      "observed.transitions[0].mutation",
+      "observed.output_equivalence"
+    ],
+    "excluded_donor_fields": [
+      "necessary",
+      "necessary_count",
+      "necessary_hash",
+      "missed",
+      "missed_wakes"
+    ],
+    "method": "mechanical selection of donor-emitted scheduler execution fields; no donor check/router code copied",
+    "repaired_trace_lines": {
+      "declared_sparse": [201, 202, 203, 204],
+      "full_scan": [1, 2, 3, 4],
+      "observed": [301, 302, 303, 304]
+    }
+  },
+  "result": {
+    "checks": [
+      {"check": "projection-schema", "ok": true},
+      {"check": "source-repository", "ok": true},
+      {"check": "source-commit", "ok": true},
+      {"check": "source-counterexample_path", "ok": true},
+      {"check": "source-counterexample_git_blob_sha", "ok": true},
+      {"check": "source-trace_path", "ok": true},
+      {"check": "source-trace_git_blob_sha", "ok": true},
+      {"check": "source-counterexample_schema", "ok": true},
+      {"check": "counterexample-three-signal-triangulation", "ok": true},
+      {"check": "counterexample-equivalence-split", "ok": true},
+      {"check": "counterexample-observed-no-mismatch", "ok": true},
+      {"check": "counterexample-same-mutation", "ok": true},
+      {"check": "repaired-transition-0-three-mode-equivalence", "ok": true},
+      {"check": "repaired-transition-1-three-mode-equivalence", "ok": true},
+      {"check": "repaired-transition-2-three-mode-equivalence", "ok": true},
+      {"check": "repaired-transition-3-three-mode-equivalence", "ok": true}
+    ],
+    "derived": {
+      "counterexample.instrumented_required_ids": ["check_00000"],
+      "counterexample.observed_only_awakened_ids": ["check_00000"],
+      "counterexample.observed_only_changed_ids": ["check_00000"],
+      "counterexample.sparse_mismatch_ids": ["check_00000"],
+      "inv_14_counterexample_status": "FAIL",
+      "inv_14_repaired_status": "PASS",
+      "repaired_equivalent_trace_count": 4,
+      "repaired_trace_count": 4
+    },
+    "failures": [],
+    "status": "PASS",
+    "unknowns": []
+  },
+  "schema": "axm.invariant-lab.state-research-wakeup-fuzzer-refinement/v0.1",
+  "source": {
+    "commit": "cf891d3614d472b1426fbdc4304e4e9fe290fb24",
+    "counterexample_git_blob_sha": "2598facfdf681a60aa5a25f083818b143b5cee8b",
+    "counterexample_path": "experiments/03-wakeup-fuzzer/results/raw/counterexample.json",
+    "counterexample_schema": "axm.wakeup-fuzzer.counterexample/v1",
+    "repository": "mike-axiom-mir/axm-state-research",
+    "trace_git_blob_sha": "79cd00c865e9d21a211fd132dff4679182378795",
+    "trace_path": "experiments/03-wakeup-fuzzer/results/raw/fuzz_transitions_100.jsonl"
+  },
+  "truth_boundary": "PASS means the exact pinned Wakeup Fuzzer records support INV-14 without using donor necessary/missed oracle fields: one omitted wake is triangulated from runtime-observed activation, actual change, and sparse mismatch, while four repaired transitions agree across full-scan, declared-sparse, and observed-read records. It does not prove observed-read instrumentation complete for unseen branches/dynamic reads/concurrency or promote general model fidelity beyond rung 5."
+}

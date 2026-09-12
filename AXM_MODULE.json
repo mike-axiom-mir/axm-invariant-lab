@@ -1,8 +1,8 @@
 {
-  "schema_version": "0.7",
+  "schema_version": "0.8",
   "module": {
     "name": "axm-invariant-lab",
-    "purpose": "Bounded state-space exploration, cross-implementation checking, tractability measurement, read-only donor refinement evidence including pinned execution-result refinement, and cross-repository counterexample packet consumption with explicit external-consumer continuity."
+    "purpose": "Bounded state-space exploration, cross-implementation checking, tractability measurement, read-only donor refinement including runtime-observation wakeup evidence, and cross-repository counterexample packet consumption with explicit external-consumer continuity."
   },
   "capabilities": [
     {
@@ -62,6 +62,18 @@
       }
     },
     {
+      "id": "invariant.refinement.state-research-wakeup-fuzzer",
+      "description": "Read-only refinement of pinned AXM State Research Wakeup Fuzzer execution evidence that derives one omitted required wake from runtime-observed activation, actual output change, and sparse mismatch without consuming donor necessary/missed oracle fields, then checks four repaired transitions across full-scan, sparse, and observed-read records.",
+      "provides": ["evidence.runtime-observation-refinement", "evidence.instrumented-dependency-wakeup"],
+      "accepts": ["evidence.scheduler-transition", "state.dependency-routing", "evidence.runtime-observation"],
+      "tags": ["invariant", "refinement", "state-research", "runtime-observation", "dependency", "evidence"],
+      "evidence": {
+        "status": "pinned_runtime_observation_triangulated",
+        "ceiling": "does-not-promote-general-model-fidelity-beyond-seed-rung-5",
+        "boundary": "one minimized broken trace plus four repaired transitions; runtime-observed reads are donor instrumentation and are not claimed complete for unseen branches, dynamic/external reads, or concurrency"
+      }
+    },
+    {
       "id": "invariant.counterexample-packet",
       "description": "Emit bounded machine-readable FAIL/HOLD evidence without granting donor, execution, merge, promotion, or CANON authority.",
       "provides": ["packet.counterexample", "evidence.trace"],
@@ -92,15 +104,17 @@
     {"kind": "python-library", "path": "src/tractability_probe.py", "symbol": "run_probe"},
     {"kind": "python-library", "path": "adapters/monolith_pipeline_fabric.py", "symbol": "inspect"},
     {"kind": "python-library", "path": "adapters/state_research_workfloor_sentinel.py", "symbol": "inspect"},
+    {"kind": "python-library", "path": "adapters/state_research_wakeup_fuzzer.py", "symbol": "inspect"},
     {"kind": "python-cli", "path": "tools/run_evidence.py", "command": "python tools/run_evidence.py --check"},
     {"kind": "python-cli", "path": "tools/run_cross_verification.py", "command": "python tools/run_cross_verification.py --check"},
     {"kind": "python-cli", "path": "tools/run_monolith_refinement.py", "command": "python tools/run_monolith_refinement.py --check"},
     {"kind": "python-cli", "path": "tools/run_tractability.py", "command": "python tools/run_tractability.py --check"},
     {"kind": "python-cli", "path": "tools/check_external_consumers.py", "command": "python tools/check_external_consumers.py --check"},
-    {"kind": "python-cli", "path": "tools/run_state_research_sentinel_refinement.py", "command": "python tools/run_state_research_sentinel_refinement.py --check"}
+    {"kind": "python-cli", "path": "tools/run_state_research_sentinel_refinement.py", "command": "python tools/run_state_research_sentinel_refinement.py --check"},
+    {"kind": "python-cli", "path": "tools/run_state_research_wakeup_fuzzer_refinement.py", "command": "python tools/run_state_research_wakeup_fuzzer_refinement.py --check"}
   ],
   "tests": [
     {"command": "python -m unittest discover -s tests -v", "evidence": "repository-suite"}
   ],
-  "truth_boundary": "A PASS means no counterexample was found only inside the exact declared model, predicates, transitions, bound, or explicit donor fields actually inspected. Cross-implementation agreement checks exploration semantics over shared authored model functions; tractability evidence is a deterministic synthetic work-count boundary, not a general performance claim. Monolith refinement is contract-fixture evidence; State Research Workfloor refinement is a mechanical projection from one pinned donor execution-results artifact and does not independently derive donor necessity semantics or prove unseen dependency completeness. Two materially different real AXM consumers use the exact FAIL/HOLD counterexample packet contract without semantic promotion, earning seed rung 6 only for packet/result consumption. Bounded exploration/general model fidelity remains rung 5. External-consumer continuity checks producer byte identity and distinct registered repositories, not remote runtime deployment. This module grants no execution, merge, promotion, installation, device, network, or CANON authority."
+  "truth_boundary": "A PASS means no counterexample was found only inside the exact declared model, predicates, transitions, bound, or explicit donor fields actually inspected. Cross-implementation agreement checks exploration semantics over shared authored model functions; tractability evidence is a deterministic synthetic work-count boundary, not a general performance claim. Monolith refinement is contract-fixture evidence. Workfloor Sentinel refinement accepts donor oracle necessity fields; Wakeup Fuzzer refinement derives one omitted wake without those fields from donor runtime-observed activation, change, and mismatch records, but observed-read instrumentation itself is not claimed complete for unseen branches/dynamic reads/concurrency. Neither State Research refinement promotes general model fidelity beyond seed rung 5. Two materially different real AXM consumers use the exact FAIL/HOLD counterexample packet contract without semantic promotion, earning seed rung 6 only for packet/result consumption. External-consumer continuity checks producer byte identity and distinct registered repositories, not remote runtime deployment. This module grants no execution, merge, promotion, installation, device, network, or CANON authority."
 }

@@ -1,0 +1,75 @@
+{
+  "schema": "axm.invariant-lab.wakeup-fuzzer-projection/v0.1",
+  "source": {
+    "repository": "mike-axiom-mir/axm-state-research",
+    "commit": "cf891d3614d472b1426fbdc4304e4e9fe290fb24",
+    "counterexample_path": "experiments/03-wakeup-fuzzer/results/raw/counterexample.json",
+    "counterexample_git_blob_sha": "2598facfdf681a60aa5a25f083818b143b5cee8b",
+    "trace_path": "experiments/03-wakeup-fuzzer/results/raw/fuzz_transitions_100.jsonl",
+    "trace_git_blob_sha": "79cd00c865e9d21a211fd132dff4679182378795",
+    "counterexample_schema": "axm.wakeup-fuzzer.counterexample/v1"
+  },
+  "projection": {
+    "method": "mechanical selection of donor-emitted scheduler execution fields; no donor check/router code copied",
+    "excluded_donor_fields": ["necessary", "necessary_count", "necessary_hash", "missed", "missed_wakes"],
+    "counterexample_field_paths": [
+      "declared_sparse.transitions[0].awakened",
+      "declared_sparse.transitions[0].changed",
+      "declared_sparse.transitions[0].mismatched_outputs",
+      "declared_sparse.transitions[0].mutation",
+      "declared_sparse.output_equivalence",
+      "observed.transitions[0].awakened",
+      "observed.transitions[0].changed",
+      "observed.transitions[0].mismatched_outputs",
+      "observed.transitions[0].mutation",
+      "observed.output_equivalence"
+    ],
+    "repaired_trace_lines": {
+      "full_scan": [1, 2, 3, 4],
+      "declared_sparse": [201, 202, 203, 204],
+      "observed": [301, 302, 303, 304]
+    }
+  },
+  "counterexample": {
+    "declared_sparse": {
+      "awakened": ["check_00001", "check_00002", "check_00003", "check_00004", "check_00005", "check_00006", "check_00007"],
+      "changed": ["check_00004", "check_00005"],
+      "mismatched_outputs": ["check_00000"],
+      "mutation": {"field": "f001", "reason": "generated", "value": 80},
+      "output_equivalence": false
+    },
+    "observed": {
+      "awakened": ["check_00000", "check_00001", "check_00002", "check_00003", "check_00004", "check_00005", "check_00006", "check_00007"],
+      "changed": ["check_00000", "check_00004", "check_00005"],
+      "mismatched_outputs": [],
+      "mutation": {"field": "f001", "reason": "generated", "value": 80},
+      "output_equivalence": true
+    }
+  },
+  "repaired_traces": [
+    {
+      "transition": 0,
+      "full_scan": {"transition": 0, "mutation": {"field": "f059", "reason": "generated", "value": 21}, "changed_count": 4, "changed_hash": "4f66ffc33b55b95dbf065ee310e68c605cf64916a9403621b41f0eaae99423c3", "output_hash": "25e95ba0fe87453b9f3a4c2f3e9711b483cc7dfc32e0a2110c24791023aee9b7", "mismatched_outputs": []},
+      "declared_sparse": {"transition": 0, "mutation": {"field": "f059", "reason": "generated", "value": 21}, "changed_count": 4, "changed_hash": "4f66ffc33b55b95dbf065ee310e68c605cf64916a9403621b41f0eaae99423c3", "output_hash": "25e95ba0fe87453b9f3a4c2f3e9711b483cc7dfc32e0a2110c24791023aee9b7", "mismatched_outputs": []},
+      "observed": {"transition": 0, "mutation": {"field": "f059", "reason": "generated", "value": 21}, "changed_count": 4, "changed_hash": "4f66ffc33b55b95dbf065ee310e68c605cf64916a9403621b41f0eaae99423c3", "output_hash": "25e95ba0fe87453b9f3a4c2f3e9711b483cc7dfc32e0a2110c24791023aee9b7", "mismatched_outputs": []}
+    },
+    {
+      "transition": 1,
+      "full_scan": {"transition": 1, "mutation": {"field": "f019", "reason": "generated", "value": 38}, "changed_count": 7, "changed_hash": "ea225c55889148918ba9d764c73318aa0a80d423b621edf1208ff6945a389a64", "output_hash": "5af1783e0b300190cb8a783688a9af6d5df164d15b9ab7fe8efaa17629da91ba", "mismatched_outputs": []},
+      "declared_sparse": {"transition": 1, "mutation": {"field": "f019", "reason": "generated", "value": 38}, "changed_count": 7, "changed_hash": "ea225c55889148918ba9d764c73318aa0a80d423b621edf1208ff6945a389a64", "output_hash": "5af1783e0b300190cb8a783688a9af6d5df164d15b9ab7fe8efaa17629da91ba", "mismatched_outputs": []},
+      "observed": {"transition": 1, "mutation": {"field": "f019", "reason": "generated", "value": 38}, "changed_count": 7, "changed_hash": "ea225c55889148918ba9d764c73318aa0a80d423b621edf1208ff6945a389a64", "output_hash": "5af1783e0b300190cb8a783688a9af6d5df164d15b9ab7fe8efaa17629da91ba", "mismatched_outputs": []}
+    },
+    {
+      "transition": 2,
+      "full_scan": {"transition": 2, "mutation": {"field": "f061", "reason": "generated", "value": 28}, "changed_count": 6, "changed_hash": "c70f48b3b86aecbaff84bcd105cd5f9bfe2e052621603594c43622f6eba8ce98", "output_hash": "043d81e7486411e1a75ea7c140d7a0abfb068669e5911d95ce8bda5b697b91c3", "mismatched_outputs": []},
+      "declared_sparse": {"transition": 2, "mutation": {"field": "f061", "reason": "generated", "value": 28}, "changed_count": 6, "changed_hash": "c70f48b3b86aecbaff84bcd105cd5f9bfe2e052621603594c43622f6eba8ce98", "output_hash": "043d81e7486411e1a75ea7c140d7a0abfb068669e5911d95ce8bda5b697b91c3", "mismatched_outputs": []},
+      "observed": {"transition": 2, "mutation": {"field": "f061", "reason": "generated", "value": 28}, "changed_count": 6, "changed_hash": "c70f48b3b86aecbaff84bcd105cd5f9bfe2e052621603594c43622f6eba8ce98", "output_hash": "043d81e7486411e1a75ea7c140d7a0abfb068669e5911d95ce8bda5b697b91c3", "mismatched_outputs": []}
+    },
+    {
+      "transition": 3,
+      "full_scan": {"transition": 3, "mutation": {"field": "f031", "reason": "generated", "value": 32}, "changed_count": 8, "changed_hash": "a525f09df474c8da728f623a172e0f14257b233d26fd417c3f6bad7421cb8023", "output_hash": "9ad006d94cec76e0e72061c01099295054153ee5e3dc1c64b41a2719b67a90cd", "mismatched_outputs": []},
+      "declared_sparse": {"transition": 3, "mutation": {"field": "f031", "reason": "generated", "value": 32}, "changed_count": 8, "changed_hash": "a525f09df474c8da728f623a172e0f14257b233d26fd417c3f6bad7421cb8023", "output_hash": "9ad006d94cec76e0e72061c01099295054153ee5e3dc1c64b41a2719b67a90cd", "mismatched_outputs": []},
+      "observed": {"transition": 3, "mutation": {"field": "f031", "reason": "generated", "value": 32}, "changed_count": 8, "changed_hash": "a525f09df474c8da728f623a172e0f14257b233d26fd417c3f6bad7421cb8023", "output_hash": "9ad006d94cec76e0e72061c01099295054153ee5e3dc1c64b41a2719b67a90cd", "mismatched_outputs": []}
+    }
+  ]
+}
