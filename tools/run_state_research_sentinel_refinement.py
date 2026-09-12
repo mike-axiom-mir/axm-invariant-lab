@@ -47,12 +47,18 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
-    text = render(build_evidence())
+    payload = build_evidence()
+    text = render(payload)
     if args.check:
         if not EVIDENCE.exists():
             print(f"missing retained evidence: {EVIDENCE}", file=sys.stderr)
             return 2
-        if EVIDENCE.read_text(encoding="utf-8") != text:
+        try:
+            retained = json.loads(EVIDENCE.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            print(f"retained State Research Sentinel evidence is invalid JSON: {exc}", file=sys.stderr)
+            return 1
+        if retained != payload:
             print("retained State Research Sentinel refinement evidence drifted", file=sys.stderr)
             return 1
         print("State Research Sentinel refinement evidence: PASS")
