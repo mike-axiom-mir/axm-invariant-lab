@@ -1,0 +1,90 @@
+{
+  "conditional_fault": {
+    "check_id": "json-timings--results__benchmark_results__json",
+    "id": "fault-conditional-read",
+    "kind": "conditional_read",
+    "training_exposed": false
+  },
+  "declared_risk": {
+    "final_mismatch_ids": [],
+    "gate": {
+      "all_repairs_retain_provenance": true,
+      "final_oracle_equality": true,
+      "silent_stale_outputs_zero": true
+    },
+    "held_out": {
+      "detected_stale_outputs": 1,
+      "learned_edges": 1,
+      "maximum_silent_stale_window": 0,
+      "repairs": 1,
+      "repairs_with_provenance": 1,
+      "silent_stale_outputs": 0,
+      "silent_stale_transitions": 0
+    },
+    "held_out_manifest_hash": "72315d3330709384129c6a3589b47455beae5e166115f979869127f08afb362e",
+    "policy": "DECLARED_RISK"
+  },
+  "held_out_manifest_hash": "72315d3330709384129c6a3589b47455beae5e166115f979869127f08afb362e",
+  "held_out_mutation_id": "held-conditional-negative-timing",
+  "minimized_counterexample": {
+    "check_id": "json-timings--results__benchmark_results__json",
+    "minimized_length": 1,
+    "minimized_mutation_ids": [
+      "held-conditional-negative-timing"
+    ],
+    "observed_mutation_id": "held-conditional-negative-timing",
+    "policy": "OBSERVED_READS",
+    "reproduce_command": "python3 run_benchmarks.py --verify-counterexample OBSERVED_READS:json-timings--results__benchmark_results__json:held-conditional-negative-timing",
+    "schema": "axm.real-project-closure.counterexample/v1"
+  },
+  "observed_reads": {
+    "final_mismatch_ids": [
+      "json-timings--results__benchmark_results__json"
+    ],
+    "gate": {
+      "final_oracle_equality": false,
+      "silent_stale_outputs_zero": false
+    },
+    "held_out": {
+      "detected_stale_outputs": 0,
+      "learned_edges": 0,
+      "maximum_silent_stale_window": 3,
+      "silent_stale_outputs": 3,
+      "silent_stale_transitions": 3
+    },
+    "held_out_manifest_hash": "72315d3330709384129c6a3589b47455beae5e166115f979869127f08afb362e",
+    "policy": "OBSERVED_READS"
+  },
+  "projection": {
+    "excluded_donor_fields": [
+      "necessary_wakes",
+      "missed_wakes",
+      "training probes",
+      "stored oracle answers"
+    ],
+    "method": "Mechanical projection of one training-unexposed conditional-read fault, its held-out minimized OBSERVED_READS counterexample, and outcome fields for OBSERVED_READS versus DECLARED_RISK over the same frozen held-out manifest.",
+    "source_paths": [
+      "$.faults[id=fault-conditional-read]",
+      "$.held_out_manifest_hash",
+      "$.held_out_mutation_ids",
+      "$.policies.OBSERVED_READS.gate",
+      "$.policies.OBSERVED_READS.held_out",
+      "$.policies.OBSERVED_READS.final_mismatch_ids",
+      "$.policies.DECLARED_RISK.gate",
+      "$.policies.DECLARED_RISK.held_out",
+      "$.policies.DECLARED_RISK.final_mismatch_ids",
+      "counterexamples[policy=OBSERVED_READS,check_id=json-timings--results__benchmark_results__json,minimized_length=1]"
+    ]
+  },
+  "schema": "axm.invariant-lab.real-project-closure-projection/v0.1",
+  "source": {
+    "benchmark_git_blob_sha": "f7107a348a6e3a328d16d3d149c0438faeb14a21",
+    "benchmark_path": "experiments/05-real-project-closure-trial/results/raw/benchmark_results.json",
+    "benchmark_schema": "axm.real-project-closure.benchmark/v1",
+    "commit": "cf891d3614d472b1426fbdc4304e4e9fe290fb24",
+    "counterexample_schema": "axm.real-project-closure.counterexample/v1",
+    "counterexamples_git_blob_sha": "ee0b01e07319721a2bd9e7afe7a1f30ebcba7317",
+    "counterexamples_path": "experiments/05-real-project-closure-trial/results/raw/counterexamples.json",
+    "repository": "mike-axiom-mir/axm-state-research"
+  }
+}
