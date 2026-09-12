@@ -29,3 +29,5 @@ jobs:
         run: python tools/check_external_consumers.py --check
       - name: State Research Sentinel execution refinement check
         run: python tools/run_state_research_sentinel_refinement.py --check
+      - name: State Research Wakeup Fuzzer runtime-observation refinement check
+        run: python tools/run_state_research_wakeup_fuzzer_refinement.py --check
