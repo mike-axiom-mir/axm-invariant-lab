@@ -1,0 +1,63 @@
+{
+  "invariant": {
+    "id": "INV-15",
+    "statement": "Runtime-observed dependency evidence must not be treated as closure-complete when a frozen held-out mutation yields a minimized silent-stale counterexample under observed-only routing; absent independent closure evidence, the completeness claim fails."
+  },
+  "observed_boundary": {
+    "declared_risk_independent_detection_control": "PASS",
+    "donor_necessary_or_missed_fields_used": false,
+    "held_out_manifest_hash": "72315d3330709384129c6a3589b47455beae5e166115f979869127f08afb362e",
+    "held_out_mutation_id": "held-conditional-negative-timing",
+    "observed_only_completeness_status": "FAIL",
+    "observed_only_counterexample_length": 1
+  },
+  "projection": {
+    "excluded_donor_fields": [
+      "necessary_wakes",
+      "missed_wakes",
+      "training probes",
+      "stored oracle answers"
+    ],
+    "method": "Mechanical projection of one training-unexposed conditional-read fault, its held-out minimized OBSERVED_READS counterexample, and outcome fields for OBSERVED_READS versus DECLARED_RISK over the same frozen held-out manifest.",
+    "source_paths": [
+      "$.faults[id=fault-conditional-read]",
+      "$.held_out_manifest_hash",
+      "$.held_out_mutation_ids",
+      "$.policies.OBSERVED_READS.gate",
+      "$.policies.OBSERVED_READS.held_out",
+      "$.policies.OBSERVED_READS.final_mismatch_ids",
+      "$.policies.DECLARED_RISK.gate",
+      "$.policies.DECLARED_RISK.held_out",
+      "$.policies.DECLARED_RISK.final_mismatch_ids",
+      "counterexamples[policy=OBSERVED_READS,check_id=json-timings--results__benchmark_results__json,minimized_length=1]"
+    ]
+  },
+  "result": {
+    "check_count": 46,
+    "derived": {
+      "claim_ceiling": "runtime-observed dependency evidence is not closure-complete on this pinned held-out trial",
+      "declared_risk_independent_detection_control": "PASS",
+      "inv_15_observed_only_completeness_status": "FAIL",
+      "minimized_counterexample_length": 1,
+      "minimized_counterexample_mutation_ids": [
+        "held-conditional-negative-timing"
+      ]
+    },
+    "failed_checks": [],
+    "failures": [],
+    "status": "PASS",
+    "unknowns": []
+  },
+  "schema": "axm.invariant-lab.state-research-real-project-closure-refinement/v0.1",
+  "source": {
+    "benchmark_git_blob_sha": "f7107a348a6e3a328d16d3d149c0438faeb14a21",
+    "benchmark_path": "experiments/05-real-project-closure-trial/results/raw/benchmark_results.json",
+    "benchmark_schema": "axm.real-project-closure.benchmark/v1",
+    "commit": "cf891d3614d472b1426fbdc4304e4e9fe290fb24",
+    "counterexample_schema": "axm.real-project-closure.counterexample/v1",
+    "counterexamples_git_blob_sha": "ee0b01e07319721a2bd9e7afe7a1f30ebcba7317",
+    "counterexamples_path": "experiments/05-real-project-closure-trial/results/raw/counterexamples.json",
+    "repository": "mike-axiom-mir/axm-state-research"
+  },
+  "truth_boundary": "PASS means the exact pinned donor records support a narrow falsification: observed-only runtime-read closure misses one training-unexposed conditional dependency on the frozen held-out set, with a one-mutation minimized counterexample, while a separately selected declared-risk audit control detects/repairs held-out staleness and ends equal on the same manifest. The donor offline oracle still scores staleness/equality; Invariant Lab does not execute Sentinel, prove the risk policy generally sufficient, or promote model fidelity beyond seed rung 5."
+}
