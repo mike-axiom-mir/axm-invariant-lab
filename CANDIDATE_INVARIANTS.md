@@ -20,6 +20,7 @@ These are research candidates, not CANON rules created by this repository.
 | INV-14 | When runtime-observed activation identifies a check omitted by declared sparse routing, and that check produces an output change present in the sparse mismatch set, sparse oracle-equivalence must be rejected for that transition. | RUNTIME-OBSERVATION ADAPTER NOW |
 | INV-15 | Runtime-observed dependency evidence must not be treated as closure-complete when a frozen held-out mutation yields a minimized silent-stale counterexample under observed-only routing; absent independent closure evidence, the completeness claim fails. | HELD-OUT EXECUTION FALSIFIER NOW |
 | INV-16 | A cross-project closure claim is not supported by final equality alone: every held-out project/version must retain zero silent-stale outputs through the trace, and absent/corrupt checkpoints must be quarantined and reconstructed only from verified source with provenance. | UNLABELED MULTIPROJECT EXECUTION REFINEMENT NOW |
+| INV-17 | Opaque evaluator results/checkpoints must not cross evaluator-source identity changes as if semantics were unchanged; changed available source needs grounded re-execution or separately established compatibility evidence, while unavailable source keeps affected outputs explicitly unresolved and escalated rather than reconstructing unknown semantics. | CROSS-VERSION OPAQUE RECOVERY REFINEMENT NOW |
 
 The purpose of the lab is to discover which of these survive precise modeling.
 If a candidate requires vague interpretation to make the predicate return true,
