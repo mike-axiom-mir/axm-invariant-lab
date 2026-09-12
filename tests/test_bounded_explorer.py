@@ -51,6 +51,37 @@ class ExplorerTests(unittest.TestCase):
         self.assertEqual("propose-write-candidate", first.trace[0].transition)
         self.assertEqual("FAULT-inherit-candidate-authority", first.trace[1].transition)
 
+    def test_rollback_safe_relation_survives_post_restore_forward_progress(self):
+        result = explore(
+            rollback_continuity.initial_state(),
+            rollback_continuity.SAFE_TRANSITIONS,
+            rollback_continuity.INVARIANTS,
+            max_depth=rollback_continuity.FORMAL_AUDIT_DEPTH,
+        )
+        self.assertEqual("PASS", result.status)
+        self.assertEqual([], result.counterexamples)
+
+    def test_stale_rollback_receipt_fault_is_detected_after_restore(self):
+        result = explore(
+            rollback_continuity.initial_state(),
+            rollback_continuity.STALE_RECEIPT_FAULT_TRANSITIONS,
+            rollback_continuity.INVARIANTS,
+            max_depth=rollback_continuity.FORMAL_AUDIT_DEPTH,
+        )
+        self.assertEqual("FAIL", result.status)
+        first = result.counterexamples[0]
+        self.assertEqual(5, len(first.trace))
+        self.assertEqual(
+            [
+                "mutate-S0-to-S1",
+                "checkpoint-S1",
+                "mutate-S1-to-S2",
+                "rollback-to-S1",
+                "FAULT-forward-mutation-keeps-stale-rollback-receipt",
+            ],
+            [step.transition for step in first.trace],
+        )
+
     def test_unknown_is_hold_not_pass(self):
         initial = {"observed": None}
         invariants = [
