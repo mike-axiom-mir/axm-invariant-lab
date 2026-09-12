@@ -1,8 +1,8 @@
 {
-  "schema_version": "0.3",
+  "schema_version": "0.4",
   "module": {
     "name": "axm-invariant-lab",
-    "purpose": "Bounded state-space exploration, cross-implementation checking, and read-only donor refinement evidence for explicitly modeled AXM invariants."
+    "purpose": "Bounded state-space exploration, cross-implementation checking, tractability measurement, and read-only donor refinement evidence for explicitly modeled AXM invariants."
   },
   "capabilities": [
     {
@@ -53,6 +53,31 @@
       "evidence": {
         "status": "cross_implementation_checked",
         "ceiling": "seed-evidence-rung-5"
+      }
+    },
+    {
+      "id": "invariant.tractability-boundary",
+      "description": "Measure deterministic work-count boundaries between the visited-state explorer and independent all-path verifier on a bounded reconverging fixture, preserving budget exhaustion as HOLD.",
+      "provides": [
+        "evidence.tractability-boundary",
+        "evidence.verification-budget"
+      ],
+      "accepts": [
+        "invariant.exploration",
+        "evidence.cross-implementation-agreement",
+        "verification.budget"
+      ],
+      "tags": [
+        "invariant",
+        "verification",
+        "tractability",
+        "budget",
+        "evidence"
+      ],
+      "evidence": {
+        "status": "deterministic_work_count_fixture",
+        "ceiling": "does-not-promote-seed-evidence-rung",
+        "boundary": "synthetic reconverging model only; no wall-clock, arbitrary-model, solver, donor-runtime, or real-world performance claim"
       }
     },
     {
@@ -114,6 +139,11 @@
     },
     {
       "kind": "python-library",
+      "path": "src/tractability_probe.py",
+      "symbol": "run_probe"
+    },
+    {
+      "kind": "python-library",
       "path": "adapters/monolith_pipeline_fabric.py",
       "symbol": "inspect"
     },
@@ -131,6 +161,11 @@
       "kind": "python-cli",
       "path": "tools/run_monolith_refinement.py",
       "command": "python tools/run_monolith_refinement.py --check"
+    },
+    {
+      "kind": "python-cli",
+      "path": "tools/run_tractability.py",
+      "command": "python tools/run_tractability.py --check"
     }
   ],
   "tests": [
@@ -139,5 +174,5 @@
       "evidence": "repository-suite"
     }
   ],
-  "truth_boundary": "A PASS means no counterexample was found only inside the exact declared model, predicates, transitions, bound, or explicit donor fields actually inspected. Cross-implementation agreement checks exploration semantics over shared authored model functions; pinned donor refinement does not prove a full donor runtime or seed rung-6 cross-repo adoption. This module grants no execution, merge, promotion, installation, device, network, or CANON authority."
+  "truth_boundary": "A PASS means no counterexample was found only inside the exact declared model, predicates, transitions, bound, or explicit donor fields actually inspected. Cross-implementation agreement checks exploration semantics over shared authored model functions; tractability evidence is a deterministic synthetic work-count boundary, not a general performance claim; pinned donor refinement does not prove a full donor runtime or seed rung-6 cross-repo adoption. This module grants no execution, merge, promotion, installation, device, network, or CANON authority."
 }

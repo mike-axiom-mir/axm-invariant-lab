@@ -23,3 +23,5 @@ jobs:
         run: python tools/run_cross_verification.py --check
       - name: Monolith refinement evidence check
         run: python tools/run_monolith_refinement.py --check
+      - name: Tractability evidence check
+        run: python tools/run_tractability.py --check

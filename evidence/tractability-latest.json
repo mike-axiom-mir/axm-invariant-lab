@@ -1,0 +1,54 @@
+{
+  "cases": [
+    {
+      "depth": 12,
+      "pathNodeBudget": 100000,
+      "primaryStatus": "PASS",
+      "primaryTransitions": 24,
+      "primaryUniqueStates": 13,
+      "referenceComplete": true,
+      "referencePathNodes": 8191,
+      "referencePathTransitions": 8190,
+      "referenceStatus": "PASS",
+      "referenceUniqueStates": 13
+    },
+    {
+      "depth": 15,
+      "pathNodeBudget": 100000,
+      "primaryStatus": "PASS",
+      "primaryTransitions": 30,
+      "primaryUniqueStates": 16,
+      "referenceComplete": true,
+      "referencePathNodes": 65535,
+      "referencePathTransitions": 65534,
+      "referenceStatus": "PASS",
+      "referenceUniqueStates": 16
+    },
+    {
+      "depth": 16,
+      "pathNodeBudget": 100000,
+      "primaryStatus": "PASS",
+      "primaryTransitions": 32,
+      "primaryUniqueStates": 17,
+      "referenceComplete": false,
+      "referencePathNodes": 100000,
+      "referencePathTransitions": 100008,
+      "referenceStatus": "HOLD",
+      "referenceUniqueStates": 17
+    }
+  ],
+  "claim": "On a deterministic reconverging two-branch model, the visited-state explorer remains complete through depth 16 while the independent all-path verifier reaches its 100000-node budget and correctly returns HOLD at depth 16.",
+  "depths": [
+    12,
+    15,
+    16
+  ],
+  "evidenceClass": "TRACTABILITY-MEASUREMENT",
+  "firstIncompleteReferenceDepth": 16,
+  "largestCompleteReferenceDepth": 15,
+  "measurement": "deterministic work counts only; no wall-clock performance claim",
+  "modelShape": "two distinct legal transition names advance one shared integer step, so path count grows exponentially while unique reachable state count grows linearly",
+  "pathNodeBudget": 100000,
+  "schemaVersion": "0.1",
+  "truthBoundary": "This is a synthetic tractability probe for the repository's two current exploration strategies. It does not predict arbitrary AXM model size, solver performance, memory limits, donor-runtime cost, or real-world safety. A primary PASS still applies only to the exact bounded state model; reference budget exhaustion is HOLD, never PASS."
+}

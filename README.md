@@ -1,6 +1,6 @@
 # AXM Invariant Lab
 
-**Status:** working experimental capability / cross-implementation evidence / second-donor refinement fixture / not CANON / no merge or execution authority.
+**Status:** working experimental capability / cross-implementation evidence / second-donor refinement fixture / measured tractability boundary / not CANON / no merge or execution authority.
 
 The original `RESEARCH_SEED_v0.1.md` is preserved as provenance. It was the kickstart document, not a permanent requirement that this repository remain research-only. Fresh evidence decides the repo's current status.
 
@@ -23,10 +23,11 @@ The current implementation contains:
 - synthetic fault-injection fixtures that demonstrate transition-order failure detection;
 - a second dependency-free path-enumeration verifier that does not call the primary explorer or prune revisited states;
 - cross-implementation agreement receipts with an explicit path-node tractability budget;
+- a deterministic tractability probe showing where all-path enumeration reaches that budget while visited-state exploration remains small;
 - a read-only AXM Monolith Pipeline Fabric v0.1 refinement adapter pinned to an exact donor contract, preserving candidate-only status and explicit no-automatic-authority fields;
 - deterministic tests and evidence generation.
 
-The primary callable surface is `src.bounded_explorer.explore(...)`. The independent bounded cross-check is `src.reference_verifier.verify_paths(...)`, composed through `src.cross_verifier.cross_verify(...)`. Donor refinement surfaces live under `adapters/`. Machine discovery is declared in `AXM_MODULE.json`.
+The primary callable surface is `src.bounded_explorer.explore(...)`. The independent bounded cross-check is `src.reference_verifier.verify_paths(...)`, composed through `src.cross_verifier.cross_verify(...)`. The tractability probe is `src.tractability_probe.run_probe(...)`. Donor refinement surfaces live under `adapters/`. Machine discovery is declared in `AXM_MODULE.json`.
 
 ## Evidence level
 
@@ -39,6 +40,8 @@ The bounded **exploration semantics** have reached the seed's **rung 5 / CROSS-I
 - the earlier adversarial evidence remains: safe models PASS, injected faults FAIL, missing donor evidence HOLDs, and the TruthGrid refinement fixture detects an adversarial `rollbackRef` mutation.
 
 A second real donor boundary is now mapped through the Monolith Pipeline Fabric v0.1 refinement fixture. The adapter checks explicit `automatic_execution/install/merge/canon = false` fields and candidate-only pipeline statuses; contradictory values FAIL and missing evidence HOLDs. This reduces the shared-model risk identified in v0.2, but it **does not earn seed rung 6** because two external AXM systems are not yet consuming Invariant Lab output.
+
+The retained tractability probe adds a separate operational boundary without promoting the evidence rung. On an authored reconverging two-branch model with a 100,000 path-node budget, the reference verifier completes depth 15 at **65,535 path nodes**, then reaches the budget and returns **HOLD at depth 16**, while the visited-state explorer still completes with only **17 unique states**. These are deterministic work counts, not wall-clock performance claims. See `TRACTABILITY_BOUNDARY.md`.
 
 The rung-5 claim remains intentionally narrow. Both exploration verifiers consume the **same authored transition and invariant functions**. Agreement cross-checks the search/exploration implementation; it does not independently prove that the model faithfully represents donor code.
 
@@ -53,6 +56,7 @@ python -m unittest discover -s tests -v
 python tools/run_evidence.py --check
 python tools/run_cross_verification.py --check
 python tools/run_monolith_refinement.py --check
+python tools/run_tractability.py --check
 ```
 
 Regenerate retained receipts only when deliberately reviewing a semantic change:
@@ -60,6 +64,7 @@ Regenerate retained receipts only when deliberately reviewing a semantic change:
 ```bash
 python tools/run_cross_verification.py
 python tools/run_monolith_refinement.py
+python tools/run_tractability.py
 ```
 
 ## Important truth boundary
@@ -70,14 +75,16 @@ A cross-verification `AGREE` means the independent path enumerator matched the p
 
 A donor-refinement PASS means only that the exact explicit donor fields represented by the pinned fixture satisfy the adapter contract. It does not prove a full donor runtime, an unobserved field, or cross-repo adoption.
 
+A tractability HOLD means the declared comparison budget was exhausted. It is evidence that the independent comparison is incomplete, not evidence against the primary result and not a reason to force a larger budget.
+
 A FAIL is a counterexample to the modeled/declared claim. It is not automatically proof of a bug in a donor repository.
 
 A HOLD means required evidence or bounded enumeration is incomplete. HOLD never silently becomes PASS.
 
-Synthetic fault traces validate the explorers against authored faults; they do not assert those faults exist in donor systems.
+Synthetic fault traces and tractability fixtures validate the explorers against authored conditions; they do not assert those conditions exist in donor systems.
 
 ## Authority boundary
 
-This repository may describe, explore, falsify, cross-check, and emit evidence. It does not grant execution, device, network, merge, promotion, installation, or CANON authority. The four AXM roots — Truth, Agency/non-domination, Continuity, and Wisdom before speed — remain the merge gate.
+This repository may describe, explore, falsify, cross-check, measure bounded tractability, and emit evidence. It does not grant execution, device, network, merge, promotion, installation, or CANON authority. The four AXM roots — Truth, Agency/non-domination, Continuity, and Wisdom before speed — remain the merge gate.
 
-Read `INVARIANT_CONTRACT.md`, `REFINEMENT_BOUNDARY.md`, `MONOLITH_PIPELINE_REFINEMENT.md`, `DONOR_SCAN_2026-09-12.md`, `ACTION_REPORT_v0.1.md`, `ACTION_REPORT_v0.2.md`, and `ACTION_REPORT_v0.3.md` before extending the lab.
+Read `INVARIANT_CONTRACT.md`, `REFINEMENT_BOUNDARY.md`, `MONOLITH_PIPELINE_REFINEMENT.md`, `TRACTABILITY_BOUNDARY.md`, `DONOR_SCAN_2026-09-12.md`, and the latest `ACTION_REPORT_v0.*.md` before extending the lab.
