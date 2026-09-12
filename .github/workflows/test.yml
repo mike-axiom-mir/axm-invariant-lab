@@ -41,3 +41,5 @@ jobs:
         run: python tools/run_state_research_stateborn_checkpoint_refinement.py --check
       - name: State Research Stateborn hostile-transport refinement check
         run: python tools/run_state_research_stateborn_transport_refinement.py --check
+      - name: State Research reference-state closure refinement check
+        run: python tools/run_state_research_reference_state_closure_refinement.py --check
