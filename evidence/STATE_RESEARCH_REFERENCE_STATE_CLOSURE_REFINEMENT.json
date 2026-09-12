@@ -1,0 +1,62 @@
+{
+  "schema": "axm.invariant-lab.state-research-reference-state-closure-refinement/v0.1",
+  "source": {
+    "repository": "mike-axiom-mir/axm-state-research",
+    "commit": "cf891d3614d472b1426fbdc4304e4e9fe290fb24",
+    "readme_path": "experiments/reference-state-closure-v1/README.md",
+    "readme_git_blob_sha": "9e54750a23808ae291d08c4047df91698d41d882",
+    "experiment_path": "experiments/reference-state-closure-v1/experiment.py",
+    "experiment_git_blob_sha": "537a695258927b6f9f7acf924c44900dc306632b",
+    "fixture_path": "experiments/reference-state-closure-v1/fixture.json",
+    "fixture_git_blob_sha": "adee7a66f724d4a83b063ec9cb1da4698455480d",
+    "test_path": "experiments/reference-state-closure-v1/test_experiment.py",
+    "test_git_blob_sha": "8e6acbd97d7a772b842a8f180f02b2b9dc8c26bf",
+    "portable_path": "experiments/reference-state-closure-v1/portable.py",
+    "portable_git_blob_sha": "382c60a8aefea603d3329033e0ce5f3b59c1575e",
+    "portable_test_path": "experiments/reference-state-closure-v1/test_portable.py",
+    "portable_test_git_blob_sha": "e8f4cd20e41f3d4e4c7ce2ceb1cce537ed54c2d2"
+  },
+  "projection": {
+    "method": "Mechanical projection of exact pinned donor source/fixture/test semantics plus independently reproduced deterministic result fields. The dense oracle, sparse closure engine, same-wake-set negative control, and injected dropped-summary fault stay distinct.",
+    "excluded_claims": [
+      "arbitrary sparse scheduler correctness",
+      "neural or hardware performance",
+      "producer authentication or signatures",
+      "real-environment behavior",
+      "execution, merge, or CANON authority"
+    ]
+  },
+  "invariant": {
+    "id": "INV-18",
+    "statement": "A sparse execution may claim dense-oracle equivalence only if still-live contributions from sleeping components remain in shared reference closure; an identical wake set is insufficient when a sleeping reference contribution is dropped."
+  },
+  "result": {
+    "status": "PASS",
+    "check_count": 50,
+    "failed_checks": [],
+    "unknowns": [],
+    "failures": [],
+    "derived": {
+      "inv_18_reference_state_closure_status": "PASS",
+      "same_wake_set_negative_control_status": "PASS",
+      "sleeping_reference_event_body_wakes": 0,
+      "body_executions_avoided": 86,
+      "reference_encoding_bytes_avoided": 96,
+      "claim_ceiling": "on the exact pinned deterministic reference-state-closure workload, sparse body execution matches the dense oracle only when still-live sleeping reference contributions remain in derived closure; the same wake set is insufficient when that shared contribution is dropped. This does not prove arbitrary sparse schedulers, donor-runtime universality, neural/hardware behavior, or authority."
+    }
+  },
+  "observed_boundary": {
+    "fixture_sha256": "7f65abe33661b1deef2bac40052efff68088cb2d461e14d6a738f1556fb5d6a5",
+    "dense_sparse_replay_digest": "31882bcce06d84826ce3112a6538913c3cdcfc9b35f4c149e672a86c85fdf9a0",
+    "same_wake_set_control_divergences": 11,
+    "sleeping_reference_event_wakes": [],
+    "dense_body_executions": 104,
+    "sparse_body_executions": 18,
+    "executions_avoided": 86,
+    "dense_reference_bytes": 119,
+    "derived_reference_bytes": 23,
+    "fault_status": "HOLD",
+    "fault_replay_digest_B": "7cdefd2a393b2123549e339526b60f75465972f1a4813a540f327a6dee94c157"
+  },
+  "truth_boundary": "PASS means the exact pinned deterministic State Research reference-state-closure workload supports INV-18 narrowly: sparse body execution matches the dense oracle while sleeping reference contributions remain represented in derived closure; a same-wake-set control that drops a sleeping contribution diverges, and deliberately dropping summary updates HOLDs. This is one inspectable software workload, not arbitrary sparse-scheduler, neural/hardware, producer-authentication, real-environment, or authority proof, and it does not promote general model fidelity beyond seed rung 5."
+}
