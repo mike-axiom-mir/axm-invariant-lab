@@ -37,11 +37,37 @@ class ExternalConsumerTests(unittest.TestCase):
     def tearDown(self):
         self.tmp.cleanup()
 
+    def second_consumer(self):
+        return {
+            **self.registry["consumers"][0],
+            "consumerRepo": "example/transport-consumer",
+            "consumerCommit": "b" * 40,
+            "capability": "transport.evidence-consumer",
+        }
+
     def test_intact_producer_contract_passes(self):
         result = check_external_consumers.check_registry(self.root, self.registry)
         self.assertTrue(result["allPinnedProducerContractsIntact"])
         self.assertEqual(result["consumerCount"], 1)
         self.assertFalse(any(result["authority"].values()))
+
+    def test_two_distinct_consumers_must_both_match(self):
+        self.registry["consumers"].append(self.second_consumer())
+        result = check_external_consumers.check_registry(self.root, self.registry)
+        self.assertTrue(result["allPinnedProducerContractsIntact"])
+        self.assertEqual(result["consumerCount"], 2)
+
+        self.registry["consumers"][1]["packetBlob"] = "0" * 40
+        drifted = check_external_consumers.check_registry(self.root, self.registry)
+        self.assertFalse(drifted["allPinnedProducerContractsIntact"])
+        self.assertTrue(drifted["consumers"][0]["compatible"])
+        self.assertFalse(drifted["consumers"][1]["compatible"])
+
+    def test_duplicate_consumer_repository_is_rejected(self):
+        duplicate = {**self.registry["consumers"][0], "consumerCommit": "b" * 40}
+        self.registry["consumers"].append(duplicate)
+        with self.assertRaisesRegex(ValueError, "duplicate consumer repository"):
+            check_external_consumers.check_registry(self.root, self.registry)
 
     def test_producer_byte_drift_is_visible(self):
         (self.root / "evidence" / "packet.json").write_text('{"changed":true}\n', encoding="utf-8")
