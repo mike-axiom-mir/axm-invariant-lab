@@ -20,7 +20,14 @@ def build_evidence()->dict:
         'id':'INV-15',
         'statement':'Runtime-observed dependency evidence must not be treated as closure-complete when a frozen held-out mutation yields a minimized silent-stale counterexample under observed-only routing; absent independent closure evidence, the completeness claim fails.'
       },
-      'result':result.to_dict(),
+      'result':{
+        'status':result.status,
+        'check_count':len(result.checks),
+        'failed_checks':[item['check'] for item in result.checks if not item.get('ok')],
+        'unknowns':result.unknowns,
+        'failures':result.failures,
+        'derived':result.derived,
+      },
       'observed_boundary':{
         'held_out_manifest_hash':fixture['held_out_manifest_hash'],
         'held_out_mutation_id':fixture['held_out_mutation_id'],
