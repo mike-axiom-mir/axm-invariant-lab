@@ -1,0 +1,87 @@
+{
+  "schema": "axm.invariant-lab.stateborn-hostile-transport-projection/v0.1",
+  "source": {
+    "repository": "mike-axiom-mir/axm-state-research",
+    "commit": "cf891d3614d472b1426fbdc4304e4e9fe290fb24",
+    "source_path": "experiments/07-stateborn-rpg-lab/dist/state-transport.js",
+    "source_git_blob_sha": "a97bde28404e9904bed2eaf76f528b0245dba29c",
+    "test_path": "experiments/07-stateborn-rpg-lab/tests/state-transport.test.mjs",
+    "test_git_blob_sha": "0036fe3764207c498f9dd832591c614bdab8868c",
+    "raw_path": "experiments/07-stateborn-rpg-lab/results/raw/state_transport_probe.json",
+    "raw_git_blob_sha": "f8ef63db0109e7c64637916f39174cbaf684719e",
+    "retained_failure_path": "experiments/07-stateborn-rpg-lab/docs/RETAINED_TRANSPORT_FAILURE_v0.7.0.md",
+    "retained_failure_git_blob_sha": "90516df35d599767d9815036a09ae4d554b5de20",
+    "report_path": "experiments/07-stateborn-rpg-lab/docs/HOSTILE_TRANSPORT_REPORT_v0.7.0.md",
+    "report_git_blob_sha": "10151fc6bbb81be91b391b2201ade2be0caac35b"
+  },
+  "projection": {
+    "method": "Mechanical projection of exact pinned source constants/branches, donor assertions, raw gate fields, and retained failure text. Summary booleans are not treated as independent proof: source/test blobs are pinned alongside the raw receipt.",
+    "excluded_claims": [
+      "real network exactly-once delivery",
+      "peer authentication or authorship",
+      "concurrent-writer safety",
+      "durable crash/power-loss persistence",
+      "production multiplayer scale",
+      "merge or CANON authority"
+    ]
+  },
+  "fixture_identity": {
+    "source_frozen_digest": "937ea582ce4576bdff15db1afebbece7c9f11e2b138860d66cfcbc381f948079",
+    "raw_fixture_digest": "937ea582ce4576bdff15db1afebbece7c9f11e2b138860d66cfcbc381f948079",
+    "raw_frozen_fixture_digest": "937ea582ce4576bdff15db1afebbece7c9f11e2b138860d66cfcbc381f948079",
+    "freeze_valid": true,
+    "report_printed_digest": "937ea582ce4576bdff15fb1afebbece7c9f11e2b138860d66cfcbc381f948079",
+    "report_digest_matches_source": false,
+    "report_digest_is_identity_authority": false
+  },
+  "source_semantics": {
+    "duplicate_guard_uses_accepted_digest_set": true,
+    "duplicate_suppression_returns_before_apply": true,
+    "duplicate_event_before_after_digest_equal": true,
+    "digest_added_only_when_apply_status_applied": true,
+    "rejected_attempts_do_not_install_barrier": true
+  },
+  "held_duplicate": {
+    "fixture_id": "held-duplicate",
+    "outcome_code": 1,
+    "expected_outcome_code": 1,
+    "outcome_matches_expected": true,
+    "accepted_packets": 6,
+    "duplicates_suppressed": 1,
+    "duplicate_no_effect": true,
+    "engine_replay": "PASS",
+    "transport_replay": "PASS"
+  },
+  "held_consent_refusal": {
+    "fixture_id": "held-consent-refusal",
+    "outcome_code": 2,
+    "expected_outcome_code": 2,
+    "outcome_matches_expected": true,
+    "duplicates_suppressed": 1,
+    "duplicate_no_effect": true,
+    "joint_state_after": [0, 0, 0],
+    "engine_replay": "PASS",
+    "transport_replay": "PASS"
+  },
+  "held_corrupt_retry": {
+    "fixture_id": "held-corrupt-retry",
+    "outcome_code": 1,
+    "expected_outcome_code": 1,
+    "outcome_matches_expected": true,
+    "accepted_packets": 6,
+    "tamper_refusals": 1,
+    "duplicates_suppressed": 0,
+    "engine_replay": "PASS",
+    "transport_replay": "PASS",
+    "retained_failure_before_repair": "rejected digest poisoned deduplication and clean retry was suppressed",
+    "repair": "insert digest into duplicate tracking only after APPLIED"
+  },
+  "aggregate": {
+    "held_out_runs": 10,
+    "all_expected_outcomes": true,
+    "all_replay": true,
+    "all_duplicates_no_effect": true,
+    "total_duplicates_suppressed": 2,
+    "gate_pass": true
+  }
+}

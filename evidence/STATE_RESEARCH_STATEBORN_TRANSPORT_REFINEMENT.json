@@ -1,0 +1,62 @@
+{
+  "invariant": {
+    "id": "INV-08",
+    "statement": "Deterministic duplicate execution should agree on the declared state identity; on this donor boundary, only accepted state effects may install the duplicate/replay barrier."
+  },
+  "observed_boundary": {
+    "aggregate_duplicates_suppressed": 2,
+    "consent_refusal_joint_state_after": [
+      0,
+      0,
+      0
+    ],
+    "corrupt_retry_outcome_matches_expected": true,
+    "corrupt_retry_tamper_refusals": 1,
+    "frozen_fixture_digest": "937ea582ce4576bdff15db1afebbece7c9f11e2b138860d66cfcbc381f948079",
+    "held_duplicate_no_effect": true,
+    "held_duplicate_suppressed": 1,
+    "report_digest_matches_source": false,
+    "report_printed_digest": "937ea582ce4576bdff15fb1afebbece7c9f11e2b138860d66cfcbc381f948079"
+  },
+  "projection": {
+    "excluded_claims": [
+      "real network exactly-once delivery",
+      "peer authentication or authorship",
+      "concurrent-writer safety",
+      "durable crash/power-loss persistence",
+      "production multiplayer scale",
+      "merge or CANON authority"
+    ],
+    "method": "Mechanical projection of exact pinned source constants/branches, donor assertions, raw gate fields, and retained failure text. Summary booleans are not treated as independent proof: source/test blobs are pinned alongside the raw receipt."
+  },
+  "result": {
+    "check_count": 60,
+    "derived": {
+      "accepted_only_replay_barrier_status": "PASS",
+      "claim_ceiling": "on the exact pinned deterministic Stateborn v0.7 hostile-transport boundary, accepted packet digests suppress later duplicates without a second engine effect, while refused/corrupt attempts do not become replay barriers; this is simulator evidence, not real-network exactly-once delivery or peer-authentication proof",
+      "consent_refusal_survives_duplicate_without_commit": "PASS",
+      "inv_08_state_identity_on_duplicate_status": "PASS",
+      "report_digest_discrepancy_status": "EXPLICIT_NON_AUTHORITY"
+    },
+    "failed_checks": [],
+    "failures": [],
+    "status": "PASS",
+    "unknowns": []
+  },
+  "schema": "axm.invariant-lab.state-research-stateborn-transport-refinement/v0.1",
+  "source": {
+    "commit": "cf891d3614d472b1426fbdc4304e4e9fe290fb24",
+    "raw_git_blob_sha": "f8ef63db0109e7c64637916f39174cbaf684719e",
+    "raw_path": "experiments/07-stateborn-rpg-lab/results/raw/state_transport_probe.json",
+    "report_git_blob_sha": "10151fc6bbb81be91b391b2201ade2be0caac35b",
+    "report_path": "experiments/07-stateborn-rpg-lab/docs/HOSTILE_TRANSPORT_REPORT_v0.7.0.md",
+    "repository": "mike-axiom-mir/axm-state-research",
+    "retained_failure_git_blob_sha": "90516df35d599767d9815036a09ae4d554b5de20",
+    "retained_failure_path": "experiments/07-stateborn-rpg-lab/docs/RETAINED_TRANSPORT_FAILURE_v0.7.0.md",
+    "source_git_blob_sha": "a97bde28404e9904bed2eaf76f528b0245dba29c",
+    "source_path": "experiments/07-stateborn-rpg-lab/dist/state-transport.js",
+    "test_git_blob_sha": "0036fe3764207c498f9dd832591c614bdab8868c",
+    "test_path": "experiments/07-stateborn-rpg-lab/tests/state-transport.test.mjs"
+  },
+  "truth_boundary": "PASS means the exact pinned deterministic Stateborn v0.7 hostile-transport source/test/raw-evidence relation supports INV-08 narrowly: an already accepted packet digest is suppressed before a second state effect, while rejected/corrupt attempts do not install the replay barrier. The donor prose report contains a one-character frozen-fixture digest mismatch; source and raw gate identity agree and remain authoritative for this projection. This is not real-network exactly-once delivery, peer-authentication, concurrent-writer, durable-crash, or CANON proof, and it does not promote general model fidelity beyond seed rung 5."
+}
