@@ -1,0 +1,121 @@
+{
+  "schema": "axm.invariant-lab.unlabeled-multiproject-closure-projection/v0.1",
+  "source": {
+    "repository": "mike-axiom-mir/axm-state-research",
+    "commit": "cf891d3614d472b1426fbdc4304e4e9fe290fb24",
+    "benchmark_path": "experiments/06-unlabeled-multiproject-closure-challenge/results/raw/benchmark_results.json",
+    "benchmark_git_blob_sha": "f6be4ae9b42e9c2edbb114d2d85ce1c5689660e7",
+    "checkpoint_receipts_path": "experiments/06-unlabeled-multiproject-closure-challenge/results/raw/checkpoint_receipts.json",
+    "checkpoint_receipts_git_blob_sha": "541cfe64e15fb580ae575cb38e243ac49ffa9350",
+    "final_report_path": "experiments/06-unlabeled-multiproject-closure-challenge/FINAL_REPORT.md",
+    "final_report_git_blob_sha": "316aea1d795acc1c6a503fdac6800bbd60c35782"
+  },
+  "projection": {
+    "method": "Mechanical projection of held-out manifest identity, unlabeled status, OBSERVED_READS and COMBINED_STRUCTURAL_OBSERVED per-project outcome/work fields, plus checkpoint validation/recovery receipts. No donor routing code is executed or copied.",
+    "excluded_donor_fields": [
+      "necessary_wakes",
+      "missed_wakes",
+      "timing measurements",
+      "offline scoring implementation details"
+    ],
+    "source_paths": [
+      "$.held_out_contains_declared_risk_labels",
+      "$.held_out_manifest_hash",
+      "$.held_out_mutation_ids",
+      "$.policies.OBSERVED_READS.final_oracle_equality",
+      "$.policies.OBSERVED_READS.silent_stale_outputs",
+      "$.policies.OBSERVED_READS.counterexample_count",
+      "$.policies.OBSERVED_READS.projects.*.{final_oracle_equality,metrics.silent_stale_outputs,metrics.maximum_silent_stale_window,checkpoint_case}",
+      "$.policies.COMBINED_STRUCTURAL_OBSERVED.{final_oracle_equality,silent_stale_outputs,total_policy_check_work,full_oracle_reference_work,work_reduction_percentage}",
+      "$.policies.COMBINED_STRUCTURAL_OBSERVED.projects.*.{final_oracle_equality,metrics.silent_stale_outputs,metrics.quarantines,metrics.unresolved_recoveries,total_policy_check_work,checkpoint_case}",
+      "checkpoint_receipts[project_id in held-out projects]"
+    ]
+  },
+  "held_out": {
+    "contains_declared_risk_labels": false,
+    "manifest_hash": "2d3b07b3f5eaf5bac06c739d7ff3e3ac9a45f71daff757b7c18d37eb601da251",
+    "mutation_count": 10,
+    "project_ids": [
+      "adaptive-closure-v0.1.0-at-7ba2b1d",
+      "workfloor-sentinel-v0.1.0-at-7ba2b1d"
+    ]
+  },
+  "observed_reads": {
+    "policy": "OBSERVED_READS",
+    "final_oracle_equality": true,
+    "silent_stale_outputs": 8,
+    "counterexample_count": 8,
+    "projects": [
+      {
+        "project_id": "adaptive-closure-v0.1.0-at-7ba2b1d",
+        "checkpoint_case": "corrupt_payload",
+        "final_oracle_equality": true,
+        "silent_stale_outputs": 4,
+        "maximum_silent_stale_window": 4
+      },
+      {
+        "project_id": "workfloor-sentinel-v0.1.0-at-7ba2b1d",
+        "checkpoint_case": "absent",
+        "final_oracle_equality": true,
+        "silent_stale_outputs": 4,
+        "maximum_silent_stale_window": 4
+      }
+    ]
+  },
+  "combined_candidate": {
+    "policy": "COMBINED_STRUCTURAL_OBSERVED",
+    "gate": {
+      "final_oracle_equality": true,
+      "silent_stale_outputs_zero": true,
+      "all_repair_quarantine_provenance_valid": true,
+      "total_policy_work_less_than_full_oracle": true
+    },
+    "final_oracle_equality": true,
+    "silent_stale_outputs": 0,
+    "total_policy_check_work": 597,
+    "full_oracle_reference_work": 1955,
+    "work_reduction_percentage": 69.4629,
+    "projects": [
+      {
+        "project_id": "adaptive-closure-v0.1.0-at-7ba2b1d",
+        "checkpoint_case": "corrupt_payload",
+        "final_oracle_equality": true,
+        "silent_stale_outputs": 0,
+        "quarantines": 1,
+        "unresolved_recoveries": 0,
+        "total_policy_check_work": 284
+      },
+      {
+        "project_id": "workfloor-sentinel-v0.1.0-at-7ba2b1d",
+        "checkpoint_case": "absent",
+        "final_oracle_equality": true,
+        "silent_stale_outputs": 0,
+        "quarantines": 1,
+        "unresolved_recoveries": 0,
+        "total_policy_check_work": 313
+      }
+    ]
+  },
+  "checkpoint_recovery": [
+    {
+      "project_id": "adaptive-closure-v0.1.0-at-7ba2b1d",
+      "checkpoint_case": "corrupt_payload",
+      "validation_status": "quarantined_untrusted",
+      "validation_reasons": ["payload_hash_mismatch", "provenance_hash_mismatch"],
+      "recovery_action": "quarantine_then_reconstruct_from_verified_source",
+      "reconstruction_check_executions": 181,
+      "source_snapshot_hash": "4277e54e50368c2f339787a255d9b22af3888aee82e0875bfc41cd87b7873bbb",
+      "replacement_checkpoint_hash": "f131ff56189a93569a79bddb1695522e3da7cdeeaf9f4570c660611a9c85e3de"
+    },
+    {
+      "project_id": "workfloor-sentinel-v0.1.0-at-7ba2b1d",
+      "checkpoint_case": "absent",
+      "validation_status": "quarantined_untrusted",
+      "validation_reasons": ["checkpoint_absent"],
+      "recovery_action": "quarantine_then_reconstruct_from_verified_source",
+      "reconstruction_check_executions": 210,
+      "source_snapshot_hash": "9cc294227a03a67c87c3c3a3f70e3e6f559bc634de012361b0bee4de867a3480",
+      "replacement_checkpoint_hash": "674a21510e2558f3740fe4494321f43a23757cf21ca24e5fbcacbf5b7c587897"
+    }
+  ]
+}
