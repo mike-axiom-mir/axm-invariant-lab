@@ -1,0 +1,21 @@
+{
+  "authority": {
+    "canon": false,
+    "execution": false,
+    "installation": false,
+    "merge": false,
+    "promotion": false
+  },
+  "capabilityCount": 14,
+  "checkedEntrypointCount": 25,
+  "entrypointCount": 25,
+  "failureCount": 0,
+  "failures": [],
+  "holdCount": 0,
+  "holds": [],
+  "manifestSchemaVersion": "1.3",
+  "moduleName": "axm-invariant-lab",
+  "schema": "axm.invariant-lab.discovery-integrity/v0.1",
+  "status": "PASS",
+  "truthBoundary": "Checks local AXM_MODULE structural discoverability only: manifest shape, local path confinement/existence, Python-library symbol presence by static AST inspection, and Python-CLI path/--check declarations. It does not execute discovered entrypoints, prove their semantics, verify donor runtimes, or grant authority."
+}
