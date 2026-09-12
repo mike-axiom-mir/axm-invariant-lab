@@ -13,21 +13,66 @@
   "evidenceClass": "CROSS-REPO-REFINEMENT-FIXTURE",
   "result": {
     "checks": [
-      {"check": "descriptor-schema", "ok": true},
-      {"check": "descriptor-source", "ok": true},
-      {"check": "output-graph", "ok": true},
-      {"check": "output-candidates", "ok": true},
-      {"check": "output-gaps", "ok": true},
-      {"check": "authority-automatic_execution-false", "ok": true},
-      {"check": "authority-automatic_install-false", "ok": true},
-      {"check": "authority-automatic_merge-false", "ok": true},
-      {"check": "authority-automatic_canon-false", "ok": true},
-      {"check": "descriptor-truth-boundary-present", "ok": true},
-      {"check": "candidates-schema", "ok": true},
-      {"check": "pipeline-0-candidate-status", "ok": true},
-      {"check": "pipeline-1-candidate-status", "ok": true},
-      {"check": "pipeline-2-candidate-status", "ok": true},
-      {"check": "candidates-truth-boundary-present", "ok": true}
+      {
+        "check": "descriptor-schema",
+        "ok": true
+      },
+      {
+        "check": "descriptor-source",
+        "ok": true
+      },
+      {
+        "check": "output-graph",
+        "ok": true
+      },
+      {
+        "check": "output-candidates",
+        "ok": true
+      },
+      {
+        "check": "output-gaps",
+        "ok": true
+      },
+      {
+        "check": "authority-automatic_execution-false",
+        "ok": true
+      },
+      {
+        "check": "authority-automatic_install-false",
+        "ok": true
+      },
+      {
+        "check": "authority-automatic_merge-false",
+        "ok": true
+      },
+      {
+        "check": "authority-automatic_canon-false",
+        "ok": true
+      },
+      {
+        "check": "descriptor-truth-boundary-present",
+        "ok": true
+      },
+      {
+        "check": "candidates-schema",
+        "ok": true
+      },
+      {
+        "check": "pipeline-0-candidate-status",
+        "ok": true
+      },
+      {
+        "check": "pipeline-1-candidate-status",
+        "ok": true
+      },
+      {
+        "check": "pipeline-2-candidate-status",
+        "ok": true
+      },
+      {
+        "check": "candidates-truth-boundary-present",
+        "ok": true
+      }
     ],
     "failures": [],
     "status": "PASS",
