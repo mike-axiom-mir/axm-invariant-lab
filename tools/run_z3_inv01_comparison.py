@@ -5,14 +5,18 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 from formal.z3_inv01 import solve_case
 from models import no_silent_authority
 from src.bounded_explorer import explore
 
 
-ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE_PATH = ROOT / "evidence" / "z3_inv01_comparison.json"
 PACKAGE_PIN = "z3-solver==5.1.0.0"
 
