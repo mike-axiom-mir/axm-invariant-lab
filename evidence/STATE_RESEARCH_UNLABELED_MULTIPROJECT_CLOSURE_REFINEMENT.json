@@ -1,0 +1,70 @@
+{
+  "invariant": {
+    "id": "INV-16",
+    "statement": "A cross-project closure claim is not supported by final equality alone: every held-out project/version must retain zero silent-stale outputs through the trace, and absent/corrupt checkpoints must be quarantined and reconstructed only from verified source with provenance."
+  },
+  "observed_boundary": {
+    "checkpoint_cases": {
+      "adaptive-closure-v0.1.0-at-7ba2b1d": "corrupt_payload",
+      "workfloor-sentinel-v0.1.0-at-7ba2b1d": "absent"
+    },
+    "combined_candidate_silent_stale_outputs": 0,
+    "combined_candidate_total_policy_check_work": 597,
+    "donor_necessary_or_missed_fields_used": false,
+    "full_oracle_reference_work": 1955,
+    "held_out_contains_declared_risk_labels": false,
+    "held_out_manifest_hash": "2d3b07b3f5eaf5bac06c739d7ff3e3ac9a45f71daff757b7c18d37eb601da251",
+    "held_out_mutation_count": 10,
+    "held_out_project_count": 2,
+    "observed_reads_final_oracle_equality": true,
+    "observed_reads_silent_stale_outputs": 8
+  },
+  "projection": {
+    "excluded_donor_fields": [
+      "necessary_wakes",
+      "missed_wakes",
+      "timing measurements",
+      "offline scoring implementation details"
+    ],
+    "method": "Mechanical projection of held-out manifest identity, unlabeled status, OBSERVED_READS and COMBINED_STRUCTURAL_OBSERVED per-project outcome/work fields, plus checkpoint validation/recovery receipts. No donor routing code is executed or copied.",
+    "source_paths": [
+      "$.held_out_contains_declared_risk_labels",
+      "$.held_out_manifest_hash",
+      "$.held_out_mutation_ids",
+      "$.policies.OBSERVED_READS.final_oracle_equality",
+      "$.policies.OBSERVED_READS.silent_stale_outputs",
+      "$.policies.OBSERVED_READS.counterexample_count",
+      "$.policies.OBSERVED_READS.projects.*.{final_oracle_equality,metrics.silent_stale_outputs,metrics.maximum_silent_stale_window,checkpoint_case}",
+      "$.policies.COMBINED_STRUCTURAL_OBSERVED.{final_oracle_equality,silent_stale_outputs,total_policy_check_work,full_oracle_reference_work,work_reduction_percentage}",
+      "$.policies.COMBINED_STRUCTURAL_OBSERVED.projects.*.{final_oracle_equality,metrics.silent_stale_outputs,metrics.quarantines,metrics.unresolved_recoveries,total_policy_check_work,checkpoint_case}",
+      "checkpoint_receipts[project_id in held-out projects]"
+    ]
+  },
+  "result": {
+    "check_count": 60,
+    "derived": {
+      "checkpoint_trust_status": "PASS",
+      "claim_ceiling": "on the pinned unlabeled two-project challenge, final equality alone is insufficient; per-project zero silent-stale trace closure plus fail-closed checkpoint provenance is required",
+      "combined_candidate_trace_closure_status": "PASS",
+      "cross_project_project_count": 2,
+      "inv_16_final_equality_only_status": "FAIL",
+      "observed_only_hidden_transient_failures": 8
+    },
+    "failed_checks": [],
+    "failures": [],
+    "status": "PASS",
+    "unknowns": []
+  },
+  "schema": "axm.invariant-lab.state-research-unlabeled-multiproject-closure-refinement/v0.1",
+  "source": {
+    "benchmark_git_blob_sha": "f6be4ae9b42e9c2edbb114d2d85ce1c5689660e7",
+    "benchmark_path": "experiments/06-unlabeled-multiproject-closure-challenge/results/raw/benchmark_results.json",
+    "checkpoint_receipts_git_blob_sha": "541cfe64e15fb580ae575cb38e243ac49ffa9350",
+    "checkpoint_receipts_path": "experiments/06-unlabeled-multiproject-closure-challenge/results/raw/checkpoint_receipts.json",
+    "commit": "cf891d3614d472b1426fbdc4304e4e9fe290fb24",
+    "final_report_git_blob_sha": "316aea1d795acc1c6a503fdac6800bbd60c35782",
+    "final_report_path": "experiments/06-unlabeled-multiproject-closure-challenge/FINAL_REPORT.md",
+    "repository": "mike-axiom-mir/axm-state-research"
+  },
+  "truth_boundary": "PASS means the exact pinned donor records support a narrow cross-project boundary: OBSERVED_READS ends oracle-equal yet retains eight silent-stale outputs across both held-out projects, so final equality alone is insufficient; the separately selected combined structural+observed candidate has zero silent stale outputs on both projects, less counted check work than the full-oracle reference, and fail-closed checkpoint quarantine/reconstruction provenance for one corrupt and one absent checkpoint. The donor offline oracle still scores hidden staleness/equality; Invariant Lab does not execute either donor project, prove the combined policy generally sufficient, or promote general model fidelity beyond seed rung 5."
+}
