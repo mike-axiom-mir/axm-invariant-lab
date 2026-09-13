@@ -1,0 +1,51 @@
+{
+  "claim": "For the exact supplied Connected Monolith v0.3.2 result receipt, endpoint classification is internally coherent and explicit callable coverage remains 3 endpoints; addressability, wiring, blocked states, and candidate composition are not promoted into broader callability or verification.",
+  "evidenceClass": "USER-SUPPLIED-MONOLITH-RESULT-REFINEMENT",
+  "result": {
+    "checks": [
+      {
+        "check": "supported-schema",
+        "ok": true
+      },
+      {
+        "check": "endpoint-addressable-coherence",
+        "ok": true
+      },
+      {
+        "check": "adapter-status-partition",
+        "ok": true
+      },
+      {
+        "check": "explicit-callable-coherence",
+        "ok": true
+      },
+      {
+        "check": "wired-edge-upper-bound",
+        "ok": true
+      },
+      {
+        "check": "wired-composition-upper-bound",
+        "ok": true
+      }
+    ],
+    "failures": [],
+    "metrics": {
+      "addressable_endpoint_count": 23472,
+      "blocked_missing_callable_binding": 23248,
+      "blocked_missing_native_contract": 68,
+      "classified_endpoint_count": 23472,
+      "endpoint_count": 23472,
+      "explicit_callable_endpoint_count": 3
+    },
+    "status": "PASS",
+    "unknowns": []
+  },
+  "schemaVersion": "0.1",
+  "source": {
+    "file": "monolith-connected-zip-v0.3.2.receipt.json",
+    "schema": "axm.monolith.connected-zip-result/v0.2",
+    "sha256": "06588a18e592a5b553562ad9a4c5b6f911c943fc4bbcee6ebf86ee56afddcc93",
+    "zipSha256Claim": "sha256:f0a0d1d30007d71bb4ded6a9cc03259e5a12ceb7967cd532b12d366ae0cdf55e"
+  },
+  "truthBoundary": "The retained source is a user-supplied local-build result receipt, not the 194 MB archive or its snapshot receipt. This check proves only properties explicitly present in that receipt and the consumer non-promotion rules tested here. It does not independently verify archive contents, every endpoint, the Blackline Relay implementation, deployment, execution, merge, or CANON authority."
+}
