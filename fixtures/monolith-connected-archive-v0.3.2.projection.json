@@ -1,0 +1,172 @@
+{
+  "compositions": {
+    "all_steps_named_workflow_callable_count": 0,
+    "callable_scope_violation_ids": [],
+    "composition_count": 80,
+    "contains_named_workflow_callable_count": 7,
+    "contains_named_workflow_callable_ids": [
+      "composition-003",
+      "composition-017",
+      "composition-028",
+      "composition-029",
+      "composition-048",
+      "composition-066",
+      "composition-072"
+    ],
+    "schema": "axm.monolith.executable-compositions/v0.1",
+    "status_triples": [
+      {
+        "count": 80,
+        "execution_status": "not_executed",
+        "source_status": "candidate_unverified",
+        "wiring_status": "wired_candidate"
+      }
+    ],
+    "step_occurrence_count": 384,
+    "step_status_counts": {
+      "blocked_missing_callable_binding": 4,
+      "blocked_missing_native_contract": 271,
+      "callable_through_named_workflow": 7,
+      "executable_inspection": 78,
+      "executable_test_evidence": 24
+    },
+    "truth_boundary": "composition steps have stable addresses; execution blocks at any step lacking a callable source adapter",
+    "wired_composition_count": 80
+  },
+  "execution_fabric": {
+    "authority": {
+      "automatic_canon": false,
+      "automatic_install": false,
+      "automatic_merge": false,
+      "automatic_network": false,
+      "automatic_source_mutation": false
+    },
+    "schema": "axm.monolith.execution-fabric/v0.1",
+    "summary": {
+      "adapter_status_counts": {
+        "blocked_missing_callable_binding": 23248,
+        "blocked_missing_native_contract": 68,
+        "callable_through_named_workflow": 3,
+        "executable_inspection": 87,
+        "executable_test_evidence": 37,
+        "launchable_local_surface": 29
+      },
+      "addressable_endpoint_count": 23472,
+      "aggregate_endpoint_count": 251,
+      "callable_workflow_stage_count": 3,
+      "composition_count": 80,
+      "declared_leaf_endpoint_count": 23221,
+      "edge_count": 3618,
+      "endpoint_count": 23472,
+      "source_callable_endpoint_count": 3,
+      "wired_composition_count": 80,
+      "wired_edge_count": 3618
+    },
+    "truth_boundary": "aggregate labels and exact declared leaf IDs are counted separately; addressable is not callable. Only grounded adapters or named workflows invoke source behavior, and every unbound declaration remains blocked."
+  },
+  "full_power_test": {
+    "probe": {
+      "counts": {
+        "blocked_missing_callable_binding": 27,
+        "blocked_missing_native_contract": 68,
+        "callable_through_named_workflow": 3,
+        "executed_inspection": 87,
+        "launchable_surface_resolved": 29,
+        "test_adapter_ready": 37
+      },
+      "endpoint_count": 251,
+      "path": "evidence/execution-fabric/PROBE_ALL.json"
+    },
+    "schema": "axm.monolith.full-power-test/v0.1",
+    "status": "executed_with_visible_holds",
+    "tests": {
+      "command_classification_counts": {
+        "discovered_queue_mismatch": 2,
+        "environment_or_dependency": 22,
+        "passed": 96,
+        "source_test_failure_or_runtime_version": 4,
+        "timeout_or_long_running_suite": 3
+      },
+      "command_count": 127,
+      "command_status_counts": {
+        "failed": 28,
+        "passed": 96,
+        "timed_out": 3
+      },
+      "module_count": 37,
+      "module_status_counts": {
+        "completed_with_failures": 12,
+        "passed": 25
+      },
+      "path": "evidence/execution-fabric/TEST_ALL_BROAD.json",
+      "report": "evidence/execution-fabric/TEST_ALL_BROAD.md",
+      "scope": "broad-module-umbrellas"
+    },
+    "truth_boundary": "full power dispatches every aggregate endpoint and the selected broad test scope; exact leaf declarations remain catalogued unless explicitly included. Missing source adapters and test failures remain visible."
+  },
+  "gaps": {
+    "blocked_endpoint_count": 23316,
+    "missing_edge_endpoint_count": 0,
+    "schema": "axm.monolith.execution-gaps/v0.1",
+    "truth_boundary": "a visible gap is a required adapter or provider, not permission to invent compatible semantics"
+  },
+  "leaf_registry": {
+    "canonical_capability_count": 23221,
+    "declaration_occurrence_count": 50239,
+    "declared_callable_count": 0,
+    "schema": "axm.monolith.leaf-capability-registry/v0.1",
+    "truth_boundary": "Exact machine-readable declarations are catalogued as leaf capability IDs. Repeated declarations are preserved as provenance occurrences. Declaration and callable-looking metadata are not runtime execution evidence."
+  },
+  "schema": "axm.invariant-lab.monolith-connected-archive-projection/v0.1",
+  "snapshot_integrity": {
+    "extra_nonreceipt_count": 0,
+    "mismatch_count": 0,
+    "missing_count": 0,
+    "receipt_path": "SNAPSHOT_FILE_RECEIPT.json",
+    "receipt_schema": "axm.monolith.connected-snapshot-package/v0.2",
+    "record_count": 15955,
+    "selected_file_sha256": {
+      "EXECUTABLE_COMPOSITIONS.json": "sha256:8193bb10c3115d5cd97a36de8a3199766a48e91c08f91472844cc5f41a1c939d",
+      "EXECUTION_FABRIC.json": "sha256:da1e384fc7107bfb70103d0c39e45e8fbe1b4eb3ecc19a77840bfd2c41ef05c4",
+      "EXECUTION_GAPS.json": "sha256:6fd46724f84d09243a45749438af8876ae632f36386d4025dacb81b32b286682",
+      "LEAF_CAPABILITY_REGISTRY.json": "sha256:98c691ac40c94bd677969774acd60ff676abe92b5a429263fee74c0ad95f2749",
+      "WORKFLOW_REGISTRY.json": "sha256:6659baf4a075c018858863db21cdc028586f62463db27a536bf49b1bb1ef5121",
+      "evidence/execution-fabric/FULL_POWER_TEST.json": "sha256:7afcdf999d8ff32245730a0de8b9ec40fd0c611701c5bf8140713ede625558e5"
+    },
+    "verified_count": 15955
+  },
+  "source_archive": {
+    "archive_file_count": 15956,
+    "bytes": 194320426,
+    "file_name": "AXM_Connected_Monolith_v0.3.2.zip",
+    "folder_name": "AXM_Connected_Monolith_v0.3.2",
+    "sha256": "sha256:f0a0d1d30007d71bb4ded6a9cc03259e5a12ceb7967cd532b12d366ae0cdf55e"
+  },
+  "truth_boundary": "Projection is derived from one exact user-supplied archive. Hash/integrity checks prove byte identity for recorded package files; cross-artifact checks do not prove source authorship, arbitrary runtime correctness, deployment, or constitutional authority.",
+  "workflow": {
+    "id": "ghost-studio.blackline-3d.v0.4",
+    "required_workflow_receipt": {
+      "id": "ghost-studio.blackline-3d.v0.4",
+      "iteration_count": 1,
+      "output": "outputs/blackline-relay-3d-workflow-v0.4-api-proof",
+      "receipt": "outputs/blackline-relay-3d-workflow-v0.4-api-proof/WORKFLOW_RECEIPT.json",
+      "rejection_count": 0,
+      "source_capability_executed": true,
+      "status": "EXECUTED_END_TO_END_AND_STRUCTURALLY_ACCEPTED"
+    },
+    "schema": "axm.monolith.workflow-registry/v0.1",
+    "stage_adapter_statuses": [
+      "callable_through_named_workflow",
+      "callable_through_named_workflow",
+      "callable_through_named_workflow"
+    ],
+    "stages": [
+      "axm-universal-creation::creation.universal",
+      "Axm-game-assets::asset.game",
+      "axm-ghost-studio::game.studio"
+    ],
+    "status": "callable",
+    "truth_boundary": "This exact named workflow is callable end to end. It does not make unrelated candidate compositions executable.",
+    "workflow_count": 1
+  }
+}
