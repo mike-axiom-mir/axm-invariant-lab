@@ -27,6 +27,14 @@ jobs:
         run: python tools/run_monolith_connected_zip_refinement.py --check
       - name: Connected Monolith INV-20 archive-backed refinement evidence check
         run: python tools/run_monolith_connected_archive_refinement.py --check
+      - name: Checkout pinned Monolith finalization donor
+        uses: actions/checkout@v4
+        with:
+          repository: mike-axiom-mir/axm-monolith
+          ref: 9586e1d11af4ef5a475105f4568627c7a5fdb312
+          path: .verification/axm-monolith
+      - name: Connected Monolith INV-20 donor-owned finalization refinement check
+        run: python tools/run_monolith_donor_finalization.py --check --donor-root .verification/axm-monolith
       - name: Tractability evidence check
         run: python tools/run_tractability.py --check
       - name: External consumer compatibility check
