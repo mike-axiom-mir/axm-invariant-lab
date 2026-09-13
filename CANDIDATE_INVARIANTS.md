@@ -9,7 +9,7 @@ These are research candidates, not CANON rules created by this repository.
 | INV-03 | A rollback result labeled successful must resolve to a declared known-good snapshot and preserve its lineage identity. | MODEL + DEPTH-6 RECEIPT-LIFECYCLE REGRESSION + Z3 BOUNDED CROSS-CHECK NOW |
 | INV-04 | Selective inheritance copies only explicitly allowlisted fields; authority fields are excluded unless separately granted. | MODEL NOW |
 | INV-05 | Unknown or unobserved required fields never default to a safe value. | ENGINE NOW |
-| INV-06 | TruthGrid client directions do not themselves declare authoritative consequences. | ADAPTER NEXT |
+| INV-06 | TruthGrid client directions do not themselves declare authoritative consequences. | PINNED TRUTHGRID CLIENT-INTENT REFINEMENT NOW |
 | INV-07 | TruthGrid merge receipt `rollbackRef` names the exact base revision it claims to roll back to. | ADAPTER NOW |
 | INV-08 | Deterministic duplicate execution should agree on the declared state identity. | STATEBORN HOSTILE-TRANSPORT IDEMPOTENCE ADAPTER NOW |
 | INV-09 | Detached checkpoint reconstruction must bind to the checkpoint/source identity it claims to reconstruct. | FRESH-PROCESS CHECKPOINT ADAPTER NOW |

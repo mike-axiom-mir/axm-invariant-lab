@@ -1,0 +1,37 @@
+{
+  "authority": {
+    "canon": false,
+    "execution": false,
+    "merge": false,
+    "promotion": false
+  },
+  "checks": [
+    {"check": "schema", "ok": true},
+    {"check": "donor-repo", "ok": true},
+    {"check": "donor-commit", "ok": true},
+    {"check": "pinned-donor-blobs", "ok": true},
+    {"check": "manifested-fields-present-in-hostile-input", "ok": true},
+    {"check": "manifested-fields-stripped-before-wire-event", "ok": true},
+    {"check": "transported-event-is-wire-intent-only", "ok": true},
+    {"check": "same-destination-intents-have-one-engine-selected-winner", "ok": true},
+    {"check": "losing-client-direction-does-not-manifest", "ok": true},
+    {"check": "engine-records-conflict", "ok": true},
+    {"check": "future-intent-rejected", "ok": true},
+    {"check": "rejected-intent-does-not-advance-accepted-chronology", "ok": true}
+  ],
+  "donor": {
+    "blobs": {
+      "src/core/engine.js": "451968447f420b6c13cd24814c61752605fddcbe",
+      "src/transport/referee.js": "074bbf01a75d9422b4b4b0093f9a2540e3ce513b",
+      "tests/determinism.test.js": "47a60a10a49d8de1ed2bea97efc18fc34ee8af77"
+    },
+    "commit": "e3875e02db14eb9aef040dc2727dc0ccd58d8ff0",
+    "repo": "mike-axiom-mir/axm-TruthGrid"
+  },
+  "failures": [],
+  "invariant": "INV-06",
+  "schema": "axm.invariant-lab.truthgrid-client-intent-refinement/v1",
+  "status": "PASS",
+  "truthBoundary": "PASS means only that the pinned TruthGrid source/test projection shows client traffic constrained to causal intent fields, an engine-adjudicated same-destination conflict, and a future intent rejected without advancing accepted chronology. 'Consequence' here is simulation state/receipt outcome, not constitutional or CANON authority.",
+  "unknowns": []
+}
