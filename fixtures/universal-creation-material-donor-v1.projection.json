@@ -1,0 +1,41 @@
+{
+  "schema": "axm.invariant-lab.universal-creation-donor-fidelity-projection/v1",
+  "donor": {
+    "repo": "mike-axiom-mir/axm-universal-creation",
+    "commit": "8c8a313fa076a49f947df594e6997b7def267ac9",
+    "blobs": {
+      "MATERIAL_DONOR_ADAPTER.md": "7cc4129924df0a4934b609fa29913643ce5e6c1a",
+      "src/axm_uc/material_donor.py": "8e2504714825b38c07754eb90c23158c3794df51",
+      "tests/test_material_donor.py": "8288592d647ae8687f4daf670b6bcb84c695d97b"
+    }
+  },
+  "completeAdaptation": {
+    "truthStatus": "READY_EXACT_MATERIAL_DONOR_ADAPTER",
+    "source": {
+      "format": "axm-material-donor-pack",
+      "version": "0.2.0",
+      "pack_id": "donor-test-pack",
+      "source_library_id": "library-test"
+    },
+    "acceptedEntries": [
+      {"entry_id": "material-base", "channel": "base-color", "source": {"method": "self-made-test"}},
+      {"entry_id": "material-roughness", "channel": "roughness", "source": {"method": "self-made-test"}}
+    ],
+    "renderingVerified": false
+  },
+  "ambiguousEntry": {
+    "truthStatus": "PARTIAL_EXACT_MATERIAL_DONOR_ADAPTER_WITH_HOLDS",
+    "heldEntries": [
+      {"entry_id": "material-unknown", "reason": "entry has no supported explicit channel hint", "observed_hint": "unassigned"}
+    ],
+    "strictRejects": true
+  },
+  "familyConflict": {
+    "acceptedEntryCount": 3,
+    "acceptedFamilyCount": 0,
+    "heldFamilies": [
+      {"family_id": "family-painted-metal", "duplicate_channels": ["base-color"]}
+    ]
+  },
+  "wrongVersionFailsClosed": true
+}
