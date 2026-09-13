@@ -23,6 +23,8 @@ jobs:
         run: python tools/run_cross_verification.py --check
       - name: Monolith refinement evidence check
         run: python tools/run_monolith_refinement.py --check
+      - name: Connected Monolith INV-20 callability refinement evidence check
+        run: python tools/run_monolith_connected_zip_refinement.py --check
       - name: Tractability evidence check
         run: python tools/run_tractability.py --check
       - name: External consumer compatibility check
