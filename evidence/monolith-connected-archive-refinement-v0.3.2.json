@@ -22,21 +22,66 @@
   "projection_sha256": "sha256:1f0ee41da522180bbc6cef0fd30794d54a2d8676e21e0b8ea9ffe5118fe5c504",
   "result": {
     "checks": [
-      {"check": "supported-projection-and-source-schemas", "ok": true},
-      {"check": "snapshot-byte-integrity", "ok": true},
-      {"check": "blocked-statuses-match-gap-registry", "ok": true},
-      {"check": "leaf-count-cross-artifact-coherence", "ok": true},
-      {"check": "declarations-not-callable", "ok": true},
-      {"check": "named-workflow-callability-is-explicit-and-bounded", "ok": true},
-      {"check": "required-workflow-receipt-bound-to-named-workflow", "ok": true},
-      {"check": "wired-compositions-remain-candidates", "ok": true},
-      {"check": "named-workflow-scope-does-not-leak-to-compositions", "ok": true},
-      {"check": "composition-step-status-partition", "ok": true},
-      {"check": "test-adapter-readiness-cross-artifact-coherence", "ok": true},
-      {"check": "test-command-status-partition", "ok": true},
-      {"check": "test-command-classification-partition", "ok": true},
-      {"check": "test-module-status-partition", "ok": true},
-      {"check": "no-automatic-authority", "ok": true}
+      {
+        "check": "supported-projection-and-source-schemas",
+        "ok": true
+      },
+      {
+        "check": "snapshot-byte-integrity",
+        "ok": true
+      },
+      {
+        "check": "blocked-statuses-match-gap-registry",
+        "ok": true
+      },
+      {
+        "check": "leaf-count-cross-artifact-coherence",
+        "ok": true
+      },
+      {
+        "check": "declarations-not-callable",
+        "ok": true
+      },
+      {
+        "check": "named-workflow-callability-is-explicit-and-bounded",
+        "ok": true
+      },
+      {
+        "check": "required-workflow-receipt-bound-to-named-workflow",
+        "ok": true
+      },
+      {
+        "check": "wired-compositions-remain-candidates",
+        "ok": true
+      },
+      {
+        "check": "named-workflow-scope-does-not-leak-to-compositions",
+        "ok": true
+      },
+      {
+        "check": "composition-step-status-partition",
+        "ok": true
+      },
+      {
+        "check": "test-adapter-readiness-cross-artifact-coherence",
+        "ok": true
+      },
+      {
+        "check": "test-command-status-partition",
+        "ok": true
+      },
+      {
+        "check": "test-command-classification-partition",
+        "ok": true
+      },
+      {
+        "check": "test-module-status-partition",
+        "ok": true
+      },
+      {
+        "check": "no-automatic-authority",
+        "ok": true
+      }
     ],
     "failures": [],
     "metrics": {
