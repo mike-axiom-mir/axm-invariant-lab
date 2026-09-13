@@ -1,0 +1,28 @@
+{
+  "schema": "axm.invariant-lab.truthgrid-client-intent-projection/v1",
+  "donor": {
+    "repo": "mike-axiom-mir/axm-TruthGrid",
+    "commit": "e3875e02db14eb9aef040dc2727dc0ccd58d8ff0",
+    "blobs": {
+      "src/transport/referee.js": "074bbf01a75d9422b4b4b0093f9a2540e3ce513b",
+      "src/core/engine.js": "451968447f420b6c13cd24814c61752605fddcbe",
+      "tests/determinism.test.js": "47a60a10a49d8de1ed2bea97efc18fc34ee8af77"
+    }
+  },
+  "transportBoundary": {
+    "inputFields": ["actorId", "action", "direction", "clientSequence", "proposedTick", "damage", "resultingState", "hit"],
+    "transportedFields": ["schema", "revisionOrder", "roomId", "actorId", "action", "direction", "clientSequence", "proposedTick"],
+    "strippedFields": ["damage", "resultingState", "hit"]
+  },
+  "conflictAdjudication": {
+    "startCells": {"A": "4,4", "B": "6,4"},
+    "requestedDestination": "5,4",
+    "finalCells": {"A": "5,4", "B": "6,4"},
+    "conflictCount": 1
+  },
+  "chronologyRejection": {
+    "reason": "future_action",
+    "lastClientSequenceBefore": 0,
+    "lastClientSequenceAfter": 0
+  }
+}
