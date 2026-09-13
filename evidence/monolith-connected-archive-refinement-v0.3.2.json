@@ -1,0 +1,129 @@
+{
+  "claims": {
+    "addressable_implies_callable": false,
+    "constitutional_authority_granted": false,
+    "declared_leaf_implies_callable": false,
+    "named_workflow_scope_transfers_to_candidate_compositions": false,
+    "package_bytes_verified_against_internal_snapshot_receipt": true,
+    "package_integrity_implies_semantic_correctness": false,
+    "test_adapter_ready_implies_tests_passed": false,
+    "wired_implies_executable": false
+  },
+  "invariant": "INV-20",
+  "limitations": [
+    "The full 194 MB archive is not committed to Invariant Lab or available in ordinary CI.",
+    "CI rechecks the retained deterministic projection and evidence, not the original ZIP bytes.",
+    "Archive hashing proves byte identity/integrity only; it does not prove authorship or arbitrary semantic/runtime correctness.",
+    "The archive reader does not execute packaged source code, launch surfaces, or rerun the named workflow.",
+    "The composition check is a bounded cross-artifact scope check over the frozen v0.3.2 package, not a proof for future Monolith schemas.",
+    "No merge, CANON, device, network, installation, or constitutional authority is created by this evidence."
+  ],
+  "projection_schema": "axm.invariant-lab.monolith-connected-archive-projection/v0.1",
+  "projection_sha256": "sha256:1f0ee41da522180bbc6cef0fd30794d54a2d8676e21e0b8ea9ffe5118fe5c504",
+  "result": {
+    "checks": [
+      {
+        "check": "supported-projection-and-source-schemas",
+        "ok": true
+      },
+      {
+        "check": "snapshot-byte-integrity",
+        "ok": true
+      },
+      {
+        "check": "blocked-statuses-match-gap-registry",
+        "ok": true
+      },
+      {
+        "check": "leaf-count-cross-artifact-coherence",
+        "ok": true
+      },
+      {
+        "check": "declarations-not-callable",
+        "ok": true
+      },
+      {
+        "check": "named-workflow-callability-is-explicit-and-bounded",
+        "ok": true
+      },
+      {
+        "check": "required-workflow-receipt-bound-to-named-workflow",
+        "ok": true
+      },
+      {
+        "check": "wired-compositions-remain-candidates",
+        "ok": true
+      },
+      {
+        "check": "named-workflow-scope-does-not-leak-to-compositions",
+        "ok": true
+      },
+      {
+        "check": "composition-step-status-partition",
+        "ok": true
+      },
+      {
+        "check": "test-adapter-readiness-cross-artifact-coherence",
+        "ok": true
+      },
+      {
+        "check": "test-command-status-partition",
+        "ok": true
+      },
+      {
+        "check": "test-command-classification-partition",
+        "ok": true
+      },
+      {
+        "check": "test-module-status-partition",
+        "ok": true
+      },
+      {
+        "check": "no-automatic-authority",
+        "ok": true
+      }
+    ],
+    "failures": [],
+    "metrics": {
+      "blocked_endpoint_count": 23316,
+      "composition_count": 80,
+      "composition_step_occurrence_count": 384,
+      "compositions_containing_callable_stage": 7,
+      "endpoint_count": 23472,
+      "explicit_callable_endpoint_count": 3,
+      "snapshot_verified_file_count": 15955,
+      "test_adapter_ready_endpoint_count": 37,
+      "test_command_count": 127,
+      "test_command_failed_count": 28,
+      "test_command_timed_out_count": 3
+    },
+    "status": "PASS",
+    "unknowns": []
+  },
+  "schema": "axm.invariant-lab.monolith-connected-archive-refinement-evidence/v0.1",
+  "snapshot_integrity": {
+    "extra_nonreceipt_count": 0,
+    "mismatch_count": 0,
+    "missing_count": 0,
+    "receipt_path": "SNAPSHOT_FILE_RECEIPT.json",
+    "receipt_schema": "axm.monolith.connected-snapshot-package/v0.2",
+    "record_count": 15955,
+    "selected_file_sha256": {
+      "EXECUTABLE_COMPOSITIONS.json": "sha256:8193bb10c3115d5cd97a36de8a3199766a48e91c08f91472844cc5f41a1c939d",
+      "EXECUTION_FABRIC.json": "sha256:da1e384fc7107bfb70103d0c39e45e8fbe1b4eb3ecc19a77840bfd2c41ef05c4",
+      "EXECUTION_GAPS.json": "sha256:6fd46724f84d09243a45749438af8876ae632f36386d4025dacb81b32b286682",
+      "LEAF_CAPABILITY_REGISTRY.json": "sha256:98c691ac40c94bd677969774acd60ff676abe92b5a429263fee74c0ad95f2749",
+      "WORKFLOW_REGISTRY.json": "sha256:6659baf4a075c018858863db21cdc028586f62463db27a536bf49b1bb1ef5121",
+      "evidence/execution-fabric/FULL_POWER_TEST.json": "sha256:7afcdf999d8ff32245730a0de8b9ec40fd0c611701c5bf8140713ede625558e5"
+    },
+    "verified_count": 15955
+  },
+  "source_archive": {
+    "archive_file_count": 15956,
+    "bytes": 194320426,
+    "file_name": "AXM_Connected_Monolith_v0.3.2.zip",
+    "folder_name": "AXM_Connected_Monolith_v0.3.2",
+    "sha256": "sha256:f0a0d1d30007d71bb4ded6a9cc03259e5a12ceb7967cd532b12d366ae0cdf55e"
+  },
+  "status": "PASS"
+}
