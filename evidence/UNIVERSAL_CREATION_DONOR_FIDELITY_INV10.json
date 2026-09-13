@@ -1,0 +1,41 @@
+{
+  "authority": {
+    "canon": false,
+    "execution": false,
+    "merge": false,
+    "promotion": false
+  },
+  "checks": [
+    {"check": "schema", "ok": true},
+    {"check": "donor-repo", "ok": true},
+    {"check": "donor-commit", "ok": true},
+    {"check": "pinned-donor-blobs", "ok": true},
+    {"check": "complete-adaptation-explicit-ready-status", "ok": true},
+    {"check": "source-identity-survives-adaptation", "ok": true},
+    {"check": "accepted-entry-identities-retained", "ok": true},
+    {"check": "accepted-entry-source-metadata-retained", "ok": true},
+    {"check": "accepted-channels-come-from-explicit-donor-routing", "ok": true},
+    {"check": "descriptor-adaptation-does-not-claim-rendering", "ok": true},
+    {"check": "ambiguous-entry-remains-partial-hold", "ok": true},
+    {"check": "unassigned-channel-remains-visible-hold", "ok": true},
+    {"check": "strict-mode-refuses-held-state", "ok": true},
+    {"check": "family-conflict-does-not-discard-accepted-textures", "ok": true},
+    {"check": "duplicate-family-channel-remains-explicit-hold", "ok": true},
+    {"check": "unsupported-version-fails-closed", "ok": true}
+  ],
+  "donor": {
+    "blobs": {
+      "MATERIAL_DONOR_ADAPTER.md": "7cc4129924df0a4934b609fa29913643ce5e6c1a",
+      "src/axm_uc/material_donor.py": "8e2504714825b38c07754eb90c23158c3794df51",
+      "tests/test_material_donor.py": "8288592d647ae8687f4daf670b6bcb84c695d97b"
+    },
+    "commit": "8c8a313fa076a49f947df594e6997b7def267ac9",
+    "repo": "mike-axiom-mir/axm-universal-creation"
+  },
+  "failures": [],
+  "invariant": "INV-10",
+  "schema": "axm.invariant-lab.universal-creation-donor-fidelity-refinement/v1",
+  "status": "PASS",
+  "truthBoundary": "PASS means only that the pinned Universal Creation material-donor source/test projection retains donor pack/library and accepted-entry source identity, keeps unassigned or conflicting donor state explicit as HOLD, rejects unsupported versions, and does not claim rendering. It does not prove pixel semantics, rendering, material correctness, deployment, authorship, or constitutional/CANON authority.",
+  "unknowns": []
+}

@@ -45,6 +45,8 @@ jobs:
         run: python tools/run_state_research_reference_state_closure_refinement.py --check
       - name: TruthGrid client-intent INV-06 refinement evidence check
         run: python tools/run_truthgrid_client_intent_refinement.py --check
+      - name: Universal Creation donor-fidelity INV-10 refinement evidence check
+        run: python tools/run_universal_creation_donor_fidelity.py --check
       - name: Machine discovery integrity check
         run: python tools/check_discovery_contract.py --check
       - name: Public discovery projection check
