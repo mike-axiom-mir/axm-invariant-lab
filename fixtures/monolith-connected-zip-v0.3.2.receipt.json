@@ -1,0 +1,31 @@
+{
+  "archive_file_count": 15956,
+  "folder_name": "AXM_Connected_Monolith_v0.3.2",
+  "module_count": 38,
+  "schema": "axm.monolith.connected-zip-result/v0.2",
+  "snapshot_receipt": "SNAPSHOT_FILE_RECEIPT.json",
+  "truth_boundary": "file hashes prove package integrity and the required workflow receipt proves only the exact Blackline Relay route; unrelated unbound leaf capabilities and candidate compositions remain blocked",
+  "wiring": {
+    "adapter_status_counts": {
+      "blocked_missing_callable_binding": 23248,
+      "blocked_missing_native_contract": 68,
+      "callable_through_named_workflow": 3,
+      "executable_inspection": 87,
+      "executable_test_evidence": 37,
+      "launchable_local_surface": 29
+    },
+    "addressable_endpoint_count": 23472,
+    "aggregate_endpoint_count": 251,
+    "callable_workflow_stage_count": 3,
+    "composition_count": 80,
+    "declared_leaf_endpoint_count": 23221,
+    "edge_count": 3618,
+    "endpoint_count": 23472,
+    "source_callable_endpoint_count": 3,
+    "wired_composition_count": 80,
+    "wired_edge_count": 3618
+  },
+  "zip": "/workspace/scratch/ea4fc9d39ae5/builds/AXM_Connected_Monolith_v0.3.2.zip",
+  "zip_bytes": 194320426,
+  "zip_sha256": "sha256:f0a0d1d30007d71bb4ded6a9cc03259e5a12ceb7967cd532b12d366ae0cdf55e"
+}
