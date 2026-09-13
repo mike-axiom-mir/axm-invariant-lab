@@ -47,6 +47,14 @@ jobs:
         run: python tools/run_truthgrid_client_intent_refinement.py --check
       - name: Universal Creation donor-fidelity INV-10 refinement evidence check
         run: python tools/run_universal_creation_donor_fidelity.py --check
+      - name: Checkout pinned Universal Creation donor execution
+        uses: actions/checkout@v4
+        with:
+          repository: mike-axiom-mir/axm-universal-creation
+          ref: b6e77afca5dce48f42c41e73af3ec2f7709d6a6d
+          path: .verification/axm-universal-creation
+      - name: Universal Creation donor-owned INV-10 execution check
+        run: python tools/run_universal_creation_donor_execution.py --check --donor-root .verification/axm-universal-creation
       - name: Machine discovery integrity check
         run: python tools/check_discovery_contract.py --check
       - name: Public discovery projection check
