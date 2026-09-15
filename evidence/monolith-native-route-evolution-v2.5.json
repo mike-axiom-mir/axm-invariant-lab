@@ -1,0 +1,73 @@
+{
+  "evidence_ceiling": "One exact pinned Monolith native-route planning implementation. Planning eligibility is not source execution, product acceptance, deployment, merge/promotion/CANON authority, or proof of future donor commits.",
+  "observation": {
+    "authority": {
+      "canon": false,
+      "execution": false,
+      "merge": false,
+      "promotion": false
+    },
+    "donor": {
+      "commit": "8ce73a54d488805b126fe7fa64eac1ec2b28e900",
+      "repository": "mike-axiom-mir/axm-monolith",
+      "test_blob": "d41f5e0aa727f0718df2e4f783431de98f185b96",
+      "tool_blob": "4286dbd2ef550841889644c56b620abda5cdf504"
+    },
+    "falsifiers": {
+      "changed_ref": {
+        "executed": false,
+        "overall_status": "HOLD",
+        "row_status": "HOLD_RECIPE_REF_MISMATCH"
+      },
+      "missing_endpoint": {
+        "executed": false,
+        "overall_status": "HOLD",
+        "row_status": "HOLD_ENDPOINT_MISSING"
+      },
+      "unverified_native": {
+        "executed": false,
+        "overall_status": "HOLD",
+        "row_status": "HOLD_NO_VERIFIED_NATIVE_EVIDENCE"
+      }
+    },
+    "plan": {
+      "mode": "plan",
+      "recipes": [
+        {"address":"Axm-game-assets::native.command/python-file-cli/forge.py","args":["self-test"],"commit":"aaae29c81422366610e6c0ed75e2af6794b100f6","executed":false,"id":"game-assets-forge-self-test","repository":"mike-axiom-mir/Axm-game-assets","status":"READY"},
+        {"address":"axm-universal-creation::native.command/python-project-script/axm-uc","args":["--help"],"commit":"78b16c01b543733688d7d036552b63679c87c10b","executed":false,"id":"universal-creation-cli-help","repository":"mike-axiom-mir/axm-universal-creation","status":"READY"},
+        {"address":"axm-framestate::native.command/python-project-script/framestate","args":["--help"],"commit":"60ea68ba72e4ad4df8dc5746c6bb18fcd6569a34","executed":false,"id":"framestate-cli-help","repository":"mike-axiom-mir/axm-framestate","status":"READY"},
+        {"address":"axm-machine-voice::native.command/python-project-script/axm-machine-voice","args":["--help"],"commit":"b77f6d083db2951d19e082e712fdaa3061ced956","executed":false,"id":"machine-voice-cli-help","repository":"mike-axiom-mir/axm-machine-voice","status":"READY"},
+        {"address":"axm-city-multiplayer::native.command/python-project-script/axm-p2p","args":["--help"],"commit":"002c4465667f9ffbdb6adda06afae8596d340d76","executed":false,"id":"city-p2p-cli-help","repository":"mike-axiom-mir/axm-city-multiplayer","status":"READY"},
+        {"address":"axm-walmi::native.command/python-file-cli/tools/verify_public_capability.py","args":["--root","."],"commit":"c8913f3a6f42a6498f83d5876b8aee9c56df694f","executed":false,"id":"walmi-public-capability-verify","repository":"mike-axiom-mir/axm-walmi","status":"READY"},
+        {"address":"axm-front-door::native.command/python-file-cli/scripts/axm_site.py","args":["validate"],"commit":"05e25b557d076551ac740c4e043a9ccbbb0160ba","executed":false,"id":"front-door-validate","repository":"mike-axiom-mir/axm-front-door","status":"READY"},
+        {"address":"axm-living-city-simulator::native.command/node-file-cli/runtime/headless-simulator.js","args":["--help"],"commit":"a299db639e87b2fa0dea1ded1bf651ab86e9cd3c","executed":false,"id":"living-city-headless-main","repository":"mike-axiom-mir/axm-living-city-simulator","status":"READY"},
+        {"address":"axm-102-grammer::native.command/node-file-cli/bin/axm-grammar-glass-snapshot.js","args":["create","--commit","ff58375b65a4033041e6de957263d4146aa7429e","--repo","mike-axiom-mir/axm-102-grammer"],"commit":"ff58375b65a4033041e6de957263d4146aa7429e","executed":false,"id":"grammar-102-capability-snapshot-export","repository":"mike-axiom-mir/axm-102-grammer","status":"READY"},
+        {"address":"axm-factual-space-simulator::native.command/python-project-script/axm-star-sim","args":["--help"],"commit":"4ce1726c03fc775276de56d127bf6b393a1139cd","executed":false,"id":"factual-space-cli-help","repository":"mike-axiom-mir/axm-factual-space-simulator","status":"READY"},
+        {"address":"axm-factual-space-simulator::native.command/python-project-script/axm-rooted-crew","args":["verify-roots"],"commit":"4ce1726c03fc775276de56d127bf6b393a1139cd","executed":false,"id":"factual-rooted-crew-verify-roots","repository":"mike-axiom-mir/axm-factual-space-simulator","status":"READY"},
+        {"address":"axm-factual-space-simulator::native.command/python-project-script/axm-ship-blueprint","args":["validate"],"commit":"4ce1726c03fc775276de56d127bf6b393a1139cd","executed":false,"id":"factual-ship-blueprint-validate","repository":"mike-axiom-mir/axm-factual-space-simulator","status":"READY"},
+        {"address":"axm-factual-space-simulator::native.command/python-project-script/axm-ship-interior","args":["validate"],"commit":"4ce1726c03fc775276de56d127bf6b393a1139cd","executed":false,"id":"factual-ship-interior-validate","repository":"mike-axiom-mir/axm-factual-space-simulator","status":"READY"},
+        {"address":"axm-factual-space-simulator::native.command/python-project-script/axm-handoff","args":["audit","--full"],"commit":"4ce1726c03fc775276de56d127bf6b393a1139cd","executed":false,"id":"factual-handoff-full-audit","repository":"mike-axiom-mir/axm-factual-space-simulator","status":"READY"},
+        {"address":"axm-factual-space-simulator::native.command/python-project-script/axm-package-seal","args":["--check"],"commit":"4ce1726c03fc775276de56d127bf6b393a1139cd","executed":false,"id":"factual-package-seal-check","repository":"mike-axiom-mir/axm-factual-space-simulator","status":"READY"}
+      ],
+      "status": "PASS"
+    },
+    "schema": "axm.invariant-lab.monolith-native-route-evolution-observation/v0.1",
+    "truth_boundary": "Only exact pinned refs with retained VERIFIED native-command evidence are eligible. Changed refs are HOLD until revalidated; copied-workspace smoke success is not CANON or product acceptance."
+  },
+  "result": {
+    "authority": {"canon": false, "execution": false, "merge": false, "promotion": false},
+    "failures": [],
+    "invariant": "INV-20",
+    "observed": {
+      "plan_mode": "plan",
+      "plan_status": "PASS",
+      "recipe_count": 15,
+      "recipe_ids": ["game-assets-forge-self-test","universal-creation-cli-help","framestate-cli-help","machine-voice-cli-help","city-p2p-cli-help","walmi-public-capability-verify","front-door-validate","living-city-headless-main","grammar-102-capability-snapshot-export","factual-space-cli-help","factual-rooted-crew-verify-roots","factual-ship-blueprint-validate","factual-ship-interior-validate","factual-handoff-full-audit","factual-package-seal-check"]
+    },
+    "schema": "axm.invariant-lab.refinement-result/v0.1",
+    "status": "PASS",
+    "truth_boundary": "This refinement checks one pinned Monolith native-route planning gate. READY means eligible for a separate explicit execution attempt; it is not execution, verification of product behavior, deployment, merge, promotion, or CANON authority.",
+    "unknowns": []
+  },
+  "schema": "axm.invariant-lab.monolith-native-route-evolution-evidence/v0.1"
+}
