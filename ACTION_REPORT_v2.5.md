@@ -36,9 +36,28 @@ Added 11 focused adversarial tests covering schema/missing-evidence HOLD, donor 
 - adapter, runner, and focused test Python compilation: **PASS**
 - direct current-donor checkout cannot run locally because this execution environment cannot resolve GitHub; exact donor checkout and donor-owned execution are therefore hosted-CI gates
 
+## First hosted run — retained failure, not hidden
+
+PR workflow run `34940130786` was red on the initial published head `d364495b50925ea5b960df277a94aed2636f916d`.
+
+What passed before the red gate:
+
+- complete repository unit/refinement suite: **183/183 PASS** on Python 3.11;
+- all inherited evidence gates through INV-20 v2.4: PASS;
+- checkout of exact current Monolith donor `8ce73a54d488805b126fe7fa64eac1ec2b28e900`: PASS;
+- donor-owned `tests/test_totality_native_smokes.py`: **10/10 PASS**.
+
+The new evidence runner then failed before semantic evaluation with:
+
+`ModuleNotFoundError: No module named 'adapters'`
+
+Cause: running `python tools/run_monolith_native_route_evolution.py` puts `tools/` rather than the repository root at the front of Python's module path. No invariant assertion failed.
+
+Repair: the runner now derives the repository root from `__file__` and explicitly inserts that root into `sys.path` before importing the local adapter. No test or semantic assertion was weakened.
+
 ## Four-root gate
 
-**Truth:** route eligibility is tied to exact endpoint + producer ref + retained verified native-command evidence. READY is not execution. Unknown/future observation shapes HOLD.
+**Truth:** route eligibility is tied to exact endpoint + producer ref + retained verified native-command evidence. READY is not execution. Unknown/future observation shapes HOLD. The first hosted runner failure is retained above rather than reported green.
 
 **Agency / non-domination:** the probe never takes the donor execution path and the refinement grants no execution, merge, promotion, or CANON authority.
 
@@ -48,4 +67,4 @@ Added 11 focused adversarial tests covering schema/missing-evidence HOLD, donor 
 
 ## Evidence ceiling
 
-If hosted CI passes, this establishes that INV-20's non-promotion boundary survives one materially evolved Monolith native-route planning implementation. It does not prove source-command success, product behavior, arbitrary native routes, future donor commits, deployment, safety/quality, or constitutional authority. General model fidelity remains at the existing evidence ceiling.
+If the repaired exact head passes hosted CI, this establishes that INV-20's non-promotion boundary survives one materially evolved Monolith native-route planning implementation. It does not prove source-command success, product behavior, arbitrary native routes, future donor commits, deployment, safety/quality, or constitutional authority. General model fidelity remains at the existing evidence ceiling.
