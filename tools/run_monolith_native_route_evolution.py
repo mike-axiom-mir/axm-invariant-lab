@@ -10,11 +10,7 @@ import subprocess
 import tempfile
 from typing import Any
 
-from adapters.monolith_native_route_evolution import (
-    DONOR_REPOSITORY,
-    SCHEMA,
-    inspect,
-)
+from adapters.monolith_native_route_evolution import DONOR_REPOSITORY, SCHEMA, inspect
 
 EVIDENCE_SCHEMA = "axm.invariant-lab.monolith-native-route-evolution-evidence/v0.1"
 ROOT = Path(__file__).resolve().parents[1]
@@ -49,10 +45,7 @@ def _endpoint(recipe: dict[str, Any]) -> dict[str, Any]:
         "address": recipe["address"],
         "repository": recipe["repository"],
         "commit": recipe["commit"],
-        "adapter": {
-            "status": "callable_native_command_verified",
-            "source_capability_execution": True,
-        },
+        "adapter": {"status": "callable_native_command_verified", "source_capability_execution": True},
     }
 
 
@@ -120,21 +113,9 @@ def collect(donor_root: Path) -> dict[str, Any]:
         "donor": donor,
         "plan": _normalize_plan(baseline),
         "falsifiers": {
-            "changed_ref": {
-                "overall_status": changed_payload.get("status"),
-                "row_status": changed_status,
-                "executed": changed_executed,
-            },
-            "unverified_native": {
-                "overall_status": unverified_payload.get("status"),
-                "row_status": unverified_status,
-                "executed": unverified_executed,
-            },
-            "missing_endpoint": {
-                "overall_status": missing_payload.get("status"),
-                "row_status": missing_status,
-                "executed": missing_executed,
-            },
+            "changed_ref": {"overall_status": changed_payload.get("status"), "row_status": changed_status, "executed": changed_executed},
+            "unverified_native": {"overall_status": unverified_payload.get("status"), "row_status": unverified_status, "executed": unverified_executed},
+            "missing_endpoint": {"overall_status": missing_payload.get("status"), "row_status": missing_status, "executed": missing_executed},
         },
         "authority": {"execution": False, "merge": False, "promotion": False, "canon": False},
         "truth_boundary": baseline.get("truth_boundary"),
@@ -167,11 +148,16 @@ def main() -> int:
         if not args.output.is_file():
             print(f"HOLD: retained evidence missing: {args.output}")
             return 2
-        expected = args.output.read_bytes()
-        if expected != data:
+        try:
+            retained = json.loads(args.output.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            print(f"FAIL: retained native-route evolution evidence is invalid JSON: {exc}")
+            return 1
+        if retained != payload:
+            retained_bytes = canonical_bytes(retained)
             print("FAIL: retained native-route evolution evidence drift")
             print(f"generated_sha256={hashlib.sha256(data).hexdigest()}")
-            print(f"retained_sha256={hashlib.sha256(expected).hexdigest()}")
+            print(f"retained_sha256={hashlib.sha256(retained_bytes).hexdigest()}")
             return 1
         if payload["result"]["status"] != "PASS":
             print(json.dumps(payload["result"], indent=2, sort_keys=True))
