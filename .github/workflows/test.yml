@@ -35,6 +35,16 @@ jobs:
           path: .verification/axm-monolith
       - name: Connected Monolith INV-20 donor-owned finalization refinement check
         run: python tools/run_monolith_donor_finalization.py --check --donor-root .verification/axm-monolith
+      - name: Checkout pinned evolved Monolith native-route donor
+        uses: actions/checkout@v4
+        with:
+          repository: mike-axiom-mir/axm-monolith
+          ref: 8ce73a54d488805b126fe7fa64eac1ec2b28e900
+          path: .verification/axm-monolith-native-routes
+      - name: Monolith donor native-route gate tests
+        run: python .verification/axm-monolith-native-routes/tests/test_totality_native_smokes.py
+      - name: Connected Monolith INV-20 native-route evolution refinement check
+        run: python tools/run_monolith_native_route_evolution.py --check --donor-root .verification/axm-monolith-native-routes
       - name: Tractability evidence check
         run: python tools/run_tractability.py --check
       - name: External consumer compatibility check
