@@ -7,13 +7,17 @@ import importlib.util
 import json
 from pathlib import Path
 import subprocess
+import sys
 import tempfile
 from typing import Any
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 from adapters.monolith_native_route_evolution import DONOR_REPOSITORY, SCHEMA, inspect
 
 EVIDENCE_SCHEMA = "axm.invariant-lab.monolith-native-route-evolution-evidence/v0.1"
-ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_EVIDENCE = ROOT / "evidence" / "monolith-native-route-evolution-v2.5.json"
 
 
