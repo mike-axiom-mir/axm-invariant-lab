@@ -127,3 +127,7 @@ Synthetic fault traces and tractability fixtures validate the explorers against 
 This repository may describe, explore, falsify, cross-check, measure bounded tractability, emit evidence, refine pinned donor evidence, and track consumer compatibility. It does not grant execution, device, network, merge, promotion, installation, or CANON authority. The four AXM roots — Truth, Agency/non-domination, Continuity, and Wisdom before speed — remain the merge gate.
 
 Read `INVARIANT_CONTRACT.md`, `REFINEMENT_BOUNDARY.md`, `MONOLITH_PIPELINE_REFINEMENT.md`, `STATE_RESEARCH_SENTINEL_REFINEMENT.md`, `STATE_RESEARCH_WAKEUP_FUZZER_REFINEMENT.md`, `TRACTABILITY_BOUNDARY.md`, `EXTERNAL_CONSUMERS.md`, `DONOR_SCAN_2026-09-12.md`, and the latest `ACTION_REPORT_v0.*.md` before extending the lab.
+
+## Reusable simulation method
+
+[Simulation experience and reuse](SIMULATION_EXPERIENCE_REUSE.md) connects the shared method to this repository, with existing machinery, proposed experiments and explicit evidence limits.
